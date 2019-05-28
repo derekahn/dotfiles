@@ -1,0 +1,13 @@
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+
+tmp/*
+
+vimrc.local
+config/nvim/plugged
+config/nvim/autoload/plug.vim
+backup/
+*.log
