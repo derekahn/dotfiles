@@ -256,26 +256,15 @@ function! s:build_go_files()
 endfunction
 
 
-""""""""""""""""""""""""""""""
-" vim-jsx
-""""""""""""""""""""""""""""""
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
-
-""""""""""""""""""""""""""""""
-" vim-markdown
-""""""""""""""""""""""""""""""
-let g:vim_markdown_folding_disabled = 1
-
 
 """"""""""""""""""""""""""""""
 " vimagit
 """"""""""""""""""""""""""""""
 
-nnoremap <leader>gst :Magit<CR>       " git status
-nnoremap <leader>gP :! git push<CR>  " git Push
-" Enable deletion of untracked files in Magit
-let g:magit_discard_untracked_do_delete=1
+" nnoremap <leader>gst :Magit<CR>       " git status
+" nnoremap <leader>gP :! git push<CR>  " git Push
+" " Enable deletion of untracked files in Magit
+" let g:magit_discard_untracked_do_delete=1
 
 
 """"""""""""""""""""""""""""""

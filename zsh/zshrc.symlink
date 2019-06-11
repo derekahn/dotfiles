@@ -1,34 +1,13 @@
-export DOTFILES=$HOME/.dotfiles
-export zsh=$DOTFILES/zsh
-
 for config ($zsh/**/*.zsh) source $config
-
 ZSH_THEME="spaceship"
-
-# NeoVim Settings
-export EDITOR='nvim'
 
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Go Lang
-# ---------------
-export GOPATH=$HOME/go
-export GOBIN=$HOME/go/bin
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
-
-# Yarn Binaries
-# ---------------
-export PATH="$(yarn global bin):$PATH"
-
-
-# Syntax highlighter
-# ---------------
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. `brew --prefix`/etc/profile.d/z.sh alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/sbin:$PATH"
+# So that git plugin works
+source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+source ~/.oh-my-zsh/plugins/tmux/tmux.plugin.zsh
+source ~/.oh-my-zsh/plugins/systemd/systemd.plugin.zsh
 
 
 # Setup fzf (fuzzy finder: vim, command history)
@@ -40,19 +19,39 @@ fi
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Initialize iterm2 shell intergration
+
+# Go Lang
+# ---------------
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+
+
+# Iterm2 shell intergration
 # ---------------
 source ~/.iterm2_shell_integration.`basename $SHELL`
-
-
 # Auto-completion
-# ---------------
 [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
 
-# So that git plugin works
-source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
-source ~/.oh-my-zsh/plugins/tmux/tmux.plugin.zsh
-source ~/.oh-my-zsh/plugins/systemd/systemd.plugin.zsh
+
+# Nvim
+# ---------------
+export EDITOR='nvim'
+
+
+# Syntax highlighter
+# ---------------
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. `brew --prefix`/etc/profile.d/z.sh alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="/usr/local/sbin:$PATH"
+
+
+# Yarn Binaries
+# ---------------
+export PATH="$(yarn global bin):$PATH"
+
 
 export HOMEBREW_GITHUB_API_TOKEN=e68e5e0da932aecc6da13dd212ab4045426d85cf
 
