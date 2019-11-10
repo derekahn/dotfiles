@@ -34,12 +34,11 @@ echo "---------------------------------------------------------"
 
 packages=(
   "coreutils"
-  "docker"
-  "docker-compose"
   "exa"
   "git"
   "fzf"
   "golang"
+  "goodwithtech/r/dockl"
   "kubectl"
   "moreutils"
   "n"
@@ -48,9 +47,7 @@ packages=(
   "p7zip"
   "node"
   "python3"
-  "ranger"
   "reattach-to-user-namespace"
-  "ripgrep"
   "speedtest_cli"
   "tig"
   "tmux"
@@ -69,16 +66,27 @@ do
   echo "---------------------------------------------------------"
 done
 
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing caskroom/fonts.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+brew tap caskroom/fonts
+
 applications=(
   "1password"
   "alfred"
+  "brave-browser"
   "code-notes"
   "dash"
   "divvy"
   "google-chrome"
+  "firefox"
+  "fork"
+  "font-droidsansmono-nerd-font-mono"
   "iterm2"
-  "mailspring"
+  "keybase"
+  # "mailspring"
   "slack"
+  "wireshark"
   "visual-studio-code"
 )
 
@@ -160,11 +168,6 @@ echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing iterm2 shell integrations.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing vtop.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-npm install -g vtop
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing Neovim plugins and linking dotfiles.$(tput sgr 0)"
