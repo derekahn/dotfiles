@@ -1,3 +1,7 @@
+snippet ve
+	if err := ${1}; err != nil {
+		${2}
+	}
 snippet v
 	${1} := ${2}
 	${3}
@@ -86,3 +90,23 @@ snippet testmain
 	func TestMain(m *testing.M) {
 		${1}
 	}
+
+# grpc
+snippet gmeth
+	func (${1:s} *${2:server}) ${3:name}(${4:ctx} context.Context, ${5:param} *${6:pb}) (${7:*pb}, error) {
+		${8}
+	}
+
+snippet gsrv
+	${1:srv} := grpc.NewServer()
+	${2:pb}.Register${3:Service}Server(${4:$1}, ${5:&server{}})
+	reflection.Register(${6:$1})
+
+snippet gcall
+	${1:conn}, ${2:err} := grpc.Dial("${3:localhost:9000}", ${4:grpc.WithInsecure()})
+	if err != nil {
+		${5:panic(err)}
+	}
+
+snippet gcli
+	${1:client} := ${2:pb}.New${3:Service}Client(${4:conn})

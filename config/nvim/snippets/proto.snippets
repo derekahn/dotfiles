@@ -1,0 +1,21 @@
+snippet syn
+	syntax = "proto3";
+
+snippet pkg
+	package ${2:name};
+
+snippet msg
+	message ${1:title} {
+		${2:type} ${3:key} = ${4:1};
+	}
+
+snippet row
+	${2:type} ${3:key} = ${4:1};
+
+snippet svc
+	service ${1} {
+		rpc ${2:method}(${3:param}) returns (${4});
+	}
+
+snippet rpc
+	rpc ${1:method}(${2:param}) returns (${3});
