@@ -88,6 +88,10 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Enable repeating supported plugin maps
 " Plug 'tpope/vim-repeat'
 
+" Vim plugin for generating images of source code
+" using https://github.com/Aloxaf/silicon
+Plug 'segeljakt/vim-silicon'
+
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
 
@@ -96,9 +100,6 @@ Plug 'SirVer/ultisnips'
 
 " Zoom in/out of windows
 Plug 'troydm/zoomwintab.vim'
-
-" Alignment for vim
-" Plug 'junegunn/vim-easy-align'
 
 " Preview colors in source code
 " Plug 'ap/vim-css-color'
@@ -122,6 +123,10 @@ Plug 'sheerun/vim-polyglot'
 
 " Syntax for styled-components
 " Plug 'styled-components/vim-styled-components'
+
+" basic vim/terraform integration
+" Plug 'hashivim/vim-terraform'
+" Plug 'juliosueiras/vim-terraform-completion'
 
 " Initialize plugin system
 call plug#end()
