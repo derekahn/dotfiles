@@ -10,15 +10,7 @@ A portable environment for any 🍎 💻
 iTerm2 -> Preferences -> Profiles -> Text -> Font -> Change Font
 ```
 
-### Setting `onedark` color scheme
-
-```shell
-iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> onedark
-```
-
 [Spaceship theme 🚀](https://github.com/denysdovhan/spaceship-prompt)
-
-#### Instructions
 
 ## Install Tmux Plugins
 
