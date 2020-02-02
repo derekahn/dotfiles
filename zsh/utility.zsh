@@ -1,4 +1,5 @@
 # Utility Commands
+alias c="clear"
 alias rm="rm -i"
 alias cb="pwd | pbcopy"
 alias lll="exa -lah"
