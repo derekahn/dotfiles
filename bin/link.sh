@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+INSTALLDIR=$PWD
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Linking symlink files.$(tput sgr 0)"
@@ -41,3 +42,10 @@ for config in $INSTALLDIR/config/*; do
     ln -s $config $target
   fi
 done
+
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Sourcing ~/.tmux.conf.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+tmux source ~/.tmux.conf

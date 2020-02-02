@@ -38,23 +38,26 @@ packages=(
   "git"
   "fzf"
   "golang"
-  "goodwithtech/r/dockl"
+  "goodwithtech/r/dockle"
+  "goodwithtech/r/dockertags"
   "kubectl"
+  "lazydocker"
   "moreutils"
   "n"
   "neovim"
   "ncdu"
   "p7zip"
-  "node"
+  "protobuf"
   "python3"
   "reattach-to-user-namespace"
+  "ripgrep"
   "speedtest_cli"
   "tig"
   "tmux"
   "wireshark"
   "yamllint"
   "yarn"
-  "vim"
+  "yamllint"
   "z"
   "zsh"
   "zsh-syntax-highlighting"
@@ -74,17 +77,17 @@ brew tap caskroom/fonts
 applications=(
   "1password"
   "alfred"
-  "brave-browser"
   "code-notes"
   "dash"
   "divvy"
+  "ExpressVPN"
   "google-chrome"
   "firefox"
   "fork"
   "font-droidsansmono-nerd-font-mono"
   "iterm2"
   "keybase"
-  # "mailspring"
+  "marshallofsound-google-play-music-player"
   "slack"
   "wireshark"
   "visual-studio-code"
@@ -134,7 +137,6 @@ echo "---------------------------------------------------------"
 
 brew tap caskroom/fonts
 brew cask install font-droidsansmono-nerd-font-mono
-# brew cask install font-hack-nerd-font
 
 localGit="/usr/local/bin/git"
 if ! [[ -f "$localGit" ]]; then
@@ -162,12 +164,54 @@ fi
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing zsh-autosuggestions.$(tput sgr 0)"
 echo "---------------------------------------------------------"
+
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing 🐹 Go things.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+echo "Please enter your golang path (ex: $HOME/go) :"
+read gopath
+
+echo "Please enter your github username (ex: derekahn) :"
+read user
+
+echo "Created your gopath: $gopath"
+mkdir $gopath
+
+echo "Created your go workspace at: $HOME/$gopath/src/github.com/$user"
+mkdir -p $HOME/$gopath/src/github.com/$user
+
+export GOPATH=$gopath
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+echo "Installing 🐹 go tools: godoc, vet"
+go get golang.org/x/tools/cmd/godoc
+echo "Tools installed. For more information visit https://golang.org/doc/code.html"
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing iterm2 shell integrations.$(tput sgr 0)"
 echo "---------------------------------------------------------"
+
 curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing GasMask.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+curl -L http://gmask.clockwise.ee/files/gas_mask_0.8.6.zip -o ~/Downloads/
+unzip ~/Downloads/gas_mask_0.8.6.zip
+mv ~/Downloads/Gas Mask.app /Applications
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing 🚀 spaceship theme.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+git clone https://github.com/denysdovhan/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt"
+ln -s "~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing Neovim plugins and linking dotfiles.$(tput sgr 0)"
@@ -195,7 +239,13 @@ sudo sh -c "echo $(which zsh) >> /etc/shells"
 chsh -s $(which zsh)
 
 echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: System update complete. Currently running at 100% power. Enjoy.$(tput sgr 0)"
+echo "$(tput setaf 2)🏠: Remove current zsh configs.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+rm -rf ~/.zsh*
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: system update complete. currently running at 100% power. enjoy.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
 exit 0
