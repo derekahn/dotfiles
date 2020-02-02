@@ -1,24 +1,19 @@
+set encoding=utf8
+scriptencoding utf-8
+
+" Map Leader to space
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
+
 " ============================================================================ "
 " ===                            LOAD PLUGINS                              === "
 " ============================================================================ "
-scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/configs.vim
 
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
 " ============================================================================ "
-
-" Map Leader to space
-let mapleader = "\<Space>"
-let g:mapleader = "\<Space>"
-
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)"
-
 " Exit insert mode with `jk`
 inoremap jj <ESC>
 
@@ -58,7 +53,7 @@ imap KK <Esc>O
 imap JJ <Esc>o
 
 
-if has("mac") || has("macunix")
+if has('mac') || has('macunix')
   nmap <D-j> <M-j>
   nmap <D-k> <M-k>
   vmap <D-j> <M-j>
@@ -128,11 +123,11 @@ set shiftwidth=2
 set tabstop=2
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+set linebreak
+set textwidth=500
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 
 " Strip trailing spaces on save
@@ -180,10 +175,16 @@ if has('nvim')
 endif
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+map <leader>bb :Bclose<cr>
+map <leader>be :Buffers<cr>
+map <leader>bl :BLines<cr>
+map <leader>h :History<cr>
 
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -192,10 +193,18 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
+"Close all buffers
+map <leader>bc :%bd<cr>
+
+"Tab to switch to next open buffer
+nnoremap <Tab> :bnext<cr>
+"Shift + Tab to switch to previous open buffer
+nnoremap <S-Tab> :bprevious<cr>
+
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
-  set stal=2
+  set showtabline=2
 catch
 endtry
 
@@ -216,9 +225,6 @@ map <leader>e :e! ~/projects/notes/vim-go-cheatsheet.md<cr>
 " ============================================================================ "
 " ===                           BASIC SETTINGS                             === "
 " ============================================================================ "
-
-" Allow vim to break compatibility with vi
-set nocompatible
 
 " HMR ability
 set backupcopy=yes
@@ -248,7 +254,7 @@ set autoread
 
 " Turn backup off
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Turn on presistent undo
@@ -271,20 +277,20 @@ set background=dark
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
-  if (has("nvim"))
+  if (has('nvim'))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
+  if (has('termguicolors'))
     set termguicolors
   endif
 endif
 
 " Theme, Colorscheme, & Font
-if has("gui_running")
+if has('gui_running')
   " colorscheme PaperColor
   colorscheme onedark
 
@@ -300,24 +306,21 @@ else
 endif
 
 " Set extra options when running in GUI mode
-if has("gui_running")
+if has('gui_running')
   set guioptions-=T
   set guioptions-=e
   set t_Co=256
   set guitablabel=%M\ %t
 endif
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 " fzf is a general-purpose command-line fuzzy finder.
-set rtp+=/usr/local/opt/fzf
+set runtimepath+=/usr/local/opt/fzf
 
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set scrolloff=7
 
 " Provides tab-completion for all file-related tasks
 set path+=**
@@ -328,7 +331,7 @@ set wildmode=full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
+if has('win16') || has('win32')
   set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
   set wildignore+=.git\*,.hg\*,.svn\*
@@ -341,7 +344,7 @@ set ruler
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -373,13 +376,13 @@ set magic
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set timeoutlen=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1
@@ -502,8 +505,8 @@ endfunction
 
 " Strip trailing spaces
 function! <SID>StripTrailingWhitespaces()
-  let l = line(".")
-  let c = col(".")
+  let l = line('.')
+  let c = col('.')
   %s/\s\+$//e
   call cursor(l, c)
 endfun
@@ -512,8 +515,8 @@ endfun
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
+  let l:currentBufNum = bufnr('%')
+  let l:alternateBufNum = bufnr('#')
 
   if buflisted(l:alternateBufNum)
     buffer #
@@ -521,12 +524,12 @@ function! <SID>BufcloseCloseIt()
     bnext
   endif
 
-  if bufnr("%") == l:currentBufNum
+  if bufnr('%') == l:currentBufNum
     new
   endif
 
   if buflisted(l:currentBufNum)
-    execute("bdelete! ".l:currentBufNum)
+    execute('bdelete! '.l:currentBufNum)
   endif
 endfunction
 

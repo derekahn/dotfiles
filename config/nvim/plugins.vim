@@ -70,8 +70,8 @@ Plug 'airblade/vim-gitgutter'
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
 
-" BufExplorer quickly and easily switch between buffer
-Plug 'jlanzarotta/bufexplorer'
+" Vim plugin, insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
 
 " Comment stuff out
 Plug 'tpope/vim-commentary'
@@ -86,10 +86,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Enable repeating supported plugin maps
-" Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " Vim plugin for generating images of source code
-" using https://github.com/Aloxaf/silicon
 Plug 'segeljakt/vim-silicon'
 
 " Quoting/parenthesizing made simple
@@ -127,6 +126,11 @@ Plug 'sheerun/vim-polyglot'
 " basic vim/terraform integration
 " Plug 'hashivim/vim-terraform'
 " Plug 'juliosueiras/vim-terraform-completion'
+"
+" React JSX syntax highlighting and indenting for vim.
+Plug 'mxw/vim-jsx'
+" A vim plugin for Flow
+Plug 'flowtype/vim-flow'
 
 " Initialize plugin system
 call plug#end()

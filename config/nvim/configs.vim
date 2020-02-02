@@ -76,8 +76,8 @@ let g:tern_request_timeout = 1
 let g:tern_show_argument_hints = 'on_hold'
 let g:tern_show_signature_in_pum = 0
 
-let g:python_host_prog = '/usr/local/Cellar/python/3.7.3/bin/python3'
-let g:python3_host_prog = '/usr/local/Cellar/python/3.7.3/bin/python3'
+let g:python_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 " Automatically close preview window after autocompletion
 autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -94,18 +94,14 @@ let g:indentLine_color_term = 239
 let g:onedark_termcolors = 256
 let g:onedark_terminal_italics = 1 " I love italic for comments
 
-
 """"""""""""""""""""""""""""""
 " fzf.vim
 """"""""""""""""""""""""""""""
 let g:fzf_layout = { 'down': '40%' }
-
 " Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
-
 " Search project files, respecting git ignore
 nnoremap <silent> <C-p> :FZF<CR>
-
 " Search all files, e.g. node_modules/
 nnoremap <silent> <leader>af :call fzf#vim#files('',
       \ {'source': 'ag --hidden --ignore .git -f -g "" -u', 'down': '40%'})<CR>
@@ -117,12 +113,10 @@ map <leader>f :Rg<CR>
 function! FzfSpellSink(word)
   exe 'normal! "_ciw'.a:word
 endfunction
-
 function! FzfSpell()
-  let suggestions = spellsuggest(expand("<cword>"))
-  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10 })
+  let suggestions = spellsuggest(expand('<cword>'))
+  return fzf#run({'source': suggestions, 'sink': function('FzfSpellSink'), 'down': 10 })
 endfunction
-
 nnoremap z= :call FzfSpell()<CR>
 
 
@@ -133,7 +127,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeIgnore = ['\.js.map$', '\.DS_Store$']
-let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize = 25
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -145,8 +139,7 @@ map <C-e> :NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline_powerline_fonts = 1
-" let g:airline_theme="badwolf"
-let g:airline_theme="bubblegum"
+let g:airline_theme='bubblegum'
 
 " Automatically truncate sections
 let g:airline#extensions#default#section_truncate_width = {
@@ -190,10 +183,10 @@ nmap <Leader>gu <Plug>GitGutterUndoHunk
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 
-let g:go_addtags_transform = "camelcase"
+let g:go_addtags_transform = 'camelcase'
 let g:go_autodetect_gopath = 1
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
+let g:go_fmt_command = 'goimports'
+let g:go_list_type = 'quickfix'
 
 " let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
@@ -256,17 +249,6 @@ function! s:build_go_files()
 endfunction
 
 
-
-""""""""""""""""""""""""""""""
-" vimagit
-""""""""""""""""""""""""""""""
-
-" nnoremap <leader>gst :Magit<CR>       " git status
-" nnoremap <leader>gP :! git push<CR>  " git Push
-" " Enable deletion of untracked files in Magit
-" let g:magit_discard_untracked_do_delete=1
-
-
 """"""""""""""""""""""""""""""
 " Ultisnips
 """"""""""""""""""""""""""""""
@@ -276,6 +258,64 @@ let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 
+""""""""""""""""""""""""""""""
+" vimagit
+""""""""""""""""""""""""""""""
+" nnoremap <leader>gst :Magit<CR>       " git status
+" nnoremap <leader>gP :! git push<CR>  " git Push
+" " Enable deletion of untracked files in Magit
+" let g:magit_discard_untracked_do_delete=1
+
+""""""""""""""""""""""""""""""
+" vim-flow
+""""""""""""""""""""""""""""""
+let g:flow#enable = 0
+let g:javascript_plugin_flow = 1
+"Use locally installed flow
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, '^\/\\w') ==? ''
+    let local_flow= getcwd() . '/' . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
+Plug 'flowtype/vim-flow', {
+  \ 'autoload': {
+  \   'filetypes': 'javascript'
+  \ },
+  \ 'build': {
+  \   'mac': 'npm install -g flow-bin'
+  \ }}
+
+""""""""""""""""""""""""""""""
+" vim-devicons
+""""""""""""""""""""""""""""""
+let g:webdevicons_enable_airline_statusline = 1
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+let g:DevIconsDefaultFolderOpenSymbol = ''
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
+let g:WebDevIconsOS = 'Darwin'
+
+
+""""""""""""""""""""""""""""""
+" vim-silicon
+""""""""""""""""""""""""""""""
+let g:silicon = {
+  \ 'theme':              'OneHalfDark',
+  \ 'font':                  'Hack',
+  \ 'background':         '#aaaaff',
+  \ 'shadow-color':       '#555555',
+  \ 'line-pad':                   2,
+  \ 'pad-horiz':                 80,
+  \ 'pad-vert':                 100,
+  \ 'shadow-blur-radius':         0,
+  \ 'shadow-offset-x':            0,
+  \ 'shadow-offset-y':            0,
+  \ 'line-number':           v:true,
+  \ 'round-corner':          v:true,
+  \ 'window-controls':       v:true,
+  \ }
 """"""""""""""""""""""""""""""
 " Zoomwintab
 """"""""""""""""""""""""""""""
