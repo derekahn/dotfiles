@@ -41,11 +41,3 @@ $ tmux new -s setup
 # Install plugins via tpm
 $ ctrl-a + I
 ```
-
-## Manuel Install (Apps not in homebrew)
-
-| App       | Description                            | Link                                         |
-| :-------- | :------------------------------------- | :------------------------------------------- |
-| Jitouch2  | Magic gestures for 🍎 trackpad & mouse | [jitouch](https://www.jitouch.com/download/) |
-| PSequel   | PostgreSQL 🐘 client                   | [psequel](http://www.psequel.com/)           |
-| Robomongo | MongoDB 🐵 client                      | [robomongo](https://robomongo.org/)          |
