@@ -2,7 +2,9 @@
 
 A portable environment for any 🍎 💻
 
-## Setup Iterm3
+![example](https://i.imgur.com/1FAZCUy.png)
+
+## Setup Iterm2
 
 ### Setting 🤓 Nerd Font ✒
 
@@ -10,7 +12,25 @@ A portable environment for any 🍎 💻
 iTerm2 -> Preferences -> Profiles -> Text -> Font -> Change Font
 ```
 
-[Spaceship theme 🚀](https://github.com/denysdovhan/spaceship-prompt)
+### Setting up iterm colors
+
+Download my preset colors
+
+```bash
+curl -L https://gist.github.com/derekahn/fce4b5367006d10ca91a171d992999e0 -o ~/Documents/onedark.itermcolors
+```
+
+Import the preset colors into iTerm2
+
+```shell
+iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> Import...
+```
+
+Select the preset color `onedark`
+
+```shell
+iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> onedark
+```
 
 ## Install Tmux Plugins
 
