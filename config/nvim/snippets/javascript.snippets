@@ -1,15 +1,41 @@
+snippet cl
+	console.log('${1}', $1);
+snippet fun
+	function ${1:name}(${2:arg}) {
+		${3}
+	}
+snippet if
+	if (${1:true}) {
+		${2}
+	}
+snippet ife
+	if (${1:true}) {
+		${2}
+	} else {
+		${3}
+	}
+
+# es6
+snippet af
+	(${1}) => {
+		${2}
+	}
 snippet int
 	setInterval(() => {
 		${2}
 	}, ${1});
+snippet ap
+	new Promise((resolve, reject) => {
+		${1}
+	})${2:;}
+
 
 snippet sto
 	setTimeout(() => {
 		${2}
 	}, ${1});
-
-snippet cc
-	console.log('${1}');
+snippet con
+	const ${1} = ${0};
 
 # node snippets
 snippet rq
@@ -20,3 +46,4 @@ snippet eyes
 
 snippet ey
 	eyes({ ${1} });
+
