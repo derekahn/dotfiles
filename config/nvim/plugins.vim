@@ -100,12 +100,6 @@ Plug 'SirVer/ultisnips'
 " Zoom in/out of windows
 Plug 'troydm/zoomwintab.vim'
 
-" Preview colors in source code
-" Plug 'ap/vim-css-color'
-
-" Emmet for vim
-" Plug 'mattn/emmet-vim'
-
 
 """"""""""""""""""""""""""""""
 " Syntax support
@@ -114,23 +108,32 @@ Plug 'troydm/zoomwintab.vim'
 " Go development plugin for Vim
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
-" A Vim plugin that provides GraphQL file detection, syntax highlighting, and indentation.
-" Plug 'jparise/vim-graphql'
-
 " A solid language pack for Vim.
 Plug 'sheerun/vim-polyglot'
+
+
+""""""""""""""""""""""""""""""
+" Frontend Plugins
+""""""""""""""""""""""""""""""
+
+" Emmet for vim
+Plug 'mattn/emmet-vim'
+
+" React JSX syntax highlighting and indenting for vim.
+Plug 'mxw/vim-jsx'
+
+" A vim plugin for Flow
+Plug 'flowtype/vim-flow'
+
+" Preview colors in source code
+" Plug 'ap/vim-css-color'
+
+" A Vim plugin that provides GraphQL file detection, syntax highlighting, and indentation.
+" Plug 'jparise/vim-graphql'
 
 " Syntax for styled-components
 " Plug 'styled-components/vim-styled-components'
 
-" basic vim/terraform integration
-" Plug 'hashivim/vim-terraform'
-" Plug 'juliosueiras/vim-terraform-completion'
-"
-" React JSX syntax highlighting and indenting for vim.
-Plug 'mxw/vim-jsx'
-" A vim plugin for Flow
-Plug 'flowtype/vim-flow'
 
 " Initialize plugin system
 call plug#end()
