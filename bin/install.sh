@@ -1,9 +1,9 @@
 #!/bin/sh
+INSTALLDIR=$PWD
+
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Greetings. Preparing to power up and begin diagnostics.$(tput sgr 0)"
 echo "---------------------------------------------------------"
-
-INSTALLDIR=$PWD
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Checking for Homebrew installation.$(tput sgr 0)"
