@@ -544,6 +544,22 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Notes per directory saving to notes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quick Open Notes
+" Directory to notes folder
+let g:notes_folder = '~/projects/notes/'
+" Project specific notes
+let g:notes = g:notes_folder . fnamemodify(getcwd(), ':t') . '.md'
+let g:note_size = 15
+" Open current project notes
+map <leader>n :execute ':topleft split ' . g:notes<cr>:execute ':resize' . g:note_size<cr>
+" Open daily notes
+let g:daily_notes = g:notes_folder . 'daily-notes.org'
+map <leader>nn :execute ':topleft split ' . g:daily_notes<cr>:execute ':resize' . g:note_size<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => AUTOMATICALLY RECOGNIZE FILETYPES BY EXTENSION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufRead,BufNewFile .{babel,eslint,stylelint}rc set filetype=json
