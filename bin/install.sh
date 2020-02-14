@@ -40,6 +40,7 @@ packages=(
   "golang"
   "goodwithtech/r/dockle"
   "goodwithtech/r/dockertags"
+  "gpg"
   "kubectl"
   "lazydocker"
   "moreutils"
