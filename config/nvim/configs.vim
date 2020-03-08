@@ -23,14 +23,15 @@ let g:ale_pattern_options = {
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
 \}
 
+" let g:ale_open_list = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
-" let g:ale_open_list = 1
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
 
-" Write this in your vimrc file
 let g:ale_lint_on_text_changed = 'never'
+let g:airline#extensions#ale#enabled = 1
+
 
 " navigate between errors quickly
 nmap <silent> <C-S-k> <Plug>(ale_previous_wrap)
@@ -183,6 +184,10 @@ nmap <Leader>gu <Plug>GitGutterUndoHunk
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 
+let g:go_metalinter_command='gopls'
+let g:go_gopls_staticcheck = 1
+" let g:go_metalinter_deadline = '20s'
+
 let g:go_addtags_transform = 'camelcase'
 let g:go_autodetect_gopath = 1
 let g:go_fmt_command = 'goimports'
@@ -197,6 +202,11 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_build_constraints = 1
+
+" vim becomes sluggish while editing go files
+let g:go_highlight_structs = 0
+let g:go_highlight_interfaces = 0
+let g:go_highlight_operators = 0
 
 " Shortcuts to navigate between errors
 map <C-n> :cnext<CR>
@@ -217,7 +227,7 @@ augroup go
   " :GoTest
   autocmd FileType go nmap <leader>t  <Plug>(go-test)
   " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>g  <Plug>(go-run)
   " :GoDoc
   autocmd FileType go nmap <Leader>d <Plug>(go-doc)
   " :GoCoverageToggle
@@ -267,6 +277,7 @@ nnoremap <leader>gP :! git push<CR>  " git Push
 " Enable deletion of untracked files in Magit
 let g:magit_discard_untracked_do_delete=1
 
+
 """"""""""""""""""""""""""""""
 " vim-flow
 """"""""""""""""""""""""""""""
@@ -287,6 +298,7 @@ Plug 'flowtype/vim-flow', {
   \ 'build': {
   \   'mac': 'npm install -g flow-bin'
   \ }}
+
 
 """"""""""""""""""""""""""""""
 " vim-devicons
@@ -317,6 +329,8 @@ let g:silicon = {
   \ 'round-corner':          v:true,
   \ 'window-controls':       v:true,
   \ }
+
+
 """"""""""""""""""""""""""""""
 " Zoomwintab
 """"""""""""""""""""""""""""""

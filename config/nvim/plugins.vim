@@ -23,6 +23,8 @@ call plug#begin('~/.config/nvim/plugged')
 """"""""""""""""""""""""""""""
 " Editor UI
 """"""""""""""""""""""""""""""
+" EditorConfig plugin for Vim http://editorconfig.org
+Plug 'editorconfig/editorconfig-vim'
 
 " Lean & mean status/tabline
 Plug 'vim-airline/vim-airline'
@@ -117,13 +119,13 @@ Plug 'sheerun/vim-polyglot'
 """"""""""""""""""""""""""""""
 
 " Emmet for vim
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 
 " React JSX syntax highlighting and indenting for vim.
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 
 " A vim plugin for Flow
-Plug 'flowtype/vim-flow'
+" Plug 'flowtype/vim-flow'
 
 " Preview colors in source code
 " Plug 'ap/vim-css-color'
