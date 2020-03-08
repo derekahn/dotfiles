@@ -8,4 +8,8 @@ alias gsp="git stash -p"
 gwtf() {
   git whatchanged --since="$1"
 }
-alias ghot = 'git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10'
+
+# hot paths for project
+ghot() {
+  git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
+}
