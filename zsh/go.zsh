@@ -1,9 +1,12 @@
 # Go Lang
 # ---------------
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 export GOBIN=$HOME/go/bin
 export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+
+export GO111MODULE=auto
 
 alias gt="go test ."
 alias gob="go test --bench ."
