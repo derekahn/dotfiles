@@ -3,10 +3,8 @@ alias c="clear"
 alias rm="rm -i"
 alias cb="pwd | pbcopy"
 alias lll="exa -lah"
-alias ping="ping -o"
 alias listDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'"
 alias clearDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-alias wifiHistory="defaults read /Library/Preferences/SystemConfiguration/com.apple.airport.preferences |grep LastConnected -A 7"
 
 # Clear terminal files
 alias terminal-clean='sudo rm -f /private/var/log/asl/*.asl'
@@ -19,17 +17,8 @@ alias du='du -h -c' # calculate disk usage for a folder
 alias catPubKey='cat ~/.ssh/id_rsa.pub'
 alias getPubKey='cat ~/.ssh/id_rsa.pub | pbcopy'
 
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache"
-
-# View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Trim new lines and copy to clipboard
 alias trimcopy="tr -d '\n' | pbcopy"
@@ -65,13 +54,59 @@ alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 # file explorer that shows size
 alias s="ncdu"
 
-alias only1="git branch | grep -v \"master\" | xargs git branch -D"
+# compression
+function 7zip() {
+  tar cf - "$@" | 7za a -si "$@".tar.7z;
+}
+function 7unzip() {
+  7za x -so "$@" | tar xf -;
+}
 
-# Interactively add selected parts of files
-alias gaap="git add -p"
-alias gsp="git stash -p"
+# override cd to (cd && ls)
+function cd {
+  builtin cd "$@" && ls
+}
 
-# git whatchanged
-gwtf() {
-  git whatchanged --since="$1"
+# find shorthand
+function f() {
+  find . -name "$1"
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function startFileServer() {
+  local port="${1:-8000}"
+  open "http://localhost:${port}/"
+  http-server -p 8000
+}
+
+# take this repo and copy it to somewhere else minus the .git stuff.
+function gitexport(){
+  mkdir -p "$1"
+  git archive master | tar -x -C "$1"
+}
+
+# get gzipped size
+function gzsize() {
+  echo "orig size    (bytes): "
+  cat "$1" | wc -c
+  echo "gzipped size (bytes): "
+  gzip -c "$1" | wc -c
+}
+
+# unzip tar.gz
+function untargz() {
+  echo "orig size    (bytes): "
+  gunzip -c "$1" | tar xopf -
+}
+
+# Man Command colorizer
+man() {
+	env \
+		LESS_TERMCAP_md=$'\e[1;36m' \
+		LESS_TERMCAP_me=$'\e[0m' \
+		LESS_TERMCAP_se=$'\e[0m' \
+		LESS_TERMCAP_so=$'\e[1;40;92m' \
+		LESS_TERMCAP_ue=$'\e[0m' \
+		LESS_TERMCAP_us=$'\e[1;32m' \
+			man "$@"
 }
