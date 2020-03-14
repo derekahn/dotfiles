@@ -13,7 +13,7 @@ help: Makefile
 	@echo
 
 ## setup: Installs and symlinks
-setup: tpm install link setup-go
+setup: backup install link
 
 ## install: Installs brew, brew packages, go, etc
 install:
@@ -31,10 +31,4 @@ link:
 backup:
 	@echo "\nRunning "$(PROJECTNAME)"/bin/backup.sh\n"
 	./bin/symlink.sh
-	@echo $(DONE)
-
-## tpm: Adds tmux and tpm
-tpm:
-	@echo "Cloning tpm into tmux/tmux.symlink/plugins/"
-	git clone git@github.com:tmux-plugins/tpm.git tmux/tmux.symlink/plugins/
 	@echo $(DONE)

@@ -40,7 +40,6 @@ packages=(
   "golang"
   "goodwithtech/r/dockle"
   "goodwithtech/r/dockertags"
-  "gpg"
   "kubectl"
   "lazydocker"
   "moreutils"
@@ -55,10 +54,9 @@ packages=(
   "speedtest_cli"
   "tig"
   "tmux"
-  "wireshark"
+  "vifm"
   "yamllint"
   "yarn"
-  "yamllint"
   "z"
   "zsh"
   "zsh-syntax-highlighting"
@@ -105,26 +103,13 @@ echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing Python NeoVim client.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-pip3 install neovim
 pip3 install --user pynvim
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing node neovim package$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-npm install -g neovim
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing spaceship prompt$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
 npm install -g spaceship-prompt
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing vim linter (vint)$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-pip3 install vim-vint
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing bash language server$(tput sgr 0)"
