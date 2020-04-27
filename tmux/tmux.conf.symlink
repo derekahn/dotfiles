@@ -98,7 +98,7 @@ bind Down last-window \; swap-pane -s fullscreen.1 \; kill-window -t fullscreen
 setw -g mode-keys vi
 # more settings to make copy-mode more vim-like
 unbind [
-bind Escape copy-mode
+bind [ copy-mode
 unbind p
 bind p paste-buffer
 
