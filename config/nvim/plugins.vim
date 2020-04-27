@@ -91,7 +91,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tpope/vim-repeat'
 
 " Vim plugin for generating images of source code
-Plug 'segeljakt/vim-silicon'
+" Plug 'segeljakt/vim-silicon'
 
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
@@ -134,7 +134,7 @@ Plug 'sheerun/vim-polyglot'
 " Plug 'jparise/vim-graphql'
 
 " Syntax for styled-components
-" Plug 'styled-components/vim-styled-components'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 
 " Initialize plugin system

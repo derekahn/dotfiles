@@ -128,6 +128,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeIgnore = ['\.js.map$', '\.DS_Store$']
+let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeWinPos = 'left'
 let g:NERDTreeWinSize = 25
 let g:NERDTreeDirArrowExpandable = '▸'
