@@ -117,8 +117,8 @@ bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
 ##############################
 # => PLUGINS
 ##############################
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
+# set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 # Initialize TMUX plugin manager
-run -b '~/.tmux/plugins/tpm'
+# run -b '~/.tmux/plugins/tpm'
