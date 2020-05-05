@@ -60,10 +60,6 @@ set statusline=%{LinterStatus()}
 " Enable deoplete.
 let g:deoplete#enable_at_startup = 1
 
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-
 augroup omnifuncs
   autocmd!
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -292,14 +288,6 @@ endif
 if executable(local_flow)
   let g:flow#flowpath = local_flow
 endif
-Plug 'flowtype/vim-flow', {
-  \ 'autoload': {
-  \   'filetypes': 'javascript'
-  \ },
-  \ 'build': {
-  \   'mac': 'npm install -g flow-bin'
-  \ }}
-
 
 """"""""""""""""""""""""""""""
 " vim-devicons
