@@ -47,6 +47,10 @@ snippet afn
 	func(${1}) {
 		${2}
 	}
+snippet iafn
+	func(${1}) {
+		${3}
+	}(${2})
 snippet types
 	type (
 		${1:name} ${2:struct} {
@@ -73,13 +77,21 @@ snippet route
 
 # test snippets
 snippet okt
-	ok(t, ${1:err})
+	assert.NoErr(t, ${1:err})
 snippet it
-	t.Run("it ${1}", func(t *testing.T) {
+	t.Run("${1}", func(t *testing.T) {
 		${2}
 	})
+snippet tc
+	${1:cases} := []struct{
+		${2:name} ${3:string}
+		${4:input} ${5:string}
+		${6:expected} ${7:string}
+	}{
+		{${8:subtest}, ${9:input}, ${10:expected}},
+	}
 snippet eqt
-	equals(t, ${1:expect}, ${2:got})
+	assert.Equals(t, ${1:expect}, ${2:got})
 snippet th
 	t.Helper()
 snippet thelp
