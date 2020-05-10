@@ -1,10 +1,5 @@
 # Docker alias and function
 
-# Shorten command
-alias dcc="docker-compose"
-
-alias dclt="docker-compose logs --tail=100 -f"
-
 # Cleanup
 alias dp="docker system prune"
 
@@ -13,9 +8,6 @@ alias drmex="docker rm $(docker ps -q -f "status=exited")"
 
 # Get latest container ID
 alias dl="docker ps -l -q"
-
-# Get container process
-alias dps="docker ps"
 
 # Get process included stop container
 alias dpa="docker ps -a"
@@ -29,23 +21,11 @@ alias dis="docker images"
 # list dangling images
 alias dilsd="docker images -f dangling=true"
 
-# Remove dangling images
-alias dirmd="docker rmi $(docker images -f dangling=true -q)"
-
 # Get container IP
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
-# Run deamonized container, e.g., $dkd base /bin/echo hello
-alias dkd="docker run -d -P"
-
-# Run interactive container, e.g., $dki base /bin/bash
-alias drit="docker run -it"
-
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"
-
-# Lis all exited containers
-alias dlse="docker ps -a -f status=exited"
 
 # Remove all exited containers
 alias drme="docker rm $(docker ps -a -f status=exited -q)"
@@ -70,8 +50,5 @@ alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
 # Remove all images
 dri() { docker rmi -f $(docker images -q); }
-
-# Dockerfile build, e.g., $dbu tcnksm/test
-dbu() { docker build -t=$1 .; }
 
 alias lzy=lazydocker

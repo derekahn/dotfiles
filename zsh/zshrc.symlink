@@ -1,3 +1,5 @@
+# zmodload zsh/zprof # Uncomment for profile
+
 # Setup zsh
 # ---------------
 for config ($HOME/.dotfiles/zsh/*.zsh) source $config
@@ -11,6 +13,13 @@ source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 source ~/.oh-my-zsh/plugins/tmux/tmux.plugin.zsh
 source ~/.oh-my-zsh/plugins/systemd/systemd.plugin.zsh
 
+# zsh compdump and compinit to run once a day
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
 
 # Setup fzf (fuzzy finder: vim, command history)
 # ---------------
@@ -20,13 +29,6 @@ fi
 # fzf key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-# Iterm2 shell intergration
-# ---------------
-source ~/.iterm2_shell_integration.`basename $SHELL`
-[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-
 
 # Nvim
 # ---------------
@@ -48,3 +50,5 @@ export PATH="$(yarn global bin):$PATH"
 # Command history
 # ---------------
 SAVEHIST=100000
+
+# zprof # Uncomment for profile

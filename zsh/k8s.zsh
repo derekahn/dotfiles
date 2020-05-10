@@ -35,22 +35,9 @@ alias kdp='kubectl delete pods'
 alias kds='kubectl delete service'
 alias kdd='kubectl delete deploy'
 alias kdi='kubectl delete ingress'
-alias kdiALL='kubectl delete ingress --all-namespaces'
 
 # Useful non-operation things
 alias ka='kubectl apply -f'
 alias kl='kubectl logs '
 alias klf='kubectl logs -f'
 alias kx='kubectl exec -i -t'
-
-# Save this in bash.rc or zsh.rc, update the file path if needed.
-# Usage: kube clusterA
-function kube() {
-  export KUBECONFIG=~/k8sconfig/${1}/kubeconfig
-}
-
-# TMP
-function autoappTunnel() {
-  PORT="$1"
-  ssh dahn@bastion -L ${PORT}:localhost:${PORT}
-}
