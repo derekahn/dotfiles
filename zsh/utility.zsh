@@ -5,6 +5,8 @@ alias lll="exa -lah"
 alias listDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'"
 alias clearDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
+alias zshprof="/usr/bin/time zsh -i -c exit"
+
 # Helpers
 alias grep='grep --color=auto'
 alias df='df -h' # disk free, in Gigabytes, not bytes
