@@ -5,6 +5,8 @@ snippet efun
 	func $1(${2}) {
 		${3}
 	}
+snippet ctx
+	ctx context.Context
 snippet ve
 	if err := ${1}; err != nil {
 		${2}
@@ -76,12 +78,6 @@ snippet route
 	}))
 
 # test snippets
-snippet okt
-	assert.NoErr(t, ${1:err})
-snippet it
-	t.Run("${1}", func(t *testing.T) {
-		${2}
-	})
 snippet tc
 	${1:cases} := []struct{
 		${2:name} ${3:string}
@@ -90,8 +86,16 @@ snippet tc
 	}{
 		{${8:subtest}, ${9:input}, ${10:expected}},
 	}
+snippet ant
+	is := assert.New(t)
+snippet okt
+	is.NoErr(${1:err})
 snippet eqt
-	assert.Equals(t, ${1:expect}, ${2:got})
+	is.Equal(${1:expect}, ${2:got})
+snippet it
+	t.Run("${1}", func(t *testing.T) {
+		${2}
+	})
 snippet th
 	t.Helper()
 snippet thelp
@@ -111,11 +115,12 @@ snippet testmain
 	}
 
 # grpc
+snippet rpb
+	r *pb.${1:Name}${2:Request}
 snippet gmeth
 	func (${1:s} *${2:server}) ${3:name}(${4:ctx} context.Context, ${5:param} *${6:pb}) (${7:*pb}, error) {
 		${8}
 	}
-
 snippet gsrv
 	${1:srv} := grpc.NewServer()
 	${2:pb}.Register${3:Service}Server(${4:$1}, ${5:&server{}})
