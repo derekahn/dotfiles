@@ -160,12 +160,12 @@ set diffopt+=vertical
 set updatetime=250
 
 " Jump between hunks
-nmap <Leader>gn <Plug>GitGutterNextHunk
-nmap <Leader>gp <Plug>GitGutterPrevHunk
+nmap <Leader>gn <Plug>(GitGutterNextHunk)
+nmap <Leader>gp <Plug>(GitGutterPrevHunk)
 
 " Hunk-add and hunk-revert for chunk staging
-nmap <Leader>ga <Plug>GitGutterStageHunk
-nmap <Leader>gu <Plug>GitGutterUndoHunk
+nmap <Leader>ga <Plug>(GitGutterStageHunk)
+nmap <Leader>gu <Plug>(GitGutterUndoHunk)
 
 
 """"""""""""""""""""""""""""""
