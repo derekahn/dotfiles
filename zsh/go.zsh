@@ -1,9 +1,7 @@
 # Go Lang
 # ---------------
 export GOPATH=$HOME/go
-export GOBIN=$HOME/go/bin
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+export PATH="$PATH:$GOPATH/bin"
 
 export GO111MODULE=auto
 

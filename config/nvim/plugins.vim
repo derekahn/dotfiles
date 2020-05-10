@@ -79,6 +79,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " fzf  vim (Fuzzy file, buffer finder)
 Plug 'junegunn/fzf.vim'
 
+" True Sublime Text style multiple selections for Vim
+Plug 'terryma/vim-multiple-cursors'
 
 " Enable repeating supported plugin maps
 Plug 'tpope/vim-repeat'
