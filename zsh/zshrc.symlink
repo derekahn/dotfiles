@@ -32,18 +32,9 @@ source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 # ---------------
 export EDITOR='nvim'
 
-
 # Syntax highlighter
 # ---------------
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. `brew --prefix`/etc/profile.d/z.sh alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/sbin:$PATH"
-
-
-# Yarn Binaries
-# ---------------
-export PATH="$(yarn global bin):$PATH"
-
 
 # Command history
 # ---------------
