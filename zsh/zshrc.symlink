@@ -1,5 +1,3 @@
-# zmodload zsh/zprof # Uncomment for profile
-
 # Setup zsh
 # ---------------
 for config ($HOME/.dotfiles/zsh/*.zsh) source $config
@@ -50,5 +48,3 @@ export PATH="$(yarn global bin):$PATH"
 # Command history
 # ---------------
 SAVEHIST=100000
-
-# zprof # Uncomment for profile

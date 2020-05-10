@@ -36,11 +36,6 @@ function 7unzip() {
   7za x -so "$@" | tar xf -;
 }
 
-# override cd to (cd && ls)
-function cd {
-  builtin cd "$@" && ls
-}
-
 # take this repo and copy it to somewhere else minus the .git stuff.
 function gitexport(){
   mkdir -p "$1"
