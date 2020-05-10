@@ -91,6 +91,7 @@ let g:indentLine_color_term = 239
 let g:onedark_termcolors = 256
 let g:onedark_terminal_italics = 1 " I love italic for comments
 
+
 """"""""""""""""""""""""""""""
 " fzf.vim
 """"""""""""""""""""""""""""""
@@ -150,17 +151,9 @@ let g:airline#extensions#default#section_truncate_width = {
 
 
 """"""""""""""""""""""""""""""
-" vim-fugitive
-""""""""""""""""""""""""""""""
-" Show commits for every source line
-nnoremap <Leader>gb :Gblame<CR>  " git blame
-
-
-""""""""""""""""""""""""""""""
 " vim-gitgutter
 """"""""""""""""""""""""""""""
 map <leader>gg :GitGutterToggle<CR>
-map <leader>gs :Gstatus<CR>
 set diffopt+=vertical
 
 " Update sign column every quarter second
@@ -266,30 +259,6 @@ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'
 
 
 """"""""""""""""""""""""""""""
-" vimagit
-""""""""""""""""""""""""""""""
-nnoremap <leader>gst :Magit<CR>       " git status
-nnoremap <leader>gP :! git push<CR>  " git Push
-
-" Enable deletion of untracked files in Magit
-let g:magit_discard_untracked_do_delete=1
-
-
-""""""""""""""""""""""""""""""
-" vim-flow
-""""""""""""""""""""""""""""""
-let g:flow#enable = 0
-let g:javascript_plugin_flow = 1
-"Use locally installed flow
-let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, '^\/\\w') ==? ''
-    let local_flow= getcwd() . '/' . local_flow
-endif
-if executable(local_flow)
-  let g:flow#flowpath = local_flow
-endif
-
-""""""""""""""""""""""""""""""
 " vim-devicons
 """"""""""""""""""""""""""""""
 let g:webdevicons_enable_airline_statusline = 1
@@ -298,26 +267,6 @@ let g:DevIconsDefaultFolderOpenSymbol = ''
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
 let g:WebDevIconsOS = 'Darwin'
-
-
-""""""""""""""""""""""""""""""
-" vim-silicon
-""""""""""""""""""""""""""""""
-let g:silicon = {
-  \ 'theme':              'OneHalfDark',
-  \ 'font':                  'Hack',
-  \ 'background':         '#aaaaff',
-  \ 'shadow-color':       '#555555',
-  \ 'line-pad':                   2,
-  \ 'pad-horiz':                 80,
-  \ 'pad-vert':                 100,
-  \ 'shadow-blur-radius':         0,
-  \ 'shadow-offset-x':            0,
-  \ 'shadow-offset-y':            0,
-  \ 'line-number':           v:true,
-  \ 'round-corner':          v:true,
-  \ 'window-controls':       v:true,
-  \ }
 
 
 """"""""""""""""""""""""""""""

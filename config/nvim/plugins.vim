@@ -23,9 +23,6 @@ call plug#begin('~/.config/nvim/plugged')
 """"""""""""""""""""""""""""""
 " Editor UI
 """"""""""""""""""""""""""""""
-" EditorConfig plugin for Vim http://editorconfig.org
-Plug 'editorconfig/editorconfig-vim'
-
 " Lean & mean status/tabline
 Plug 'vim-airline/vim-airline'
 
@@ -54,7 +51,6 @@ Plug 'Yggdroot/indentLine'
 """"""""""""""""""""""""""""""
 " Editor Git
 """"""""""""""""""""""""""""""
-
 " From a very single vim buffer, you can perform main git operations in few key press.
 " Plug 'jreybert/vimagit'
 
@@ -68,7 +64,6 @@ Plug 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""
 " Editor Utils
 """"""""""""""""""""""""""""""
-
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
 
@@ -84,14 +79,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " fzf  vim (Fuzzy file, buffer finder)
 Plug 'junegunn/fzf.vim'
 
-" A Vim plugin for Prettier
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Enable repeating supported plugin maps
 Plug 'tpope/vim-repeat'
-
-" Vim plugin for generating images of source code
-" Plug 'segeljakt/vim-silicon'
 
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
@@ -106,7 +96,6 @@ Plug 'troydm/zoomwintab.vim'
 """"""""""""""""""""""""""""""
 " Syntax support
 """"""""""""""""""""""""""""""
-
 " Go development plugin for Vim
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
@@ -117,25 +106,26 @@ Plug 'sheerun/vim-polyglot'
 """"""""""""""""""""""""""""""
 " Frontend Plugins
 """"""""""""""""""""""""""""""
+" Preview colors in source code
+" Plug 'ap/vim-css-color'
+
+" EditorConfig plugin for Vim http://editorconfig.org
+" Plug 'editorconfig/editorconfig-vim'
 
 " Emmet for vim
 " Plug 'mattn/emmet-vim'
 
+" A Vim plugin that provides GraphQL file detection, syntax highlighting, and indentation.
+" Plug 'jparise/vim-graphql'
+"
 " React JSX syntax highlighting and indenting for vim.
 " Plug 'mxw/vim-jsx'
 
-" A vim plugin for Flow
-" Plug 'flowtype/vim-flow'
-
-" Preview colors in source code
-" Plug 'ap/vim-css-color'
-
-" A Vim plugin that provides GraphQL file detection, syntax highlighting, and indentation.
-" Plug 'jparise/vim-graphql'
-
+" A Vim plugin for Prettier
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"
 " Syntax for styled-components
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
 
 " Initialize plugin system
 call plug#end()
