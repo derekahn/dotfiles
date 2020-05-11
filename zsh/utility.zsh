@@ -1,11 +1,18 @@
 # Utility Commands
 alias c="clear"
+alias cat="nyan"
 alias rm="rm -i"
 alias lll="exa -lah"
 alias listDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'"
 alias clearDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
+# measures zsh shell speed
 alias zshprof="/usr/bin/time zsh -i -c exit"
+
+# Jumping around (quick navigation)
+alias dot="cd ~/.dotfiles"
+alias shop="cd ~/projects/robo/shop"
+alias down="cd ~/Downloads"
 
 # Helpers
 alias grep='grep --color=auto'

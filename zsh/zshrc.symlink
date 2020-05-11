@@ -1,6 +1,7 @@
 # Setup zsh
 # ---------------
 for config ($HOME/.dotfiles/zsh/*.zsh) source $config
+
 ZSH_THEME="spaceship"
 
 export ZSH=$HOME/.oh-my-zsh
@@ -35,6 +36,8 @@ export EDITOR='nvim'
 # Syntax highlighter
 # ---------------
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="/usr/local/sbin:$PATH"
 
 # Command history
 # ---------------

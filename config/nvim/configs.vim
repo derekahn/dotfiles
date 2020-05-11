@@ -180,8 +180,9 @@ let g:go_gopls_staticcheck = 1
 
 let g:go_addtags_transform = 'camelcase'
 let g:go_autodetect_gopath = 1
-let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
+" Disable if it's to slow
+let g:go_fmt_command = 'goimports'
 
 " let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
