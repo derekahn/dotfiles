@@ -12,6 +12,8 @@ alias zshprof="/usr/bin/time zsh -i -c exit"
 # Jumping around (quick navigation)
 alias dot="cd ~/.dotfiles"
 alias shop="cd ~/projects/robo/shop"
+alias lab="cd ~/projects/labs"
+alias wm="cd ~/projects/webmocha/kqed"
 alias down="cd ~/Downloads"
 
 # Helpers

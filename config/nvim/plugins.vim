@@ -27,7 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 
 " Add filetype glyphs (icons)
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons', { 'commit': 'cbaba2f' }
 
 " A collection of themes for vim-airline
 Plug 'vim-airline/vim-airline-themes'

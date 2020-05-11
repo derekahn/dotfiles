@@ -1,6 +1,6 @@
 # Load zsh configs
 # ---------------
-for config ($HOME/.dotfiles/zsh/*.zsh) source $config;
+for config ($HOME/.dotfiles/zsh/*.zsh); source $config;
 
 # Setup zsh
 # ---------------

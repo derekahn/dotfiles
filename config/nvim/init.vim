@@ -1,5 +1,5 @@
-set encoding=utf8
-scriptencoding utf-8
+set encoding=UTF-8
+scriptencoding UTF-8
 
 " Map Leader to space
 let mapleader = "\<Space>"
