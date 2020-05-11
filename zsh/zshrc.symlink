@@ -1,18 +1,19 @@
+# Load zsh configs
+# ---------------
+for config ($HOME/.dotfiles/zsh/*.zsh) source $config;
+
 # Setup zsh
 # ---------------
-for config ($HOME/.dotfiles/zsh/*.zsh) source $config
-
 ZSH_THEME="spaceship"
-
 export ZSH=$HOME/.oh-my-zsh
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-# zsh plugins
-source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
-source ~/.oh-my-zsh/plugins/tmux/tmux.plugin.zsh
-source ~/.oh-my-zsh/plugins/systemd/systemd.plugin.zsh
+# Load zsh plugins
+# ---------------
+for plugin (git tmux systemd); source $ZSH/plugins/$plugin/$plugin.plugin.zsh;
 
 # zsh compdump and compinit to run once a day
+# ---------------
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
@@ -37,8 +38,8 @@ export EDITOR='nvim'
 # ---------------
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH="/usr/local/sbin:$PATH"
-
 # Command history
 # ---------------
 SAVEHIST=100000
+
+export PATH="/usr/local/sbin:$PATH"
