@@ -4,7 +4,9 @@ for config ($HOME/.dotfiles/zsh/*.zsh); source $config;
 
 # Setup zsh
 # ---------------
-ZSH_THEME="spaceship"
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
+
 export ZSH=$HOME/.oh-my-zsh
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 

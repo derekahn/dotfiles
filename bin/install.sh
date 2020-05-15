@@ -55,6 +55,7 @@ packages=(
   "reattach-to-user-namespace"
   "ripgrep"
   "speedtest_cli"
+  "starship"
   "syntaqx/tap/serve"
   "tig"
   "tmux"
@@ -108,13 +109,6 @@ echo "$(tput setaf 2)🏠: Installing Python NeoVim client.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
 pip3 install --user pynvim
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing spaceship prompt$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing bash language server$(tput sgr 0)"
