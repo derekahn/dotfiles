@@ -33,6 +33,7 @@ echo "$(tput setaf 2)🏠: Installing system packages.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
 packages=(
+  "bat"
   "clamav"
   "coreutils"
   "exa"
@@ -50,6 +51,7 @@ packages=(
   "toshimaru/nyan/nyan"
   "p7zip"
   "protobuf"
+  "procs"
   "protoc"
   "python3"
   "reattach-to-user-namespace"
@@ -58,6 +60,7 @@ packages=(
   "starship"
   "syntaqx/tap/serve"
   "tig"
+  "tokei"
   "tmux"
   "upx"
   "wifi-password"
