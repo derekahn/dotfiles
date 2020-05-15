@@ -124,7 +124,7 @@ Plug 'sheerun/vim-polyglot'
 " Plug 'mxw/vim-jsx'
 
 " A Vim plugin for Prettier
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 "
 " Syntax for styled-components
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }

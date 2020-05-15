@@ -28,8 +28,11 @@ compinit -C
 if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
   export PATH="$PATH:/usr/local/opt/fzf/bin"
 fi
+
 # fzf key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!.node_modules/*"'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Nvim

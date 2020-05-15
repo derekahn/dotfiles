@@ -1,6 +1,6 @@
 # Utility Commands
 alias c="clear"
-alias cat="nyan"
+alias cat='nyan --theme "solarized-dark"'
 alias rm="rm -i"
 alias lll="exa -lah"
 alias listDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'"
