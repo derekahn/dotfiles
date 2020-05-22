@@ -2,9 +2,8 @@
 alias gaap="git add -p"
 alias gsp="git stash -p"
 
-# git whatchanged
-gwtf() {
-  git whatchanged --since="$1"
+gclone() {
+  git clone "$1" && cd "$(basename "$1" .git)"
 }
 
 # hot paths for project
