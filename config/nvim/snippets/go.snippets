@@ -118,7 +118,7 @@ snippet testmain
 snippet rpb
 	r *pb.${1:Name}${2:Request}
 snippet gmeth
-	func (${1:s} *${2:server}) ${3:name}(${4:ctx} context.Context, ${5:param} *${6:pb}) (${7:*pb}, error) {
+	func (${1:s} *${2:grpcServer}) ${3:name}(${4:ctx} context.Context, ${5:r} *pb.${6:Something}Request) (*pb.${7:Something}Response, error) {
 		${8}
 	}
 snippet gsrv
