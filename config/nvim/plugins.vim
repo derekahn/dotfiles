@@ -79,6 +79,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " fzf  vim (Fuzzy file, buffer finder)
 Plug 'junegunn/fzf.vim'
 
+" vim-abolish text case coercion
+Plug 'tpope/vim-abolish'
 
 " Enable repeating supported plugin maps
 Plug 'tpope/vim-repeat'
