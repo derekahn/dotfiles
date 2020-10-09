@@ -38,6 +38,8 @@ alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 # file explorer that shows size
 alias s="ncdu"
 
+alias fzf="fzf --preview 'bat {-1} --color=always'"
+
 # compression
 function 7zip() {
   tar cf - "$@" | 7za a -si "$@".tar.7z;
