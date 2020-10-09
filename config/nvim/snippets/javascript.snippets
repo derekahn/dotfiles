@@ -166,3 +166,39 @@ snippet me
 snippet rq
 	const ${2:name} = require('${1:package}');
 
+##############
+# React
+##############
+snippet imr "React Class Component"
+	import React, { PureComponent } from 'react';
+	import PropTypes from 'prop-types';
+	import styles from './${2:$1}';
+
+	class ${3} extends PureComponent {
+		static propTypes = {
+			${4:children: PropTypes.node,
+			className: PropTypes.string,}
+		};
+
+		constructor(props) {
+			super(props);
+		}
+
+		render() {
+			return (
+				<${5:div} className={styles.base}>
+					$6
+				</$5>
+			);
+		}
+	}
+
+	export default $3;
+
+snippet r.cn "className"
+	className="$1"
+
+snippet r.set "Set State"
+	this.setState({
+		${1}: ${2}
+	});
