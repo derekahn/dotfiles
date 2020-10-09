@@ -2,8 +2,8 @@
 alias gaap="git add -p"
 alias gsp="git stash -p"
 alias gac="!git add -A && git commit -m"
-
-
+alias gbc="git branch | fzf | xargs git checkout"
+alias gbdd="git branch | fzf | xargs git branch -D"
 
 
 # To delete local branches which have alread been merged into $1:
