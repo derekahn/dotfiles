@@ -92,7 +92,6 @@ applications=(
   "google-chrome"
   "firefox"
   "fork"
-  "font-droidsansmono-nerd-font-mono"
   "iterm2"
   "marshallofsound-google-play-music-player"
   "postico"
@@ -126,7 +125,7 @@ echo "$(tput setaf 2)🏠: Installing system fonts.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
 brew tap caskroom/fonts
-brew cask install font-droidsansmono-nerd-font-mono
+brew install --cask font-hack-nerd-font
 
 localGit="/usr/local/bin/git"
 if ! [[ -f "$localGit" ]]; then
