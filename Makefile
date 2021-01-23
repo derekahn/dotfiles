@@ -12,9 +12,6 @@ help: Makefile
 	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
 	@echo
 
-## setup: Installs and symlinks
-setup: backup install link
-
 ## install: Installs brew, brew packages, go, etc
 install:
 	@echo "\nRunning "$(PROJECTNAME)"/bin/install.sh\n"
@@ -25,10 +22,4 @@ install:
 link:
 	@echo "\nRunning "$(PROJECTNAME)"/bin/link.sh\n"
 	./bin/link.sh
-	@echo $(DONE)
-
-## setup-go: Sets up go workspace and tooling
-backup:
-	@echo "\nRunning "$(PROJECTNAME)"/bin/backup.sh\n"
-	./bin/symlink.sh
 	@echo $(DONE)
