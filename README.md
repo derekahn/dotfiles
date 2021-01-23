@@ -31,13 +31,3 @@ Select the preset color `onedark`
 ```shell
 iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> onedark
 ```
-
-## Install Tmux Plugins
-
-```shell
-# Start a tmux session
-$ tmux new -s setup
-
-# Install plugins via tpm
-$ ctrl-a + I
-```
