@@ -9,7 +9,6 @@ let g:mapleader = "\<Space>"
 " ===                            LOAD PLUGINS                              === "
 " ============================================================================ "
 source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/configs.vim
 
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
