@@ -38,6 +38,7 @@ packages=(
   "coreutils"
   "exa"
   "fzf"
+  "gh"
   "git"
   "golang"
   "goodwithtech/r/dockertags"
