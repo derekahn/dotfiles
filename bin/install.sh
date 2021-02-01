@@ -50,9 +50,6 @@ packages=(
   "ncdu"
   "neovim"
   "p7zip"
-  "procs"
-  "protobuf"
-  "protoc"
   "python3"
   "reattach-to-user-namespace"
   "ripgrep"
@@ -63,7 +60,6 @@ packages=(
   "tmux"
   "tokei"
   "toshimaru/nyan/nyan"
-  "upx"
   "wifi-password"
   "yamllint"
   "yarn"
@@ -79,13 +75,11 @@ do
 done
 
 echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing caskroom/fonts.$(tput sgr 0)"
+echo "$(tput setaf 2)🏠: Installing casks.$(tput sgr 0)"
 echo "---------------------------------------------------------"
-brew tap caskroom/fonts
 
 applications=(
   "1password"
-  "1password-cli"
   "alfred"
   "brave-browser"
   "dash"
@@ -93,14 +87,13 @@ applications=(
   "ExpressVPN"
   "firefox"
   "fork"
+  "google-chrome"
   "iterm2"
-  "marshallofsound-google-play-music-player"
   "slack"
   "visual-studio-code"
   "vivaldi"
   "wireshark"
 )
-
 
 for i in "${applications[@]}"
 do
@@ -109,46 +102,11 @@ do
 done
 
 echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing Python NeoVim client.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-pip3 install --user pynvim
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing bash language server$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-npm i -g bash-language-server
-
-echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing system fonts.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
-
-localGit="/usr/local/bin/git"
-if ! [[ -f "$localGit" ]]; then
-  echo "---------------------------------------------------------"
-  echo "$(tput setaf 1)🏠: Invalid git installation. Aborting. Please install git.$(tput sgr 0)"
-  echo "---------------------------------------------------------"
-  exit 1
-fi
-
-# Create backup folder if it doesn't exist
-mkdir -p ~/.local/share/nvim/backup
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing oh-my-zsh.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-  echo "---------------------------------------------------------"
-  echo "$(tput setaf 2)🏠: oh-my-zsh already installed.$(tput sgr 0)"
-  echo "---------------------------------------------------------"
-fi
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing zsh-autosuggestions.$(tput sgr 0)"
@@ -160,16 +118,10 @@ echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing 🐹 Go things.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-echo "Please enter your golang path (ex: $HOME/go) :"
-read gopath
-
-echo "Please enter your github username (ex: derekahn) :"
+echo "Please enter your github username (ex: derekahn):"
 read user
 
-echo "Created your gopath: $gopath"
-mkdir $gopath
-
-echo "Created your go workspace at: $HOME/$gopath/src/github.com/$user"
+echo "Created your go workspace at: $HOME/go/src/github.com/$user"
 mkdir -p $HOME/$gopath/src/github.com/$user
 
 export GOPATH=$gopath
@@ -188,37 +140,17 @@ echo "---------------------------------------------------------"
 curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
 
 echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing GasMask.$(tput sgr 0)"
+echo "$(tput setaf 2)🏠: Installing Python NeoVim client.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-curl -L http://gmask.clockwise.ee/files/gas_mask_0.8.6.zip -o ~/Downloads/
-unzip ~/Downloads/gas_mask_0.8.6.zip
-mv ~/Downloads/Gas Mask.app /Applications
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing 🚀 spaceship theme.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-git clone https://github.com/denysdovhan/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt"
-ln -s "~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+pip3 install --user pynvim
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing Neovim plugins and linking dotfiles.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-source ./backup.sh
-source ./link.sh
 nvim +PlugInstall +qall
 nvim +UpdateRemotePlugins +qall
-
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing tmux plugin manager.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-fi
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Switching shell to zsh. You may need to logout.$(tput sgr 0)"
@@ -231,6 +163,7 @@ echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Remove current zsh configs.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
+brew link zsh
 rm -rf ~/.zsh*
 
 echo "---------------------------------------------------------"
