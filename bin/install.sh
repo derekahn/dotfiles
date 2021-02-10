@@ -55,6 +55,7 @@ packages=(
   "ripgrep"
   "speedtest_cli"
   "starship"
+  "staticcheck"
   "syntaqx/tap/serve"
   "tig"
   "tmux"
