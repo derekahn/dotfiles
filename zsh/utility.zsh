@@ -41,19 +41,14 @@ alias s="ncdu"
 alias fzf="fzf --preview 'bat {-1} --color=always'"
 
 # compression
-function 7zip() {
+7zip() {
   tar cf - "$@" | 7za a -si "$@".tar.7z;
 }
 
-function 7unzip() {
+7unzip() {
   7za x -so "$@" | tar xf -;
 }
 
-# take this repo and copy it to somewhere else minus the .git stuff.
-function gitexport(){
-  mkdir -p "$1"
-  git archive master | tar -x -C "$1"
-}
 
 # Man Command colorizer
 man() {
