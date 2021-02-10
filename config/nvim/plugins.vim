@@ -82,12 +82,6 @@ let g:indentLine_color_term = 239
 """"""""""""""""""""""""""""""
 " Editor Git
 """"""""""""""""""""""""""""""
-" From a very single vim buffer, you can perform main git operations in few key press.
-" Plug 'jreybert/vimagit'
-
-" Git wrapper
-" Plug 'tpope/vim-fugitive'
-
 " Shows a git diff in the gutter
 Plug 'airblade/vim-gitgutter'
 map <leader>gg :GitGutterToggle<CR>
@@ -165,6 +159,9 @@ Plug 'jiangmiao/auto-pairs'
 
 " Comment stuff out
 Plug 'tpope/vim-commentary'
+
+" Search for terms using the excellent Dash.app
+Plug 'rizzatti/dash.vim'
 
 " Dark powered asynchronous completion framework for neovim/Vim8
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
