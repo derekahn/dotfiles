@@ -77,7 +77,7 @@ map <leader>r :e<cr>
 
 " Quick Open Notes
 " Directory to notes folder
-let g:notes_folder = '~/Projects/notes/'
+let g:notes_folder = '~/Code/notes/'
 " Project specific notes
 let g:notes = g:notes_folder . fnamemodify(getcwd(), ':t') . '.md'
 let g:note_size = 15
