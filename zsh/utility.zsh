@@ -1,8 +1,4 @@
 # Utility Commands
-alias c="clear"
-alias cat='nyan --theme "solarized-dark"'
-alias rm="rm -i"
-alias lll="exa -lah"
 alias listDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'"
 alias clearDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
@@ -15,11 +11,6 @@ alias shop="cd ~/projects/robo/shop"
 alias lab="cd ~/projects/labs"
 alias wm="cd ~/projects/webmocha/kqed"
 alias down="cd ~/Downloads"
-
-# Helpers
-alias grep='grep --color=auto'
-alias df='df -h' # disk free, in Gigabytes, not bytes
-alias du='du -h -c' # calculate disk usage for a folder
 
 alias catPubKey='cat ~/.ssh/id_rsa.pub'
 alias getPubKey='cat ~/.ssh/id_rsa.pub | pbcopy'
@@ -35,11 +26,6 @@ alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall 
 # Brew everything
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
-# file explorer that shows size
-alias s="ncdu"
-
-alias fzf="fzf --preview 'bat {-1} --color=always'"
-
 # compression
 7zip() {
   tar cf - "$@" | 7za a -si "$@".tar.7z;
@@ -49,6 +35,17 @@ alias fzf="fzf --preview 'bat {-1} --color=always'"
   7za x -so "$@" | tar xf -;
 }
 
+# Remappings for productivity++
+# ---------------
+alias c="clear" # lazy
+alias cat='nyan --theme "solarized-dark"' # Syntax cat
+alias df='df -h' # disk free, in Gigabytes, not bytes
+alias du='du -h -c' # calculate disk usage for a folder
+alias fzf="fzf --preview 'bat {-1} --color=always'" # Syntax pretty preview
+alias grep='grep --color=auto' # Color Highlighting
+alias lll="exa -lah" # Pretty permissions
+alias rm="rm -i" # always confirm before delete
+alias s="ncdu" # file explorer that shows size
 
 # Man Command colorizer
 man() {
