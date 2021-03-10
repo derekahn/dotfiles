@@ -43,6 +43,10 @@ for config in $INSTALLDIR/config/*; do
   fi
 done
 
+rm -rf $HOME/.config/nvim
+mkdir $HOME/.config/nvim
+ln -s $INSTALLDIR/config/nvim/init.vim $HOME/.config/nvim
+ln -s $INSTALLDIR/config/nvim/plugins.vim $HOME/.config/nvim
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Sourcing ~/.tmux.conf.$(tput sgr 0)"
