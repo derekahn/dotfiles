@@ -210,6 +210,14 @@ endfunction
 nnoremap z= :call FzfSpell()<CR>
 
 " vim-abolish text case coercion
+" [crs] some_long_identifier
+" [crm] SomeLongIdentifier
+" [crc] someLongIdentifier
+" [cru] SOME_LONG_IDENTIFIER
+" [cr-] some-long-identifier
+" [cr.] some.long.identifier
+" [cr ] some long identifier
+" [crt] Some Long Identifier
 Plug 'tpope/vim-abolish'
 
 " Enable repeating supported plugin maps
