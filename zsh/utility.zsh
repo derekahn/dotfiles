@@ -35,6 +35,9 @@ alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
   7za x -so "$@" | tar xf -;
 }
 
+loadEnv() {
+	export $(cat .env | xargs)
+}
 # Remappings for productivity++
 # ---------------
 alias c="clear" # lazy
