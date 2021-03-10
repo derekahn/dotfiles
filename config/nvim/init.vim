@@ -444,6 +444,11 @@ call NERDTreeHighlightFile('png', 36, 'none', '#15A274', '#15A274')
 " indentation lines for golang
 set list lcs=tab:\|\
 
+au FileType go set noexpandtab
+au FileType go set shiftwidth=2
+au FileType go set softtabstop=2
+au FileType go set tabstop=2
+
 """""""""""""""""""""""""
 " => SPELLING CHECK
 """""""""""""""""""""""""
