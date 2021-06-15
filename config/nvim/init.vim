@@ -454,19 +454,19 @@ au FileType go set tabstop=2
 """""""""""""""""""""""""
 
 " Toggle and untoggle spell checking
+" next ]s
+" prev [s
+" add to dictionary zg
+" find correct word z=
 map <leader>sc :setlocal spell!<cr>
 
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+autocmd FileType markdown setlocal spell
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
 " ============================================================================ "
 
-" Automaticaly close nvim if NERDTree is only thing left open
+" Automatically close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " === Search === "
