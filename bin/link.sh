@@ -43,10 +43,24 @@ for config in $INSTALLDIR/config/*; do
   fi
 done
 
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing config nvim files.$(tput sgr 0)"
+echo "---------------------------------------------------------"
 rm -rf $HOME/.config/nvim
 mkdir $HOME/.config/nvim
-ln -s $INSTALLDIR/config/nvim/init.vim $HOME/.config/nvim
-ln -s $INSTALLDIR/config/nvim/plugins.vim $HOME/.config/nvim
+for config in $INSTALLDIR/config/nvim/*; do
+  target=$HOME/.config/nvim/$( $config )
+  if [ -e $target ]; then
+    echo "---------------------------------------------------------"
+    echo "$(tput setaf 3)🏠: ~${target#$HOME} already exists... Skipping.$(tput sgr 0)"
+    echo "---------------------------------------------------------"
+  else
+    echo "---------------------------------------------------------"
+    echo "$(tput setaf 2)🏠: Creating symlink for nvim/${config}.$(tput sgr 0)"
+    echo "---------------------------------------------------------"
+    ln -s $config $target
+  fi
+done
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Sourcing ~/.tmux.conf.$(tput sgr 0)"
