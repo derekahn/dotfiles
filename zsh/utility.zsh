@@ -4,14 +4,6 @@ alias clearDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.Q
 
 # measures zsh shell speed
 alias zshprof="/usr/bin/time zsh -i -c exit"
-
-# Jumping around (quick navigation)
-alias dot="cd ~/.dotfiles"
-alias shop="cd ~/projects/robo/shop"
-alias lab="cd ~/projects/labs"
-alias wm="cd ~/projects/webmocha/kqed"
-alias down="cd ~/Downloads"
-
 alias catPubKey='cat ~/.ssh/id_rsa.pub'
 alias getPubKey='cat ~/.ssh/id_rsa.pub | pbcopy'
 
@@ -35,9 +27,6 @@ alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
   7za x -so "$@" | tar xf -;
 }
 
-loadEnv() {
-	export $(cat .env | xargs)
-}
 # Remappings for productivity++
 # ---------------
 alias c="clear" # lazy

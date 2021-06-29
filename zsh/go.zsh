@@ -13,7 +13,11 @@ alias gtcm="grep -v -e 1$ cp.out"
 alias sc="staticcheck"
 
 # Satic code analyis (https://staticcheck.io)
-sce() {
+function sce() {
   issue=$(echo $1 | tr '[:lower:]' '[:upper:]')
   staticcheck -explain $issue
+}
+
+function loadEnv() {
+	export $(cat .env | xargs)
 }
