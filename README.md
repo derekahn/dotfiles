@@ -31,3 +31,18 @@ Select the preset color `onedark`
 ```shell
 iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> onedark
 ```
+
+### Setting up iterm status bar
+
+```shell
+iTerm2 -> Preferences > Profiles > Session
+```
+
+- Turn on `Status bar enabled` at the bottom right pane
+- Then click Configure Status Bar to begin setting up your status bar configuration
+
+```shell
+iTerm2 -> Preferences > Appearance > General
+```
+
+- `Status bar location` is the third key
