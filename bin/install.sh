@@ -127,12 +127,11 @@ echo "Please enter your github username (ex: derekahn):"
 read user
 
 echo "Created your go workspace at: $HOME/go/src/github.com/$user"
-mkdir -p $HOME/$gopath/src/github.com/$user
+mkdir -p $HOME/go/src/github.com/$user
 
-export GOPATH=$gopath
+export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 echo "Installing 🐹 go tools: godoc, vet"
 go get golang.org/x/tools/cmd/godoc
