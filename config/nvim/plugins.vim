@@ -131,7 +131,6 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 
-
 " navigate between errors quickly
 nmap <silent> <C-S-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-S-j> <Plug>(ale_next_wrap)
@@ -166,14 +165,16 @@ Plug 'rizzatti/dash.vim'
 " Dark powered asynchronous completion framework for neovim/Vim8
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#complete_method = "omnifunc"
 
 augroup omnifuncs
   autocmd!
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+  " autocmd FileType go setlocal omnifunc=go#complete#Complete
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
 augroup end
 
 let g:tern_request_timeout = 1
@@ -186,6 +187,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " fzf  vim (Fuzzy file, buffer finder)
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '40%' }
 " Jump to the existing window if possible
@@ -254,6 +256,7 @@ let g:go_autodetect_gopath = 1
 let g:go_list_type = 'quickfix'
 
 let g:go_auto_sameids = 1
+let g:go_doc_popup_window = 1
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -277,6 +280,17 @@ let g:go_auto_type_info = 1
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+
+" Alternate commands
+au FileType go nmap <Leader>ae <Plug>(go-alternate-edit)
+au FileType go nmap <Leader>av <Plug>(go-alternate-vertical)
+
+" indentation lines
+set list lcs=tab:\|\
+au FileType go set noexpandtab
+au FileType go set shiftwidth=2
+au FileType go set softtabstop=2
+au FileType go set tabstop=2
 
 " Open :GoDeclsDir with ctrl-g
 nmap <C-g> :GoDeclsDir<cr>
