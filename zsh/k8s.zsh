@@ -41,3 +41,7 @@ alias ka='kubectl apply -f'
 alias kl='kubectl logs '
 alias klf='kubectl logs -f'
 alias kx='kubectl exec -i -t'
+
+# Smoke test with busybox like a wiz
+alias kbb='kubectl run busybox-test --image=busybox -it --rm --restart=Never --'
+alias kdr='kubectl --dry-run=client -o yaml'
