@@ -49,6 +49,7 @@ packages=(
   "neovim"
   "p7zip"
   "python3"
+  "ranger"
   "reattach-to-user-namespace"
   "ripgrep"
   "starship"
