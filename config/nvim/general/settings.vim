@@ -1,9 +1,8 @@
-colorscheme onedark
-
+colorscheme onedark                     " Custom theme from plugins.vim
 syntax enable                           " Enables syntax highlighing
 
 set autoindent                          " Good auto indent
-set background=dark                     " tell vim what the background color looks like
+set background=dark                     " Tell vim what the background color looks like
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set cmdheight=2                         " More space for displaying messages
 set conceallevel=0                      " So that I can see `` in markdown files
@@ -12,7 +11,7 @@ set encoding=utf-8                      " The encoding displayed
 set expandtab                           " Converts tabs to spaces
 set formatoptions-=cro                  " Stop newline continution of comments
 set hidden                              " Required to keep multiple buffers open multiple buffers
-set iskeyword+=-                        " treat dash separated words as a word text object"
+set iskeyword+=-                        " Treat dash separated words as a word text object"
 set laststatus=0                        " Always display the status line
 set mouse=a                             " Enable your mouse
 set nobackup                            " This is recommended by coc
@@ -26,7 +25,7 @@ set ruler                               " Show the cursor position all the time
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set showmatch                           " Show matching brackets when text indicator is over them
 set showtabline=0                       " Always show tabs
-set smartcase                           " if search has an upper char it will be case sensitive
+set smartcase                           " If search has an upper char it will be case sensitive
 set smartindent                         " Makes indenting smart
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set splitbelow                          " Horizontal splits will automatically be below
@@ -36,7 +35,7 @@ set tabstop=2                           " Insert 2 spaces for a tab
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set updatetime=300                      " Faster completion
 
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+au! BufWritePost $MYVIMRC source %      " Auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 " Set highlight cursor line
 hi CursorLine cterm=none ctermbg=8 ctermfg=none
