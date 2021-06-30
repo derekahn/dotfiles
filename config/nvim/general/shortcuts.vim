@@ -1,36 +1,29 @@
 """"""""""""""""""""
-" => Notes
+" => Buffers
 """"""""""""""""""""
-" Quick open notes directory to notes folder
-let g:notes_folder = '~/projects/notes/'
-" Project specific notes
-let g:notes = g:notes_folder . fnamemodify(getcwd(), ':t') . '.md'
-let g:note_size = 15
+" Close the current buffer
+nnoremap <leader>bb :Bclose<cr>
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+  let l:currentBufNum = bufnr('%')
+  let l:alternateBufNum = bufnr('#')
 
-" Open current project notes
-map <leader>n :execute ':topleft split ' . g:notes<cr>:execute ':resize' . g:note_size<cr>
+  if buflisted(l:alternateBufNum)
+    buffer #
+  else
+    bnext
+  endif
 
-" Open daily notes
-let g:daily_notes = g:notes_folder . 'daily-notes.org'
-map <leader>nn :execute ':topleft split ' . g:daily_notes<cr>:execute ':resize' . g:note_size<cr>
+  if bufnr('%') == l:currentBufNum
+    new
+  endif
 
-""""""""""""""""""""
-" => Kubernetes
-""""""""""""""""""""
-" k8s shortcut to validate yaml
-:let g:asyncrun_open = 8
-augroup kubernetes
-  au!
-  au FileType yaml nmap <leader>k8 :!kubeval '%'<cr>
-augroup END
+  if buflisted(l:currentBufNum)
+    execute('bdelete! '.l:currentBufNum)
+  endif
+endfunction
 
-""""""""""""""""""""
-" => Makefile
-""""""""""""""""""""
-" in makefiles, don't expand tabs to spaces, since actual tab characters are
-" needed, and have indentation at 8 chars to be sure that all indents are tabs
-" (despite the mappings later):
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 """"""""""""""""""""
 " => JSON
@@ -47,6 +40,73 @@ function! ConcealJsonToggle()
     let g:toggle_json_conceal=1
   endif
 endfunction
+
+
+""""""""""""""""""""
+" => Kubernetes
+""""""""""""""""""""
+" k8s shortcut to validate yaml
+:let g:asyncrun_open = 8
+augroup kubernetes
+  au!
+  au FileType yaml nmap <leader>k8 :!kubeval '%'<cr>
+augroup END
+
+
+""""""""""""""""""""
+" => Makefile
+""""""""""""""""""""
+" in makefiles, don't expand tabs to spaces, since actual tab characters are
+" needed, and have indentation at 8 chars to be sure that all indents are tabs
+" (despite the mappings later):
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+
+""""""""""""""""""""
+" => NerdTree
+""""""""""""""""""""
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('css', 44, 'none', '#1AD0CE', '#1AD0CE')
+call NERDTreeHighlightFile('Dockerfile', '75', 'none', 'blue', 'blue')
+call NERDTreeHighlightFile('gif', 36, 'none', '#15A274', '#15A274')
+call NERDTreeHighlightFile('go', 'cyan', 'none', '#00ADD8', '#00ADD8')
+call NERDTreeHighlightFile('html', 202, 'none', '#FC4709', '#FC4709')
+call NERDTreeHighlightFile('jpg', 36, 'none', '#15A274', '#15A274')
+call NERDTreeHighlightFile('js', 226, 'none', '#FFFF0D', '#FFFF0D')
+call NERDTreeHighlightFile('json', 223, 'none', '#FECEA0', '#FECEA0')
+call NERDTreeHighlightFile('Makefile', '15', 'none', 'white', 'white')
+call NERDTreeHighlightFile('md', 208, 'none', '#FD720A', '#FD720A')
+call NERDTreeHighlightFile('png', 36, 'none', '#15A274', '#15A274')
+call NERDTreeHighlightFile('py', 'green', 'none', 'green', 'green')
+call NERDTreeHighlightFile('rb', 197, 'none', '#E53378', '#E53378')
+call NERDTreeHighlightFile('scss', 44, 'none', '#1AD0CE', '#1AD0CE')
+call NERDTreeHighlightFile('svg', 178, 'none', '#CDA109', '#CDA109')
+call NERDTreeHighlightFile('vim', 'green', 'none', 'green', 'green')
+call NERDTreeHighlightFile('yaml', '85', 'none', 'pink', 'pink')
+call NERDTreeHighlightFile('yml', '85', 'none', 'pink', 'pink')
+
+
+""""""""""""""""""""
+" => Notes
+""""""""""""""""""""
+" Quick open notes directory to notes folder
+let g:notes_folder = '~/Code/notes/'
+" Project specific notes
+let g:notes = g:notes_folder . fnamemodify(getcwd(), ':t') . '.md'
+let g:note_size = 15
+
+" Open current project notes
+map <leader>n :execute ':topleft split ' . g:notes<cr>:execute ':resize' . g:note_size<cr>
+
+" Open daily notes
+let g:daily_notes = g:notes_folder . 'daily-notes.org'
+map <leader>nn :execute ':topleft split ' . g:daily_notes<cr>:execute ':resize' . g:note_size<cr>
+
 
 """"""""""""""""""""
 " => Spelling
@@ -77,32 +137,3 @@ function! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfun
-
-
-""""""""""""""""""""
-" => NerdTree
-""""""""""""""""""""
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('css', 44, 'none', '#1AD0CE', '#1AD0CE')
-call NERDTreeHighlightFile('Dockerfile', '75', 'none', 'blue', 'blue')
-call NERDTreeHighlightFile('gif', 36, 'none', '#15A274', '#15A274')
-call NERDTreeHighlightFile('go', 'cyan', 'none', '#00ADD8', '#00ADD8')
-call NERDTreeHighlightFile('html', 202, 'none', '#FC4709', '#FC4709')
-call NERDTreeHighlightFile('jpg', 36, 'none', '#15A274', '#15A274')
-call NERDTreeHighlightFile('js', 226, 'none', '#FFFF0D', '#FFFF0D')
-call NERDTreeHighlightFile('json', 223, 'none', '#FECEA0', '#FECEA0')
-call NERDTreeHighlightFile('Makefile', '15', 'none', 'white', 'white')
-call NERDTreeHighlightFile('md', 208, 'none', '#FD720A', '#FD720A')
-call NERDTreeHighlightFile('png', 36, 'none', '#15A274', '#15A274')
-call NERDTreeHighlightFile('py', 'green', 'none', 'green', 'green')
-call NERDTreeHighlightFile('rb', 197, 'none', '#E53378', '#E53378')
-call NERDTreeHighlightFile('scss', 44, 'none', '#1AD0CE', '#1AD0CE')
-call NERDTreeHighlightFile('svg', 178, 'none', '#CDA109', '#CDA109')
-call NERDTreeHighlightFile('vim', 'green', 'none', 'green', 'green')
-call NERDTreeHighlightFile('yaml', '85', 'none', 'pink', 'pink')
-call NERDTreeHighlightFile('yml', '85', 'none', 'pink', 'pink')

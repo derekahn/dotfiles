@@ -41,9 +41,34 @@ let g:airline#extensions#default#section_truncate_width = {
 " Add filetype glyphs (icons)
 Plug 'ryanoasis/vim-devicons', { 'commit': 'cbaba2f' }
 let g:webdevicons_enable_airline_statusline = 1
+
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:DevIconsEnableFoldersOpenClose = 1
+" let g:DevIconsDefaultFolderOpenSymbol='' " symbol for open folder (f07c)
+" let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol='' " symbol for closed folder (f07b)
+
+" Custom icons for file extensions
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ts'] = 'ﯤ'
+
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.test.ts'] = 'ﭧ'
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['_test.go'] = 'ﭧ'
+
+" Custom icons for specific filenames
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['ormconfig.js'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.env'] = 'ﭩ'
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.editorconfig'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.prettierrc'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.eslintrc'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['.npmrc'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['src'] = ''
+
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
 let g:WebDevIconsOS = 'Darwin'
 
@@ -56,7 +81,7 @@ let g:onedark_termcolors = 256
 let g:onedark_terminal_italics = 1 " I love italic for comments
 
 " Tree explorer for vim.
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
@@ -67,6 +92,13 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 map <C-e> :NERDTreeToggle<CR>
+
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " Tmux statusline generator with support for airline
 Plug 'edkolev/tmuxline.vim'
@@ -150,8 +182,6 @@ function! LinterStatus() abort
 endfunction
 
 set statusline=%{LinterStatus()}
-
-
 
 " Vim plugin, insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
@@ -361,7 +391,7 @@ Plug 'sheerun/vim-polyglot'
 
 " A Vim plugin for Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-"
+
 " Syntax for styled-components
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
