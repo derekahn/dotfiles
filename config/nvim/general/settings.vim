@@ -10,10 +10,9 @@ set conceallevel=0                      " So that I can see `` in markdown files
 set cursorline                          " Enable highlighting of the current line
 set encoding=utf-8                      " The encoding displayed
 set expandtab                           " Converts tabs to spaces
-" set fileencoding=utf-8                  " The encoding written to file
 set formatoptions-=cro                  " Stop newline continution of comments
 set hidden                              " Required to keep multiple buffers open multiple buffers
-set iskeyword+=-                      	" treat dash separated words as a word text object"
+set iskeyword+=-                        " treat dash separated words as a word text object"
 set laststatus=0                        " Always display the status line
 set mouse=a                             " Enable your mouse
 set nobackup                            " This is recommended by coc
@@ -23,7 +22,7 @@ set nowritebackup                       " This is recommended by coc
 set number                              " Line numbers
 set pumheight=10                        " Makes popup menu smaller
 set relativenumber                      " Show relative line numbers
-set ruler              			            " Show the cursor position all the time
+set ruler                               " Show the cursor position all the time
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set showmatch                           " Show matching brackets when text indicator is over them
 set showtabline=0                       " Always show tabs
