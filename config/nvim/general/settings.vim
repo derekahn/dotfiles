@@ -11,7 +11,7 @@ set encoding=utf-8                      " The encoding displayed
 set expandtab                           " Converts tabs to spaces
 set formatoptions-=cro                  " Stop newline continution of comments
 set hidden                              " Required to keep multiple buffers open multiple buffers
-set iskeyword+=-                        " Treat dash separated words as a word text object"
+set iskeyword+=-                        " Treat dash separated words as a word text object
 set laststatus=0                        " Always display the status line
 set mouse=a                             " Enable your mouse
 set nobackup                            " This is recommended by coc
