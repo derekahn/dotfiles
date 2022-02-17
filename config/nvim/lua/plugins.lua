@@ -73,7 +73,7 @@ packer.startup(function()
 
   -- editing
   use {'tpope/vim-surround'} -- Quoting/parenthesizing made simple
-  use {'preservim/nerdcommenter'} -- Toggle comment
+  use {'tpope/vim-commentary'} -- Toggle comment
   use {'jiangmiao/auto-pairs'} -- Auto close brackets, parenthesis etc
   use {'tpope/vim-abolish'} -- Case coercion
 
