@@ -40,6 +40,31 @@ packer.startup(function()
   }
 
   use {
+    'sidebar-nvim/sidebar.nvim',
+    -- requires = {
+    --   {'sidebar-nvim/sections-dap'},
+    -- },
+    -- config = function()
+    --   local actions = require('telescope.actions')
+
+    --   require('telescope').setup {
+    --     defaults = {
+    --       file_ignore_patterns = {
+    --         '.png', '.import', '.tres', '.wav', '.otf', '.ttf',
+    --         'node_modules', 'vendor'
+    --       },
+    --       mappings = {
+    --         i = {
+    --           ['<esc>'] = actions.close
+    --         }
+    --       }
+    --     },
+    --   }
+    --   require('telescope').load_extension('fzf')
+    -- end,
+  }
+
+  use {
     'nvim-telescope/telescope.nvim', -- Fuzzy finder
     requires = {
       {'nvim-lua/plenary.nvim'},

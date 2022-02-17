@@ -107,3 +107,6 @@ v.nmap({'<silent>', '<leader>', 'f'}, ':Telescope live_grep<CR>')
 v.nmap({'<silent>', '<leader>', 'h'}, ':Telescope oldfiles<CR>')
 v.nmap({'<silent>', '<leader>', 'l'}, ':Telescope current_buffer_fuzzy_find<CR>')
 v.nmap({'<silent>', '<C-p>'}, ':Telescope find_files<CR>')
+
+-- Sidebar
+v.nnoremap({'<C-e>'}, ':SidebarNvimToggle<Cr>')
