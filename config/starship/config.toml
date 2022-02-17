@@ -1,10 +1,66 @@
-# Don't print a new line at the start of the prompt
-add_newline = true
+[character]
+format = "[[>](dimmed white) λ ](bright-green)"
+success_symbol = "green"
 
-# Replace the "❯" symbol in the prompt with "➜"
-[character]      # The name of the module we are configuring is "character"
-success_symbol = "[λ](bold green)"
+[hostname]
+ssh_only = true
+format = "[$hostname ](dimmed white)"
 
-# Disable the package module, hiding it from the prompt completely
+[directory]
+style = "dimmed white"
+
+[git_status]
+style = "cyan"
+
+[git_branch]
+style = "purple"
+format = "\\[[$symbol$branch]($style)\\] "
+
 [package]
+format = "\\[[$symbol$version]($style)\\] "
+
+[rust]
+symbol = ""
+format = "\\[[$symbol $version]($style)\\] "
+
+[golang]
+symbol = ""
+format = "\\[[$symbol $version]($style)\\] "
+
+[lua]
+symbol = ""
+format = "\\[[$symbol $version]($style)\\] "
+disabled = true
+
+[nodejs]
+symbol = ""
+format = "\\[[$symbol $version](yellow)\\] "
+
+[python]
+symbol = ""
+format = "\\[[${symbol} ${version}( \\($virtualenv\\))]($style)\\] "
+
+[cmd_duration]
+format = "\\[[祥$duration]($style)\\] "
+
+[custom.shell_counter]
+command = "source ~/dev/shell_recursive_counter.sh && shell_counter"
+format = "\\[[[$symbol](bold grey) $output]($style)\\] "
+when = "source ~/dev/shell_recursive_counter.sh && shell_counter"
+shell = ["zsh", "-l"]
+symbol = ""
+style = "white"
+
+[custom.pyenv]
+command = "source ~/.zshrc && pyenv version 2>/dev/null | cut -c-5"
+format = "\\[[[$symbol](bold blue) $output]($style)\\] "
+when = "! [ -z $PYENV_ROOT ]"
+shell = ["zsh", "-l"]
+symbol = ""
+style = "white"
+
+[aws]
+disabled = true
+
+[gcloud]
 disabled = true
