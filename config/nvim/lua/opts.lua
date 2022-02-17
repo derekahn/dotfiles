@@ -40,6 +40,11 @@ v.opt.termguicolors = true
 v.opt.title = true
 v.opt.wrap = false
 
+-- Show indents
+v.opt.list = true
+--vim.opt.listchars:append("space:.")
+vim.opt.listchars:append("eol:↴")
+
 -- Search
 v.opt.ignorecase = true
 v.opt.smartcase = true
