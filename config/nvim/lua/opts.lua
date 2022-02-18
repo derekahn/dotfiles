@@ -1,67 +1,69 @@
 local v = require('utils')
+local set = v.opt
+local cmd = vim.cmd
 
 -- Files & Buffers
 v.autocmd({'focusgained', 'bufenter'}, '*', v.cmd.checktime)
-v.opt.autowrite = true
-v.opt.hidden = true
-v.opt.modeline = true
-v.opt.swapfile = false
-v.opt.writebackup = false
+set.autowrite = true
+set.hidden = true
+set.modeline = true
+set.swapfile = false
+set.writebackup = false
 
 -- Clipboard
-v.opt.clipboard = 'unnamedplus'
+set.clipboard = 'unnamedplus'
 
 -- Cursor
-v.opt.cursorline = true
-v.opt.ruler = true
-vim.cmd('hi CursorLine cterm=none ctermbg=8 ctermfg=none')
-vim.cmd('hi VertSplit cterm=none ctermbg=none ctermfg=23')
+set.cursorline = true
+set.ruler = true
+cmd('hi CursorLine cterm=none ctermbg=8 ctermfg=none')
+cmd('hi VertSplit cterm=none ctermbg=none ctermfg=23')
 
 -- Windows & Tabs
-v.opt.splitbelow = true
-v.opt.splitright = true
+set.splitbelow = true
+set.splitright = true
 
 -- Movement
-v.opt.scrolloff = 10
+set.scrolloff = 10
 
 -- Display
-v.opt.cmdheight = 2
-v.opt.encoding = 'utf-8'
-v.opt.laststatus = 0
-v.opt.lazyredraw = true
-v.opt.number = true
-v.opt.numberwidth = 5
-v.opt.pumheight = 10
-v.opt.relativenumber = true
-v.opt.showmatch = true
-v.opt.showmode = false
-v.opt.signcolumn = 'yes'
-v.opt.termguicolors = true
-v.opt.title = true
-v.opt.wrap = false
+set.cmdheight = 2
+set.encoding = 'utf-8'
+set.laststatus = 0
+set.lazyredraw = true
+set.number = true
+set.numberwidth = 5
+set.pumheight = 10
+set.relativenumber = true
+set.showmatch = true
+set.showmode = false
+set.signcolumn = 'yes'
+set.termguicolors = true
+set.title = true
+set.wrap = false
 
 -- Show indents
-v.opt.list = true
+set.list = true
 --vim.opt.listchars:append("space:.")
 vim.opt.listchars:append("eol:↴")
 
 -- Search
-v.opt.ignorecase = true
-v.opt.smartcase = true
+set.ignorecase = true
+set.smartcase = true
 
 -- Tab
-v.opt.expandtab = true
-v.opt.shiftround = true
-v.opt.showtabline = 0
-v.opt.smarttab = true
-v.opt.softtabstop = 2
-v.opt.tabstop = 2
+set.expandtab = true
+set.shiftround = true
+set.showtabline = 0
+set.smarttab = true
+set.softtabstop = 2
+set.tabstop = 2
 
 -- Indentation
-v.opt.autoindent = true
-v.opt.copyindent = true
-v.opt.shiftwidth = 2
-v.opt.smartindent = true
+set.autoindent = true
+set.copyindent = true
+set.shiftwidth = 2
+set.smartindent = true
 
 -- Filetype
 v.cmd.filetype('on')
@@ -69,15 +71,15 @@ v.cmd.filetype('plugin', 'on')
 v.cmd.filetype('indent', 'on')
 
 -- Misc
-vim.cmd('autocmd! bufenter * if &ft ==# "help" | wincmd L | endif')
-v.opt.updatetime = 300
-v.opt.history = 100
-v.opt.timeoutlen = 300
-v.opt.whichwrap = {'b', 's', 'h', 'l'}
-v.opt.completeopt = {'menu', 'menuone', 'preview', 'noselect', 'noinsert'}
+cmd('autocmd! bufenter * if &ft ==# "help" | wincmd L | endif')
+set.updatetime = 300
+set.history = 100
+set.timeoutlen = 300
+set.whichwrap = {'b', 's', 'h', 'l'}
+set.completeopt = {'menu', 'menuone', 'preview', 'noselect', 'noinsert'}
 
 -- Return to last edit position when opening files (You want this!)
-vim.cmd([[
+cmd([[
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
