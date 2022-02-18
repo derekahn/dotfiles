@@ -73,6 +73,41 @@ packer.startup(function()
     end,
   }
 
+  -- hud
+  use {'lewis6991/gitsigns.nvim', -- Git integration for buffers
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup {
+        on_attach = function(bufnr)
+          local function map(mode, lhs, rhs, opts)
+              opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+              vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+          end
+
+          -- Navigation
+          map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+          map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+          -- Actions
+          map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+          map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+          map('n', '<leader>dt', '<cmd>Gitsigns diffthis<CR>')
+          map('n', '<leader>DT', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+        end,
+
+        current_line_blame = false,
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'eol',
+          delay = 1000,
+
+        }
+      }
+    end,
+  }
+
 
   -- editing
   use {'tpope/vim-surround'} -- Quoting/parenthesizing made simple
