@@ -63,9 +63,6 @@ v.map({'<leader>', 'r'}, v.cmd['e<cr>'])
 -- Fast file creation
 v.map({'<leader>', 'e'}, v.cmd.enew)
 
--- Paste in visual mode without updating default register
-v.nnoremap('p', '_c<Esc>p')
-
 -- Quick macro invocation with q register
 v.nnoremap('Q', '@q')
 
@@ -109,4 +106,4 @@ v.nmap({'<silent>', '<leader>', 'l'}, ':Telescope current_buffer_fuzzy_find<CR>'
 v.nmap({'<silent>', '<C-p>'}, ':Telescope find_files<CR>')
 
 -- Sidebar
-v.nnoremap({'<C-e>'}, ':SidebarNvimToggle<Cr>')
+v.nnoremap({'<silent>','<C-e>'}, ':SidebarNvimToggle<Cr>')
