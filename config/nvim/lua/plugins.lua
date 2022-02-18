@@ -16,8 +16,7 @@ local v = require('utils')
 packer.startup(function()
   use {'wbthomason/packer.nvim'}
 
-  -- aesthetics 
-  -- use {'edkolev/tmuxline.vim'} -- Tmux Status line
+  -- Aesthetics 
   use {'kyazdani42/nvim-web-devicons'} -- Web devicons for neovim
   use {'Yggdroot/indentLine'} -- Indention levels with thin vertical lines
   use {'navarasu/onedark.nvim', -- Atom's One Dark and Light theme
@@ -42,12 +41,12 @@ packer.startup(function()
       require('sidebar-nvim').setup({
         disable_default_keybindings = 1,
         bindings = {
-          ['q'] = function() sidebar.close() end
+          -- ['q'] = function() sidebar.close() end
         },
         open = true,
         side = 'left',
         initial_width = 25,
-        hide_statusline = false,
+        hide_statusline = true,
         update_interval = 1000,
         sections = {'files', 'symbols', 'buffers', 'diagnostics', 'todos'},
         section_separator = {"", "-----", ""},
@@ -73,8 +72,73 @@ packer.startup(function()
     end,
   }
 
-  -- hud
-  use {'lewis6991/gitsigns.nvim', -- Git integration for buffers
+  -- LSP
+  use {'neovim/nvim-lspconfig'}
+  use {'nvim-lua/completion-nvim'}
+
+  -- HUD
+  use {'nvim-treesitter/nvim-treesitter', -- Git integration for buffers
+    run = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        autotag = {
+          enable = true
+        },
+        ensure_installed = {
+          'bash',
+          'dockerfile',
+          'go',
+          'json',
+          'lua',
+          'markdown',
+          'rust',
+          'toml',
+          'javascript',
+          'typescript',
+          'yaml',
+        },
+        highlight = {
+          enable = true,
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+          },
+        },
+        textobjects = {
+          select = {
+            enable = true,
+
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+              ["ab"] = "@block.outer",
+              ["ib"] = "@block.inner",
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = { ["]m"] = "@function.outer", ["]]"] = "@class.outer" },
+            goto_next_end = { ["]M"] = "@function.outer", ["]["] = "@class.outer" },
+            goto_previous_start = { ["[m"] = "@function.outer", ["[["] = "@class.outer" },
+            goto_previous_end = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" },
+          },
+        },
+      }
+    end
+  }
+  use {'lewis6991/gitsigns.nvim',
     requires = {
       'nvim-lua/plenary.nvim'
     },
@@ -108,14 +172,13 @@ packer.startup(function()
     end,
   }
 
-
-  -- editing
+  -- Editing
   use {'tpope/vim-surround'} -- Quoting/parenthesizing made simple
   use {'tpope/vim-commentary'} -- Toggle comment
   use {'jiangmiao/auto-pairs'} -- Auto close brackets, parenthesis etc
   use {'tpope/vim-abolish'} -- Case coercion
 
-  -- utils
+  -- Utils
   use {'christoomey/vim-tmux-navigator'} -- Seamless navigation between tmux panes and vim splits
   use {'troydm/zoomwintab.vim'} -- Zoom in/out of windows
   use {'nvim-telescope/telescope.nvim', -- Fuzzy finder
@@ -143,3 +206,14 @@ packer.startup(function()
     end,
   }
 end)
+
+
+-- LSP
+local lsp = require 'lspconfig'
+local completion = require 'completion'
+
+lsp.tsserver.setup{on_attach=completion.on_attach}
+lsp.rust_analyzer.setup{on_attach=completion.on_attach}
+
+-- Fern
+v.v.g['fern#renderer'] = 'nerdfont'
