@@ -44,6 +44,11 @@ for config in $INSTALLDIR/config/*; do
 done
 
 echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Symlinking Lazygit.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+ln -s $HOME/Library/Application\ Support/lazygit/config.yml $INSTALLDIR/config/lazygit/config.yml
+
+echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Sourcing ~/.tmux.conf.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
