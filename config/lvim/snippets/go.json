@@ -1,0 +1,37 @@
+{
+  "shorthand variable": {
+    "prefix": ":",
+    "body": ["${1:name} :=  ${2:value}"],
+    "description": "Snippet for shorthand function variables"
+  },
+  "generic type struct declaration": {
+    "prefix": "gst",
+    "body": "type ${1:name}[T ${2:type}] struct {\n\t$0\n}",
+    "description": "Snippet for a generic struct declaration"
+  },
+  "if err not nil": {
+    "prefix": "ie",
+    "body": "if err != nil {\n\t$0\n}",
+    "description": "Snippet for common error checks"
+  },
+  "inline if err not nil": {
+    "prefix": "ive",
+    "body": "if err != ${1:var}; err != nil {\n\t$0\n}",
+    "description": "Snippet for common inline error checks"
+  },
+  "ctx": {
+    "prefix": "ctx",
+    "body": "ctx context.Context",
+    "description": "Snippet for quick ctx type param"
+  },
+  "public function with comment": {
+    "prefix": "pfn",
+    "body": "// $1 ${5:TODO}\nfunc ${1:name}($2) $3 {\n\t$4\n}",
+    "description": "Snippet for public functions with required comments"
+  },
+  "public method with comment": {
+    "prefix": "pfn",
+    "body": "// $1 ${6:TODO}\nfunc (${1:receiver} ${2:type}) ${3:method}($4) $5 {\n\t$0\n}",
+    "description": "Snippet for public method with required comments"
+  }
+}

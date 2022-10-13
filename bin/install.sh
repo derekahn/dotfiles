@@ -56,12 +56,14 @@ packages=(
   "ncdu"
   "neovim"
   "p7zip"
+  "pnpm"
   "prettier"
   "proselint"
   "python3"
   "ranger"
   "reattach-to-user-namespace"
   "ripgrep"
+  "rust"
   "rust-analyzer"
   "rustfmt"
   "starship"
@@ -71,6 +73,7 @@ packages=(
   "tmux"
   "tokei"
   "toshimaru/nyan/nyan"
+  "volta"
   "write-good"
   "yamllint"
   "ycd/tap/dstp"
@@ -139,6 +142,12 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 echo "Installing 🐹 go tools: godoc, vet"
 go get golang.org/x/tools/cmd/godoc
 echo "Tools installed. For more information visit https://golang.org/doc/code.html"
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing 🌙 LunarVim.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: system update complete. currently running at 100% power. enjoy.$(tput sgr 0)"
