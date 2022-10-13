@@ -83,6 +83,7 @@ lvim.plugins = {
   { "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
   { "tpope/vim-abolish" }, -- case coercion (!lua)
   { "romgrk/nvim-treesitter-context" }, -- show code context
+  { 'kevinhwang91/nvim-bqf', ft = 'qf' }, -- better quickfix window in Neovim, polish old quickfix window
 
   { -- highlight arguments' definitions and usages, using treesitter
     "m-demare/hlargs.nvim",
