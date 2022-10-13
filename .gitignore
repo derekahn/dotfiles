@@ -12,3 +12,5 @@ config/nvim/autoload/plug.vim
 backup/
 tmux.symlink
 *.log
+
+.DS_Store
