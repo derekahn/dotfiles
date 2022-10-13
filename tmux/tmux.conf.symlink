@@ -15,6 +15,8 @@ set -g default-terminal "screen-256color"
 
 set -g history-limit 20000
 
+set-option -g focus-events on
+
 # Automatically renumber tmux windows
 set -g renumber-windows on
 
@@ -102,6 +104,7 @@ bind -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
 bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
 bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
 
+bind C-m display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
 
 # This tmux statusbar config was created by tmuxline.vim
 # on Thu, 17 Feb 2022
