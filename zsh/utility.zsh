@@ -19,11 +19,11 @@ alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall 
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
 # compression
-7zip() {
+function 7zip() {
   tar cf - "$@" | 7za a -si "$@".tar.7z;
 }
 
-7unzip() {
+function 7unzip() {
   7za x -so "$@" | tar xf -;
 }
 
@@ -40,7 +40,7 @@ alias rm="rm -i" # always confirm before delete
 alias s="ncdu" # file explorer that shows size
 
 # Man Command colorizer
-man() {
+function man() {
 	env \
 		LESS_TERMCAP_md=$'\e[1;36m' \
 		LESS_TERMCAP_me=$'\e[0m' \
@@ -54,3 +54,19 @@ man() {
 # ls dir color
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+alias fhere='find . -name '
+
+function mcd () {
+ mkdir -pv $1
+ cd $1
+}
+
+alias mp3='youtube-dl -x --audio-format mp3'
+
+alias python=python3
+
+alias trivyy='trivy fs --skip-dirs node_modules --skip-dirs src/node_modules --security-checks vuln,config .'
+
+# broot (https://dystroy.org/broot/)
+source /Users/cybernaut/.config/broot/launcher/bash/br

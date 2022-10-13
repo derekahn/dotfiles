@@ -12,7 +12,7 @@ bindkey '^x^e' edit-command-line
 
 # Catalina zsh navigation
 # ---------------
-setopt auto_cd
+# setopt auto_cd
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -22,8 +22,3 @@ alias ll='ls -alh'
 # ls dir color
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-
-# fixes auto complete
-# run: '$ compaudit | xargs chmod g-w'
-# to fix permissions to remove warnings
-autoload -Uz compinit && compinit

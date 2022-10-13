@@ -2,6 +2,11 @@
 # ---------------
 for config ($HOME/.dotfiles/zsh/*.zsh); source $config;
 
+# Load Auto Suggestions
+# ---------------
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept
+
 # Load zsh theme
 # ---------------
 eval "$(starship init zsh)"
@@ -20,7 +25,8 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # Nvim
 # ---------------
-export EDITOR='nvim'
+alias vim='lvim'
+export EDITOR='lvim'
 
 # Syntax highlighter
 # ---------------
@@ -29,5 +35,3 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Command history
 # ---------------
 SAVEHIST=10000
-
-export PATH="/usr/local/sbin:$PATH"

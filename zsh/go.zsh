@@ -8,9 +8,14 @@ export GO111MODULE=auto
 
 alias gt="go test ."
 alias gob="go test --bench ."
-alias gtc="go test ./... -coverprofile cp.out"
 alias gtcm="grep -v -e 1$ cp.out"
 alias sc="staticcheck"
+alias sca="staticcheck ./..."
+
+function gtc() {
+  go test ./... -coverprofile cp.out
+  rm cp.out
+}
 
 # Satic code analyis (https://staticcheck.io)
 function sce() {
@@ -18,6 +23,6 @@ function sce() {
   staticcheck -explain $issue
 }
 
-function loadEnv() {
-	export $(cat .env | xargs)
+function goenv() {
+	export $(cat .env | grep -o '^[^#]*' | xargs)
 }

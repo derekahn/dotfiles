@@ -4,6 +4,15 @@ alias gsp="git stash -p"
 alias gac="!git add -A && git commit -m"
 alias gbc="git branch | fzf | xargs git checkout"
 alias gbdd="git branch | fzf | xargs git branch -D"
+
+alias gtop="mergestat 'select count (*), author_name from commits group by author_name order by count (*) desc'"
+
+
+# Pushes the current branch to a designated remote; defaults to "origin"
+function gpb() {
+  git push -u "${1:-origin}" $(git branch --show-current)
+}
+
 # To delete local branches which have already been merged into $1:
 function gclean() {
   git branch --merged "$1" | grep -v "\* $1" | xargs -n 1 git branch -d
@@ -22,7 +31,7 @@ function ghot() {
 # take this repo and copy it to somewhere else minus the .git stuff.
 function gitexport(){
   mkdir -p "$1"
-  git archive master | tar -x -C "$1"
+  git archive development | tar -x -C "$1"
 }
 
 # If you change repos in lazygit and want your shell
@@ -132,3 +141,5 @@ alias gsta='git stash save'
 alias gstc='git stash clear'
 alias gstl='git stash list'
 alias gstp='git stash pop'
+
+alias glc='git rev-parse --verify HEAD | pbcopy'

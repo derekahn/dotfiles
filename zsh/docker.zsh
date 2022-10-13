@@ -31,3 +31,7 @@ alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 dri() { docker rmi -f $(docker images -q); }
 
 alias lzy=lazydocker
+
+function dmi () {
+  docker manifest inspect --verbose $1
+}
