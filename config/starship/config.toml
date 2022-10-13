@@ -1,3 +1,5 @@
+command_timeout = 1000
+
 [character]
 format = "[[>](dimmed white) λ ](bright-green)"
 success_symbol = "green"
