@@ -2,7 +2,35 @@
 
 A portable environment for any 🍎 💻
 
-![example](https://i.imgur.com/1FAZCUy.png)
+## Examples 📸
+
+### Dashboard with tmux
+
+![dashboard](https://user-images.githubusercontent.com/5381156/195716396-89d62015-fe4b-4ee7-9fb4-7528aca2e768.png)
+
+### Ctrl-p
+
+![ctrl-p](https://user-images.githubusercontent.com/5381156/195716386-f3054216-f14e-4a4b-beb9-f22670ccf71d.png)
+
+### Ctrl-b
+
+![ctrl-b](https://user-images.githubusercontent.com/5381156/195716398-4d074c5a-8ebf-48fe-b1a9-a947b8fb2034.png)
+
+### Ctrl-g
+
+![ctrl-g](https://user-images.githubusercontent.com/5381156/195716392-87e64630-a10d-4e3c-82e6-fef921d6e227.png)
+
+### Indentline highlighting
+
+![Indentline](https://user-images.githubusercontent.com/5381156/195716394-d170f1ba-3744-47bf-8cc7-af4901036979.png)
+
+### Sidebar file explorer open
+
+![tree](https://user-images.githubusercontent.com/5381156/195716390-e764d322-a9ae-489d-bd07-0f41ed2de3dd.png)
+
+### Whichkey
+
+![whichkey](https://user-images.githubusercontent.com/5381156/195716397-c6ca3588-c2a8-400f-8df1-3ac403f9f01d.png)
 
 ## Setup Iterm2
 
