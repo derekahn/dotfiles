@@ -42,7 +42,7 @@ vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.list = true
 
--- Use which-key to add extra bindings with the leader-key prefix
+-- Which-key bindings
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", "Save" }
@@ -105,6 +105,7 @@ lvim.plugins = {
       })
     end,
   },
+
   { -- indent guides for neovim
     "lukas-reineke/indent-blankline.nvim",
     setup = function()
@@ -119,10 +120,12 @@ lvim.plugins = {
       })
     end,
   },
+
   { -- atom's one dark and light theme
     "navarasu/onedark.nvim",
     config = "vim.cmd[[colorscheme onedark]]",
   },
+
   { -- highlight, list and search todo comments in your projects
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -130,14 +133,15 @@ lvim.plugins = {
       require("todo-comments").setup()
     end,
   },
+
   { -- highlight, list and search todo comments in your projects
     "simrat39/rust-tools.nvim",
     config = function()
       local rt = require("rust-tools")
       rt.setup({
         server = {
+          standalone = true,
           on_attach = function(_, bufnr)
-            -- Code action groups
             vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
           end,
           ["rust-analyzer"] = {
@@ -170,14 +174,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
   command = "silent! lua require('go.format').goimport()",
 })
 
-lvim.autocommands = {
-  {
-    "BufWinEnter",
-    {
-      pattern = { "*.rs" },
-      callback = function()
-        vim.cmd([[setlocal tabstop=2 shiftwidth=2]])
-      end,
-    },
-  },
-}
+-- lvim.autocommands = {
+--   {
+--     "BufWinEnter",
+--     {
+--       pattern = { "*.rs" },
+--       callback = function()
+--         vim.cmd([[setlocal tabstop=2 shiftwidth=2]])
+--       end,
+--     },
+--   }
+-- }

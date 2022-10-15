@@ -6,7 +6,8 @@
 | ------------------------- | -------------------------------------------------------------------------------------- |
 | `Ctrl + b`                | Quick buffer explorer                                                                  |
 | `Ctrl + g`                | Fuzzy find grep by text                                                                |
-| `Ctrl + p`                | Ctrlp keybindin from sublime text days (git files)                                     |
+| `Ctrl + p`                | Ctrlp keybinding from sublime text days (git files)                                    |
+| `Ctrl + t`                | Open a floating terminal                                                               |
 | `Shift + l`               | Switch tab/buffer right                                                                |
 | `Shift + h`               | Switch tab/buffer left                                                                 |
 | `g + d`                   | Goto the definition of the function/variable                                           |
