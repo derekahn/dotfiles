@@ -74,3 +74,11 @@ iTerm2 -> Preferences > Appearance > General
 ```
 
 - `Status bar location` is the third key
+
+### Setting up rectangle
+
+```bash
+curl -L https://gist.githubusercontent.com/derekahn/57717fa5301d24bcfb888a58178f5ab1/raw/35b0e55a5315449cf64abee40ba3c3cd37291c75/RectangleConfig.json -o ~/Documents/RectangleConfig.json
+```
+
+![Rectangle Config](https://user-images.githubusercontent.com/5381156/196334107-2ed7adcd-ae8e-4560-9bd0-b59e7d49655c.png)
