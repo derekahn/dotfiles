@@ -35,17 +35,23 @@ lvim.keys.visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
 -- Smarter yank
 lvim.keys.visual_mode["Y"] = "y$"
 
+-- Insert keymaps
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
+
 keymap("i", "jj", "<Esc>", opts) -- remap escape
 keymap("i", "<C-b>", "<Esc>^i", opts) -- beginning of line
 keymap("i", "<C-e>", "<End>", opts) -- end of line
+
 -- Options
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
-vim.opt.relativenumber = true -- set relative numbered lines
+vim.opt.colorcolumn = "80" -- give a visible column guide
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
+vim.opt.relativenumber = true -- set relative numbered lines
+vim.opt.scrolloff = 8 -- attempts to center cursor
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.list = true
+vim.opt.timeoutlen = 200 -- determine the behavior when part of a key code sequence has been received by the
+vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to noticeable
 
 -- Which-key bindings
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
