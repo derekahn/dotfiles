@@ -67,6 +67,3 @@ alias mp3='youtube-dl -x --audio-format mp3'
 alias python=python3
 
 alias trivyy='trivy fs --skip-dirs node_modules --skip-dirs src/node_modules --security-checks vuln,config .'
-
-# broot (https://dystroy.org/broot/)
-source /Users/cybernaut/.config/broot/launcher/bash/br
