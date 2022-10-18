@@ -35,17 +35,16 @@ echo "---------------------------------------------------------"
 packages=(
   "aquasecurity/trivy/trivy"
   "bat"
-  "black"
   "boop"
   "clamav"
   "coreutils"
   "croc"
   "dasel"
-  "delta"
   "exa"
   "fd"
   "fx"
   "fzf"
+  "git-delta"
   "golang"
   "httpie"
   "jsonlint"
@@ -77,9 +76,7 @@ packages=(
   "write-good"
   "yamllint"
   "ycd/tap/dstp"
-  "zenith"
   "zoxide"
-  "zsh-autosuggestions"
   "zsh-syntax-highlighting"
 )
 
@@ -99,17 +96,14 @@ applications=(
   "anki"
   "asciinema"
   "db-browser-for-sqlite"
-  "docker"
   "firefox"
   "fork"
   "google-chrome"
   "iterm2"
-  "little-snitch"
   "nordvpn"
   "rectangle"
   "slack"
   "vivaldi"
-  "wireshark"
 )
 
 for i in "${applications[@]}"
@@ -144,10 +138,15 @@ go get golang.org/x/tools/cmd/godoc
 echo "Tools installed. For more information visit https://golang.org/doc/code.html"
 
 echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Manually installing zsh-autosuggestions.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing 🌙 LunarVim.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+/bin/bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: system update complete. currently running at 100% power. enjoy.$(tput sgr 0)"
