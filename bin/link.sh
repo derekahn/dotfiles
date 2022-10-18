@@ -26,6 +26,14 @@ if [ ! -d $HOME/.config ]; then
 fi
 
 echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Delete existing configs.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+for dir in "lazygit", "lvim", "nvim", "starship"; do
+  rm -rf dir
+done
+
+echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing config files.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
