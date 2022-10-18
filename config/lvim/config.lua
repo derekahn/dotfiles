@@ -24,8 +24,8 @@ lvim.keys.normal_mode["<C-Left>"] = ":resize -2<CR>"
 lvim.keys.normal_mode["<C-Right>"] = ":resize +2<CR>"
 
 -- telescope shortcuts (faster than which-key)
-lvim.keys.normal_mode["<C-p>"] = require("lvim.core.telescope.custom-finders").find_project_files
-lvim.keys.normal_mode["<C-g>"] = "<cmd>Telescope live_grep theme=ivy<CR>"
+lvim.keys.normal_mode["<C-p>"] = "<cmd>lua require('telescope.builtin').git_files()<cr>"
+lvim.keys.normal_mode["<C-g>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
 lvim.keys.normal_mode["<C-b>"] = "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>"
 
 -- move a line of text using mac option-key+j/k (mac)
@@ -35,6 +35,11 @@ lvim.keys.visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
 -- Smarter yank
 lvim.keys.visual_mode["Y"] = "y$"
 
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+keymap("i", "jj", "<Esc>", opts) -- remap escape
+keymap("i", "<C-b>", "<Esc>^i", opts) -- beginning of line
+keymap("i", "<C-e>", "<End>", opts) -- end of line
 -- Options
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.relativenumber = true -- set relative numbered lines
