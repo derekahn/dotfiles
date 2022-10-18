@@ -96,103 +96,105 @@ lvim.plugins = {
   { "romgrk/nvim-treesitter-context" }, -- show code context
   { 'kevinhwang91/nvim-bqf', ft = 'qf' }, -- better quickfix window in Neovim, polish old quickfix window
 
+  { -- atom's one dark and light theme
+    "navarasu/onedark.nvim", config = function()
+      local ok, onedark = pcall(require, "onedark")
+      if ok then
+        onedark.setup {
+          style = 'darker'
+        }
+        onedark.load()
+      end
+    end
+  },
+
   { -- highlight arguments' definitions and usages, using treesitter
     "m-demare/hlargs.nvim",
     config = function()
-      require("hlargs").setup({
-        color = "#dd636e",
-        highlight = {},
-        excluded_filetypes = {},
-        paint_arg_declarations = true,
-        paint_arg_usages = true,
-        paint_catch_blocks = {
-          declarations = false,
-          usages = false,
-        },
-        extras = {
-          named_parameters = false,
-        },
-        hl_priority = 10000,
-      })
+      local ok, hlargs = pcall(require, "hlargs")
+      if ok then
+        hlargs.setup({
+          color = "#dd636e",
+          highlight = {},
+          excluded_filetypes = {},
+          paint_arg_declarations = true,
+          paint_arg_usages = true,
+          paint_catch_blocks = {
+            declarations = false,
+            usages = false,
+          },
+          extras = {
+            named_parameters = false,
+          },
+          hl_priority = 10000,
+        })
+      end
     end,
-  },
-
-  { -- indent guides for neovim
-    "lukas-reineke/indent-blankline.nvim",
-    setup = function()
-      vim.g.indentLine_color_term = "#bc73d2"
-    end,
-    config = function()
-      require("indent_blankline").setup({
-        use_treesitter = true,
-        show_first_indent_level = true,
-        show_current_context = true,
-        show_current_context_start = true,
-      })
-    end,
-  },
-
-  { -- atom's one dark and light theme
-    "navarasu/onedark.nvim",
-    config = "vim.cmd[[colorscheme onedark]]",
   },
 
   { -- highlight, list and search todo comments in your projects
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("todo-comments").setup()
+      local ok, todo = pcall(require, "todo-comments")
+      if ok then
+        todo.setup()
+      end
     end,
   },
 
   { -- highlight, list and search todo comments in your projects
     "simrat39/rust-tools.nvim",
     config = function()
-      local rt = require("rust-tools")
-      rt.setup({
-        server = {
-          standalone = true,
-          on_attach = function(_, bufnr)
-            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-          end,
-          ["rust-analyzer"] = {
-            checkOnSave = {
-              command = "clippy",
+      local ok, rt = pcall(require, "rust-tools")
+      if ok then
+        rt.setup({
+          server = {
+            standalone = true,
+            on_attach = function(_, bufnr)
+              vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+            end,
+            ["rust-analyzer"] = {
+              checkOnSave = {
+                command = "clippy",
+              },
             },
           },
-        },
-      })
+        })
+      end
     end,
   },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
-vim.api.nvim_create_autocmd("BufEnter", {
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd('TextYankPost', {
+  group = augroup('HighlightYank', {}),
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end,
+})
+
+autocmd("BufEnter", {
   pattern = { "*.json", "*.jsonc" },
   -- enable wrap mode for json files only
   command = "setlocal wrap",
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+autocmd("BufWritePre", {
   pattern = { "*.go" },
   -- enable wrap mode for json files only
   command = "silent! lua require('go.format').goimport()",
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
+autocmd("BufEnter", {
   pattern = { "*.md" },
   -- enable wrap mode for json files only
   command = "silent! lua require('go.format').goimport()",
 })
-
--- lvim.autocommands = {
---   {
---     "BufWinEnter",
---     {
---       pattern = { "*.rs" },
---       callback = function()
---         vim.cmd([[setlocal tabstop=2 shiftwidth=2]])
---       end,
---     },
---   }
--- }
