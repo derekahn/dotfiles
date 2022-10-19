@@ -8,8 +8,8 @@ lvim.leader = "space"
 
 -- telescope shortcuts
 lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
-lvim.keys.normal_mode["<C-g>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
 lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers theme=dropdown previewer=false<cr>"
+lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
 lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
 
 -- cycle through buffers
