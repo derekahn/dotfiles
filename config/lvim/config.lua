@@ -193,6 +193,17 @@ lvim.plugins = {
       end
     end,
   },
+
+  { -- find and replace
+    "windwp/nvim-spectre",
+    event = "BufRead",
+    config = function()
+      local ok, spectre = pcall(require, "spectre")
+      if ok then
+        spectre.setup()
+      end
+    end,
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

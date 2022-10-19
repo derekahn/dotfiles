@@ -45,6 +45,7 @@ packages=(
   "fx"
   "fzf"
   "git-delta"
+  "gnu-sed"
   "golang"
   "httpie"
   "jsonlint"
