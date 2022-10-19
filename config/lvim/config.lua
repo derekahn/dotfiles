@@ -201,9 +201,3 @@ autocmd("BufWritePre", {
   -- enable wrap mode for json files only
   command = "silent! lua require('go.format').goimport()",
 })
-
-autocmd("BufEnter", {
-  pattern = { "*.md" },
-  -- enable wrap mode for json files only
-  command = "silent! lua require('go.format').goimport()",
-})
