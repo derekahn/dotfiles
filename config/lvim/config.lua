@@ -253,6 +253,29 @@ lvim.plugins = {
       end
     end,
   },
+
+  { -- orgmode for neovim
+    "nvim-neorg/neorg",
+    config = function()
+      local ok, neorg = pcall(require, "neorg")
+      if ok then
+        neorg.setup {
+          load = {
+            ["core.defaults"] = {},
+            ["core.norg.dirman"] = {
+              config = {
+                workspaces = {
+                  work = "~/notes/work",
+                  home = "~/notes/home",
+                }
+              }
+            }
+          }
+        }
+      end
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
