@@ -58,6 +58,7 @@ vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying me
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.relativenumber = true -- set relative numbered lines
 vim.opt.scrolloff = 8 -- attempts to center cursor
+vim.opt.showtabline = 0 -- never display page tab labels
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.timeoutlen = 200 -- determine the behavior when part of a key code sequence has been received by the
 vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to noticeable
