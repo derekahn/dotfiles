@@ -47,6 +47,12 @@ keymap("i", "jj", "<Esc>", opts) -- remap escape
 keymap("i", "<C-b>", "<Esc>^i", opts) -- beginning of line
 keymap("i", "<C-e>", "<End>", opts) -- end of line
 
+-- navigate within insert mode
+keymap("i", "<C-h>", "<Left>", opts) -- end of line
+keymap("i", "<C-l>", "<Right>", opts) -- end of line
+keymap("i", "<C-j>", "<Down>", opts) -- end of line
+keymap("i", "<C-k>", "<Up>", opts) -- end of line
+
 -- Options
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
