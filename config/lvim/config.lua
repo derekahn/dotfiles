@@ -76,6 +76,7 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
+-- Treesitter
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "css",
@@ -96,6 +97,23 @@ lvim.builtin.treesitter.ignore_install = {
 }
 
 lvim.builtin.treesitter.highlight.enabled = true
+
+
+-- lualine
+local components = require "lvim.core.lualine.components"
+
+lvim.builtin.lualine.sections = {
+  lualine_a = {
+    components.mode,
+  },
+  lualine_b = {
+    components.branch,
+    { "filename", path = 1 },
+  },
+  lualine_c = {
+    components.diff,
+  },
+}
 
 -- Additional Plugins
 lvim.plugins = {
