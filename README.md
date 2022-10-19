@@ -4,33 +4,29 @@ A portable environment for any 🍎 💻
 
 ## Examples 📸
 
-### Dashboard with tmux
+### Dashboard
 
-![dashboard](https://user-images.githubusercontent.com/5381156/195716396-89d62015-fe4b-4ee7-9fb4-7528aca2e768.png)
+![alpha](https://user-images.githubusercontent.com/5381156/196766122-8669cf89-a3c6-417c-a01a-b4ae62bddede.png)
 
-### Ctrl-p
+### With Tmux
 
-![ctrl-p](https://user-images.githubusercontent.com/5381156/195716386-f3054216-f14e-4a4b-beb9-f22670ccf71d.png)
+![tmux](https://user-images.githubusercontent.com/5381156/196766125-56ec796e-cd36-4238-b1f0-d0565091d2ab.png)
 
-### Ctrl-b
+### Which-key
 
-![ctrl-b](https://user-images.githubusercontent.com/5381156/195716398-4d074c5a-8ebf-48fe-b1a9-a947b8fb2034.png)
+![Which-key](https://user-images.githubusercontent.com/5381156/196766124-ecce1e11-17d5-42c1-881b-99667ac85f3e.png)
 
-### Ctrl-g
+### Spell Suggest
 
-![ctrl-g](https://user-images.githubusercontent.com/5381156/195716392-87e64630-a10d-4e3c-82e6-fef921d6e227.png)
+![spelling](https://user-images.githubusercontent.com/5381156/196766128-c89b51c4-a5fb-4e57-9c4f-778fe7526164.png)
 
-### Indentline highlighting
+### Buffer Explorer (ctrl-b)
 
-![Indentline](https://user-images.githubusercontent.com/5381156/195716394-d170f1ba-3744-47bf-8cc7-af4901036979.png)
+![ctrl-b](https://user-images.githubusercontent.com/5381156/196766120-15913074-2e1c-44e5-9e38-ac725d54d609.png)
 
-### Sidebar file explorer open
+### Fuzzy Find (ctrl-f)
 
-![tree](https://user-images.githubusercontent.com/5381156/195716390-e764d322-a9ae-489d-bd07-0f41ed2de3dd.png)
-
-### Whichkey
-
-![whichkey](https://user-images.githubusercontent.com/5381156/195716397-c6ca3588-c2a8-400f-8df1-3ac403f9f01d.png)
+![ctrl-f](https://user-images.githubusercontent.com/5381156/196766117-ca5c88e3-9e12-4970-b88f-3a948ee56fa9.png)
 
 ## Setup Iterm2
 
@@ -81,4 +77,4 @@ iTerm2 -> Preferences > Appearance > General
 curl -L https://gist.githubusercontent.com/derekahn/57717fa5301d24bcfb888a58178f5ab1/raw/35b0e55a5315449cf64abee40ba3c3cd37291c75/RectangleConfig.json -o ~/Documents/RectangleConfig.json
 ```
 
-![Rectangle Config](https://user-images.githubusercontent.com/5381156/196334107-2ed7adcd-ae8e-4560-9bd0-b59e7d49655c.png)
+![Rectangle Config](https://user-images.githubusercontent.com/5381156/196766181-fe51ad11-7767-4cec-9847-13958f41cfc9.png)
