@@ -69,6 +69,55 @@ lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Chec
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", "Save" }
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
+-- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
+local function getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
+end
+
+function GrepSelectionInBuffer()
+  local input = getVisualSelection()
+  require("telescope.builtin").current_buffer_fuzzy_find({ default_text = input })
+end
+
+function GrepSelection()
+  local input = getVisualSelection()
+  require("telescope.builtin").live_grep({ default_text = input })
+end
+
+function SpectreSelection()
+  local input = getVisualSelection()
+  require('spectre').open({ search_text = input })
+end
+
+lvim.builtin.which_key.vmappings["s"] = {
+  s = {
+    "<cmd>lua GrepSelectionInBuffer()<cr>",
+    "Search Selection in Buffer"
+  },
+  S = {
+    "<cmd>lua GrepSelection()<cr>",
+    "Search Selection"
+  },
+  p = {
+    "<cmd>lua require('spectre').open_file_search()<cr>",
+    "Search & Replace in current buffer"
+  },
+  r = {
+    "<cmd>lua SpectreSelection()<cr>",
+    "Search & Replace"
+  }
+}
+
+
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
