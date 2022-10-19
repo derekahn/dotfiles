@@ -67,6 +67,7 @@ vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to no
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", "Save" }
+lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
