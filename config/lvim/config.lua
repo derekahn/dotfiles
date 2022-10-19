@@ -6,6 +6,12 @@ lvim.colorscheme = "onedark"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
+-- telescope shortcuts
+lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
+lvim.keys.normal_mode["<C-g>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
+lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers theme=dropdown previewer=false<cr>"
+lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
+
 -- cycle through buffers
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
@@ -22,11 +28,6 @@ lvim.keys.normal_mode["¬"] = ":vertical resize -2<CR>"
 lvim.keys.normal_mode["˙"] = ":vertical resize +2<CR>"
 lvim.keys.normal_mode["<C-Left>"] = ":resize -2<CR>"
 lvim.keys.normal_mode["<C-Right>"] = ":resize +2<CR>"
-
--- telescope shortcuts (faster than which-key)
-lvim.keys.normal_mode["<C-p>"] = "<cmd>lua require('telescope.builtin').git_files()<cr>"
-lvim.keys.normal_mode["<C-g>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
-lvim.keys.normal_mode["<C-b>"] = "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>"
 
 -- move a line of text using mac option-key+j/k (mac)
 lvim.keys.visual_mode["∆"] = ":m'>+<cr>`<my`>mzgv`yo`z"
