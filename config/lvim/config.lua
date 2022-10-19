@@ -23,6 +23,9 @@ lvim.keys.normal_mode["˚"] = "mz:m-2<cr>`z"
 -- quick macro invocation without updating default register
 lvim.keys.normal_mode["Q"] = "@q"
 
+-- toggle vim.opt.colorcolumn = "80"
+lvim.keys.normal_mode["<S-t>"] = "<cmd>execute 'set colorcolumn=' . (&colorcolumn == '' ? '80' : '')<cr>"
+
 -- resize panes with option key + h/l
 lvim.keys.normal_mode["¬"] = ":vertical resize -2<CR>"
 lvim.keys.normal_mode["˙"] = ":vertical resize +2<CR>"
@@ -46,7 +49,6 @@ keymap("i", "<C-e>", "<End>", opts) -- end of line
 
 -- Options
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
-vim.opt.colorcolumn = "80" -- give a visible column guide
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.relativenumber = true -- set relative numbered lines
 vim.opt.scrolloff = 8 -- attempts to center cursor
