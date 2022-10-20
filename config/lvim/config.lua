@@ -13,8 +13,8 @@ lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
 lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
 
 -- cycle through buffers
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<cr>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<cr>"
 
 -- move lines up and down (mac)
 lvim.keys.normal_mode["∆"] = "mz:m+<cr>`z"
@@ -27,10 +27,10 @@ lvim.keys.normal_mode["Q"] = "@q"
 lvim.keys.normal_mode["<S-t>"] = "<cmd>execute 'set colorcolumn=' . (&colorcolumn == '' ? '80' : '')<cr>"
 
 -- resize panes with option key + h/l
-lvim.keys.normal_mode["¬"] = ":vertical resize -2<CR>"
-lvim.keys.normal_mode["˙"] = ":vertical resize +2<CR>"
-lvim.keys.normal_mode["<C-Left>"] = ":resize -2<CR>"
-lvim.keys.normal_mode["<C-Right>"] = ":resize +2<CR>"
+lvim.keys.normal_mode["¬"] = ":vertical resize -2<cr>"
+lvim.keys.normal_mode["˙"] = ":vertical resize +2<cr>"
+lvim.keys.normal_mode["<C-Left>"] = ":resize -2<cr>"
+lvim.keys.normal_mode["<C-Right>"] = ":resize +2<cr>"
 
 -- move a line of text using mac option-key+j/k (mac)
 lvim.keys.visual_mode["∆"] = ":m'>+<cr>`<my`>mzgv`yo`z"
@@ -66,7 +66,7 @@ vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to no
 -- Which-key bindings
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
-lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", "Save" }
+lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope bookmarks<cr>", "Save" }
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
