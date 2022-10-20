@@ -1,0 +1,9 @@
+{
+  "let mut": {
+    "prefix": "letm",
+    "body": [
+      "let mut ${1:pat} = ${2:expr};"
+    ],
+    "description": "let mut … = …;"
+  }
+}
