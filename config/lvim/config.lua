@@ -6,12 +6,6 @@ lvim.colorscheme = "onedark"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
--- telescope shortcuts
-lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
-lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers theme=dropdown previewer=false<cr>"
-lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
-lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
-
 -- cycle through buffers
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<cr>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<cr>"
@@ -48,6 +42,7 @@ keymap("i", "<C-b>", "<Esc>^i", opts) -- beginning of line
 keymap("i", "<C-e>", "<End>", opts) -- end of line
 
 -- navigate within insert mode
+keymap("i", "<C-f>", "<BS>", opts) -- end of line
 keymap("i", "<C-h>", "<Left>", opts) -- end of line
 keymap("i", "<C-l>", "<Right>", opts) -- end of line
 keymap("i", "<C-j>", "<Down>", opts) -- end of line
@@ -69,6 +64,14 @@ lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Chec
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope bookmarks<cr>", "Save" }
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
+
+-- Telescope
+lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
+lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers theme=dropdown previewer=false<cr>"
+lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
+lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
+
+lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git" }
 
 -- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
 local function getVisualSelection()
@@ -305,7 +308,7 @@ lvim.plugins = {
       end
     end,
     requires = "nvim-lua/plenary.nvim"
-  }
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
