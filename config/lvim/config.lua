@@ -67,6 +67,7 @@ vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to no
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", "Save" }
+lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope bookmarks<cr>", "Save" }
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
 -- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
@@ -250,6 +251,35 @@ lvim.plugins = {
       local ok, spectre = pcall(require, "spectre")
       if ok then
         spectre.setup()
+      end
+    end,
+  },
+
+  {
+    'dhruvmanila/telescope-bookmarks.nvim',
+    requires = {
+      'kkharji/sqlite.lua',
+    },
+    config = function()
+      local ok, telescope = pcall(require, "telescope")
+      if ok then
+        telescope.setup({
+          extensions = {
+            fzf = {
+              fuzzy = true, -- false will only do exact matching
+              override_generic_sorter = true, -- override the generic sorter
+              override_file_sorter = true, -- override the file sorter
+              case_mode = "smart_case", -- "ignore_case" or "respect_case"
+            },
+            bookmarks = {
+              debug = false,
+              firefox_profile_name = "dev-edition-default",
+              selected_browser = "firefox",
+              url_open_command = "open",
+            }
+          }
+        })
+        telescope.load_extension('bookmarks')
       end
     end,
   },
