@@ -33,6 +33,9 @@ lvim.keys.visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
 -- Smarter yank
 lvim.keys.visual_mode["Y"] = "y$"
 
+-- Don't yank on visual paste
+lvim.keys.visual_mode["p"] = '"_dP'
+
 -- Insert keymaps
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
@@ -62,12 +65,14 @@ vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to no
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
-lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope bookmarks<cr>", "Save" }
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+
+-- disable so we can use telescope
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
 -- Telescope
 lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
-lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers theme=dropdown previewer=false<cr>"
+lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers<cr>"
 lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
 lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
 
@@ -103,6 +108,7 @@ function SpectreSelection()
 end
 
 lvim.builtin.which_key.vmappings["s"] = {
+  name = "Find and Replace",
   s = {
     "<cmd>lua GrepSelectionInBuffer()<cr>",
     "Search Selection in Buffer"
