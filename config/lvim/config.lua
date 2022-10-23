@@ -26,6 +26,15 @@ lvim.keys.normal_mode["˙"] = ":vertical resize +2<cr>"
 lvim.keys.normal_mode["<C-Left>"] = ":resize -2<cr>"
 lvim.keys.normal_mode["<C-Right>"] = ":resize +2<cr>"
 
+-- LSP Saga
+lvim.keys.normal_mode["ga"] = ":Lspsaga code_action<cr>"
+lvim.keys.normal_mode["gp"] = ":Lspsaga peek_definition<cr>"
+lvim.keys.normal_mode["gh"] = ":Lspsaga lsp_finder<cr>"
+lvim.keys.normal_mode["gR"] = ":Lspsaga rename<cr>"
+lvim.keys.normal_mode["go"] = ":LSoutlineToggle<cr>"
+lvim.keys.normal_mode["gj"] = ":Lspsaga diagnostic_jump_prev<cr>"
+lvim.keys.normal_mode["gk"] = ":Lspsaga diagnostic_jump_next<cr>"
+
 -- move a line of text using mac option-key+j/k (mac)
 lvim.keys.visual_mode["∆"] = ":m'>+<cr>`<my`>mzgv`yo`z"
 lvim.keys.visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
@@ -58,7 +67,15 @@ vim.opt.timeoutlen = 200 -- determine the behavior when part of a key code seque
 vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to noticeable (default 100)
 vim.opt.autoindent = true -- autoindents
 
--- Which-key bindings
+-- Telescope
+lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
+lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers<cr>"
+lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
+lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
+
+lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git" }
+
+-- Which-key
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
@@ -67,13 +84,6 @@ lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope bookmarks<cr>", "Brows
 -- disable so we can use telescope
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
--- Telescope
-lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
-lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers<cr>"
-lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
-lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
-
-lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git" }
 
 -- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
 local function getVisualSelection()
@@ -319,6 +329,17 @@ lvim.plugins = {
       vim.fn["mkdp#util#install"]()
     end,
   },
+
+  { -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      local ok, saga = pcall(require, "lspsaga")
+      if ok then
+        saga.init_lsp_saga()
+      end
+    end,
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
