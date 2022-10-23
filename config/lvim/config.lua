@@ -315,6 +315,13 @@ lvim.plugins = {
     end,
     requires = "nvim-lua/plenary.nvim"
   },
+
+  { -- markdown preview plugin for (neo)vim
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
