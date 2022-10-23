@@ -336,7 +336,12 @@ lvim.plugins = {
     config = function()
       local ok, saga = pcall(require, "lspsaga")
       if ok then
-        saga.init_lsp_saga()
+        saga.init_lsp_saga({
+          code_action_lightbulb = {
+            enable = false,
+            enable_in_insert = false,
+          },
+        })
       end
     end,
   }
