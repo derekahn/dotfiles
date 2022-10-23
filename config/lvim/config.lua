@@ -104,7 +104,7 @@ end
 
 function SpectreSelection()
   local input = getVisualSelection()
-  require('spectre').open({ search_text = input })
+  require("spectre").open({ search_text = input })
 end
 
 lvim.builtin.which_key.vmappings["s"] = {
@@ -182,14 +182,14 @@ lvim.plugins = {
   { "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
   { "tpope/vim-abolish" }, -- case coercion (!lua)
   { "romgrk/nvim-treesitter-context" }, -- show code context
-  { 'kevinhwang91/nvim-bqf', ft = 'qf' }, -- better quickfix window in Neovim, polish old quickfix window
+  { "kevinhwang91/nvim-bqf", ft = "qf" }, -- better quickfix window in Neovim, polish old quickfix windo
 
   { -- atom's one dark and light theme
     "navarasu/onedark.nvim", config = function()
       local ok, onedark = pcall(require, "onedark")
       if ok then
         onedark.setup {
-          style = 'darker'
+          style = "darker"
         }
         onedark.load()
       end
@@ -264,10 +264,10 @@ lvim.plugins = {
     end,
   },
 
-  {
-    'dhruvmanila/telescope-bookmarks.nvim',
+  { -- A Neovim Telescope extension to open your browser bookmarks right from the editor
+    "dhruvmanila/telescope-bookmarks.nvim",
     requires = {
-      'kkharji/sqlite.lua',
+      "kkharji/sqlite.lua",
     },
     config = function()
       local ok, telescope = pcall(require, "telescope")
@@ -288,7 +288,7 @@ lvim.plugins = {
             }
           }
         })
-        telescope.load_extension('bookmarks')
+        telescope.load_extension("bookmarks")
       end
     end,
   },
@@ -321,12 +321,12 @@ lvim.plugins = {
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd('TextYankPost', {
-  group = augroup('HighlightYank', {}),
-  pattern = '*',
+autocmd("TextYankPost", {
+  group = augroup("HighlightYank", {}),
+  pattern = "*",
   callback = function()
     vim.highlight.on_yank({
-      higroup = 'IncSearch',
+      higroup = "IncSearch",
       timeout = 40,
     })
   end,
