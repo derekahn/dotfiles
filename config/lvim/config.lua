@@ -34,7 +34,7 @@ lvim.keys.visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
 lvim.keys.visual_mode["Y"] = "y$"
 
 -- Don't yank on visual paste
-lvim.keys.visual_mode["p"] = '"_dP'
+-- lvim.keys.visual_mode["p"] = '"_dP'
 
 -- Insert keymaps
 local opts = { noremap = true, silent = true }
@@ -52,14 +52,11 @@ keymap("i", "<C-j>", "<Down>", opts) -- end of line
 keymap("i", "<C-k>", "<Up>", opts) -- end of line
 
 -- Options
-vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
-vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.relativenumber = true -- set relative numbered lines
-vim.opt.scrolloff = 8 -- attempts to center cursor
-vim.opt.showtabline = 0 -- never display page tab labels
-vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 200 -- determine the behavior when part of a key code sequence has been received by the
-vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to noticeable
+vim.opt.showtabline = 0 -- never display page tab labels (default 2)
+vim.opt.timeoutlen = 200 -- determine the behavior when part of a key code sequence has been received by the (default 1000);
+vim.opt.updatetime = 50 -- shorten delay; (default is 4000 ms = 4 s) leads to noticeable (default 100)
+vim.opt.autoindent = true -- autoindents
 
 -- Which-key bindings
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
