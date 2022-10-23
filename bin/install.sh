@@ -48,6 +48,7 @@ packages=(
   "gnu-sed"
   "golang"
   "httpie"
+  "iina"
   "jsonlint"
   "kube-score/tap/kube-score"
   "lazygit"
