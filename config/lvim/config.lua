@@ -70,12 +70,12 @@ vim.opt.autoindent = true -- autoindents
 -- Telescope
 lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
 lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers<cr>"
-lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep theme=ivy<cr>"
 lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
 
 lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git" }
 
 -- Which-key
+lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find text" }
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
