@@ -63,7 +63,6 @@ packages=(
   "ranger"
   "reattach-to-user-namespace"
   "ripgrep"
-  "rust"
   "rust-analyzer"
   "rustfmt"
   "starship"
@@ -137,6 +136,12 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 echo "Installing 🐹 go tools: godoc, vet"
 go get golang.org/x/tools/cmd/godoc
 echo "Tools installed. For more information visit https://golang.org/doc/code.html"
+
+echo "---------------------------------------------------------"
+echo "$(tput setaf 2)🏠: Installing 🦀 rust things.$(tput sgr 0)"
+echo "---------------------------------------------------------"
+
+curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Manually installing zsh-autosuggestions.$(tput sgr 0)"
