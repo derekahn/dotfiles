@@ -81,7 +81,8 @@ lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
-lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+lvim.builtin.which_key.mappings["sB"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>SymbolsOutline<cr>", "Symbols" }
 lvim.builtin.which_key.mappings["u"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }
 
 -- disable so we can use telescope
@@ -215,6 +216,14 @@ lvim.plugins = {
       end
     end,
   },
+
+  { -- a tree like view for symbols in Neovim using the Language Server Protocol
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require('symbols-outline').setup()
+    end
+  },
+
   { -- atom's one dark and light theme
     "navarasu/onedark.nvim", config = function()
       local ok, onedark = pcall(require, "onedark")
