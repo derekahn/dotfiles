@@ -7,8 +7,8 @@ lvim.colorscheme = "onedark"
 lvim.leader = "space"
 
 -- cycle through buffers
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<cr>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<cr>"
+lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
+lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 
 -- move lines up and down (mac)
 lvim.keys.normal_mode["∆"] = "mz:m+<cr>`z"
@@ -21,23 +21,22 @@ lvim.keys.normal_mode["Q"] = "@q"
 lvim.keys.normal_mode["<S-t>"] = "<cmd>execute 'set colorcolumn=' . (&colorcolumn == '' ? '80' : '')<cr>"
 
 -- resize panes with option key + h/l
-lvim.keys.normal_mode["¬"] = ":vertical resize -2<cr>"
-lvim.keys.normal_mode["˙"] = ":vertical resize +2<cr>"
-lvim.keys.normal_mode["<C-Left>"] = ":resize -2<cr>"
-lvim.keys.normal_mode["<C-Right>"] = ":resize +2<cr>"
+lvim.keys.normal_mode["¬"] = "<cmd>vertical resize -2<cr>"
+lvim.keys.normal_mode["˙"] = "<cmd>vertical resize +2<cr>"
+lvim.keys.normal_mode["<C-Left>"] = "<cmd>resize -2<cr>"
+lvim.keys.normal_mode["<C-Right>"] = "<cmd>resize +2<cr>"
 
 -- LSP Saga
-lvim.keys.normal_mode["ga"] = ":Lspsaga code_action<cr>"
-lvim.keys.normal_mode["gp"] = ":Lspsaga peek_definition<cr>"
-lvim.keys.normal_mode["gh"] = ":Lspsaga lsp_finder<cr>"
-lvim.keys.normal_mode["gR"] = ":Lspsaga rename<cr>"
-lvim.keys.normal_mode["go"] = ":LSoutlineToggle<cr>"
-lvim.keys.normal_mode["gj"] = ":Lspsaga diagnostic_jump_prev<cr>"
-lvim.keys.normal_mode["gk"] = ":Lspsaga diagnostic_jump_next<cr>"
+lvim.keys.normal_mode["ga"] = "<cmd>Lspsaga code_action<cr>"
+lvim.keys.normal_mode["gp"] = "<cmd>Lspsaga peek_definition<cr>"
+lvim.keys.normal_mode["gh"] = "<cmd>Lspsaga lsp_finder<cr>"
+lvim.keys.normal_mode["gR"] = "<cmd>Lspsaga rename<cr>"
+lvim.keys.normal_mode["gj"] = "<cmd>Lspsaga diagnostic_jump_prev<cr>"
+lvim.keys.normal_mode["gk"] = "<cmd>Lspsaga diagnostic_jump_next<cr>"
 
 -- move a line of text using mac option-key+j/k (mac)
-lvim.keys.visual_mode["∆"] = ":m'>+<cr>`<my`>mzgv`yo`z"
-lvim.keys.visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
+lvim.keys.visual_mode["∆"] = "<cmd>m'>+<cr>`<my`>mzgv`yo`z"
+lvim.keys.visual_mode["˚"] = "<cmd>m'<-2<cr>`>my`<mzgv`yo`z"
 
 -- Smarter yank
 lvim.keys.visual_mode["Y"] = "y$"
