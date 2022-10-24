@@ -82,6 +82,7 @@ lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
 lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+lvim.builtin.which_key.mappings["u"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }
 
 -- disable so we can use telescope
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
@@ -205,6 +206,15 @@ lvim.plugins = {
   { "romgrk/nvim-treesitter-context" }, -- show code context
   { "kevinhwang91/nvim-bqf", ft = "qf" }, -- better quickfix window in Neovim, polish old quickfix windo
 
+  { --  neovim undotree
+    "jiaoshijie/undotree",
+    config = function()
+      local ok, undotree = pcall(require, "undotree")
+      if ok then
+        undotree.setup()
+      end
+    end,
+  },
   { -- atom's one dark and light theme
     "navarasu/onedark.nvim", config = function()
       local ok, onedark = pcall(require, "onedark")
