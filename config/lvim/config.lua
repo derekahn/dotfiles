@@ -75,6 +75,8 @@ lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
 lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git" }
 
 -- Which-key
+lvim.builtin.which_key.mappings["a"] = { "<cmd>ccl<cr>", "Close Quickfix" }
+lvim.builtin.which_key.mappings[";"] = { "<cmd>copen<cr>", "Open Quickfix" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find text" }
 lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
 lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
