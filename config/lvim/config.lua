@@ -49,15 +49,18 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 keymap("i", "jj", "<Esc>", opts) -- remap escape
-keymap("i", "<C-b>", "<Esc>^i", opts) -- beginning of line
-keymap("i", "<C-e>", "<End>", opts) -- end of line
 
 -- navigate within insert mode
-keymap("i", "<C-f>", "<BS>", opts) -- end of line
-keymap("i", "<C-h>", "<Left>", opts) -- end of line
-keymap("i", "<C-l>", "<Right>", opts) -- end of line
-keymap("i", "<C-j>", "<Down>", opts) -- end of line
-keymap("i", "<C-k>", "<Up>", opts) -- end of line
+-- keymap("i", "<C-b>", "<Esc>^i", opts) -- beginning of line
+-- keymap("i", "<C-e>", "<End>", opts) -- end of line
+-- keymap("i", "<C-f>", "<BS>", opts) -- backspace one char
+
+keymap("i", "<C-l>", "<Right>", opts) -- right one char
+-- keymap("i", "<C-h>", "<Left>", opts) -- left one char
+-- keymap("i", "<C-j>", "<Down>", opts) -- up one line
+-- keymap("i", "<C-k>", "<Up>", opts) -- down one line
+
+
 
 -- Options
 vim.opt.relativenumber = true -- set relative numbered lines
