@@ -86,6 +86,18 @@ lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope bookmarks<cr>", "Brows
 -- disable so we can use telescope
 lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
+lvim.builtin.which_key.mappings["r"] = {
+  name = "Rust",
+  i = { "<cmd>lua require('rust-tools').inlay_hints.set()<cr>", "Inlay Hints" },
+  r = { "<cmd>RustRun<cr>", "Run Buffer" },
+  a = { "<cmd>RustEmitAsm<cr>", "Show Assembly" },
+  R = { "<cmd>lua require('rust-tools').runnables.runnables()<cr>", "Runnables" },
+  e = { "<cmd>lua require('rust-tools').expand_macro.expand_macro()<cr>", "Expand Macros" },
+  o = { "<cmd>lua require('rust-tools').open_cargo_toml.open_cargo_toml()<cr>", "Open cargo.toml" },
+  p = { "<cmd>lua require('rust-tools').parent_module.parent_module()<cr>", "Open Parent Module" },
+  S = { "<cmd>RustStartStandaloneServerForBuffer<cr>", "Standalone Server" },
+}
+
 
 -- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
 local function getVisualSelection()
@@ -248,9 +260,6 @@ lvim.plugins = {
         rt.setup({
           server = {
             standalone = true,
-            on_attach = function(_, bufnr)
-              vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-            end,
             ["rust-analyzer"] = {
               checkOnSave = {
                 command = "clippy",
