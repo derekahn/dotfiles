@@ -1,16 +1,12 @@
 {
   "let mut": {
     "prefix": "letm",
-    "body": [
-      "let mut ${1:pat} = ${2:expr};"
-    ],
+    "body": ["let mut ${1:pat} = ${2:expr};"],
     "description": "let mut … = …;"
   },
   "println": {
     "prefix": "pn",
-    "body": [
-      "println!(\"${1}\");"
-    ],
+    "body": ["println!(\"${1}\");"],
     "description": "println!(…);"
   },
   "method": {
@@ -21,5 +17,10 @@
       "}"
     ],
     "description": "method"
+  },
+  "String::from": {
+    "prefix": "st",
+    "body": ["String::from(\"${1}\")${2}"],
+    "description": "String::from()"
   }
 }
