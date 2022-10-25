@@ -12,5 +12,14 @@
       "println!(\"${1}\");"
     ],
     "description": "println!(…);"
+  },
+  "method": {
+    "prefix": "meth",
+    "body": [
+      "fn ${1:name}(${2:&self}) -> ${3:RetType} {",
+      "    ${4:unimplemented!();}",
+      "}"
+    ],
+    "description": "method"
   }
 }
