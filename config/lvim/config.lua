@@ -400,8 +400,13 @@ autocmd("BufEnter", {
   command = "setlocal wrap",
 })
 
-autocmd("BufWritePre", {
-  pattern = { "*.go" },
-  -- enable wrap mode for json files only
-  command = "silent! lua require('go.format').goimport()",
+-- Formatting
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+  {
+    command = "prettier",
+    filetypes = { "typescript", "typescriptreact", "json", "markdown" },
+  },
+  { command = "goimports", filetypes = { "go" } },
+  { command = "stylua", filetypes = { "lua" } },
 })
