@@ -64,13 +64,12 @@ packages=(
   "ranger"
   "reattach-to-user-namespace"
   "ripgrep"
-  "rust-analyzer"
-  "rustfmt"
   "starship"
   "staticcheck"
   "stylua"
   "syntaqx/tap/serve"
   "tmux"
+  "tmuxinator"
   "tokei"
   "toshimaru/nyan/nyan"
   "volta"
@@ -144,6 +143,14 @@ echo "---------------------------------------------------------"
 
 curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
 
+rustup component add rust-src
+rustup component add rustfmt
+rustup component add rust-analyzer
+
+# this installs to a different path so may require, see https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
+ln /home/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer /home/.cargo/bin
+
+ln $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/bin/rust-analyzer $HOME/.cargo/bin
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Manually installing zsh-autosuggestions.$(tput sgr 0)"
 echo "---------------------------------------------------------"
