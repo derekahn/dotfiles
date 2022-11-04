@@ -72,23 +72,30 @@ lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
 lvim.keys.normal_mode["<C-b>"] = "<cmd>Telescope buffers<cr>"
 lvim.keys.normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
 
+-- lvim.builtin.telescope.pickers.find_files.previewer = nil
 lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git" }
 
+lvim.builtin.telescope.on_config_done = function(telescope)
+	pcall(telescope.load_extension, "file_browser")
+	pcall(telescope.load_extension, "bookmarks")
+end
+
 -- Which-key
-lvim.builtin.which_key.mappings["a"] = { "<cmd>ccl<cr>", "Close Quickfix" }
-lvim.builtin.which_key.mappings[";"] = { "<cmd>copen<cr>", "Open Quickfix" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find text" }
-lvim.builtin.which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
-lvim.builtin.which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
-lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
-lvim.builtin.which_key.mappings["sB"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
-lvim.builtin.which_key.mappings["ss"] = { "<cmd>SymbolsOutline<cr>", "Symbols" }
-lvim.builtin.which_key.mappings["u"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }
+local which_key = lvim.builtin.which_key
+which_key.mappings["a"] = { "<cmd>ccl<cr>", "Close Quickfix" }
+which_key.mappings[";"] = { "<cmd>copen<cr>", "Open Quickfix" }
+which_key.mappings["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find text" }
+which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
+which_key.mappings["S"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
+which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
+which_key.mappings["sB"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+which_key.mappings["ss"] = { "<cmd>SymbolsOutline<cr>", "Symbols" }
+which_key.mappings["u"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }
 
 -- disable so we can use telescope
-lvim.builtin.which_key.setup.plugins.spelling.enabled = false
+which_key.setup.plugins.spelling.enabled = false
 
-lvim.builtin.which_key.mappings["r"] = {
+which_key.mappings["r"] = {
 	name = "Rust",
 	i = { "<cmd>lua require('rust-tools').inlay_hints.set()<cr>", "Inlay Hints" },
 	r = { "<cmd>RustRun<cr>", "Run Buffer" },
@@ -152,7 +159,6 @@ lvim.builtin.which_key.vmappings["s"] = {
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
@@ -260,7 +266,6 @@ lvim.plugins = {
 
 	{ -- highlight, list and search todo comments in your projects
 		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			local ok, todo = pcall(require, "todo-comments")
 			if ok then
@@ -309,12 +314,6 @@ lvim.plugins = {
 			if ok then
 				telescope.setup({
 					extensions = {
-						fzf = {
-							fuzzy = true, -- false will only do exact matching
-							override_generic_sorter = true, -- override the generic sorter
-							override_file_sorter = true, -- override the file sorter
-							case_mode = "smart_case", -- "ignore_case" or "respect_case"
-						},
 						bookmarks = {
 							debug = false,
 							firefox_profile_name = "dev-edition-default",
@@ -323,7 +322,6 @@ lvim.plugins = {
 						},
 					},
 				})
-				telescope.load_extension("bookmarks")
 			end
 		end,
 	},
@@ -348,7 +346,6 @@ lvim.plugins = {
 				})
 			end
 		end,
-		requires = "nvim-lua/plenary.nvim",
 	},
 
 	{ -- markdown preview plugin for (neo)vim
