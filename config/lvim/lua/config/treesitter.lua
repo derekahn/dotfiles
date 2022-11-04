@@ -1,5 +1,3 @@
--- if you don't want all the parsers change this to a table of the ones you want
-
 local treesitter = lvim.builtin.treesitter
 
 treesitter.ensure_installed = {
