@@ -22,5 +22,20 @@
     "prefix": "st",
     "body": ["String::from(\"${1}\")${2}"],
     "description": "String::from()"
+  },
+  "<T>": {
+    "prefix": "tt",
+    "body": ["<${1:T}>"],
+    "description": "Generic instantion"
+  },
+  "trait method": {
+    "prefix": "sig",
+    "body": ["fn ${1:name}(${2:&self}) -> ${3:RetType}; "],
+    "description": "Method signature"
+  },
+  "cfg": {
+    "prefix": "cfgt",
+    "body": ["#[cfg(${1:test})]"],
+    "description": "cfg attribute"
   }
 }
