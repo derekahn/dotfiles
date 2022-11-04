@@ -3,6 +3,22 @@ local telescope = lvim.builtin.telescope
 telescope.defaults.file_ignore_patterns = { ".git" }
 
 telescope.on_config_done = function(ts)
+	-- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
+	local ok, actions = pcall(require, "telescope.actions")
+	if ok then
+		local mappings = telescope.defaults.mappings
+
+		-- for input mode
+		mappings.i["<C-j>"] = actions.move_selection_next
+		mappings.i["<C-k>"] = actions.move_selection_previous
+		mappings.i["<C-n>"] = actions.cycle_history_next
+		mappings.i["<C-p>"] = actions.cycle_history_prev
+
+		-- for normal mode
+		mappings.n["<C-j>"] = actions.move_selection_next
+		mappings.n["<C-k>"] = actions.move_selection_previous
+	end
+
 	pcall(ts.load_extension, "file_browser")
 	pcall(ts.load_extension, "bookmarks")
 end
