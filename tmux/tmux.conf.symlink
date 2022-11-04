@@ -49,6 +49,8 @@ set-option -g allow-rename off
 # shorten command delay
 set -sg escape-time 1
 
+# for termguicolors
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 ##############################
 # => KEY BINDINGS

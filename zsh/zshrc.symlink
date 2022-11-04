@@ -25,13 +25,11 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # Nvim
 # ---------------
-alias vim='lvim'
+alias nvim='lvim'
 export EDITOR='lvim'
 
 # Syntax highlighter
 # ---------------
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Command history
-# ---------------
-SAVEHIST=10000
+alias tmux="TERM=screen-256color-bce tmux"
