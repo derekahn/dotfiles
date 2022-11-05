@@ -23,16 +23,17 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 local sources = {
-	"plugins",
-
-	"core.autocmds",
-	"core.keymaps",
 	"core.options",
+	"core.keymaps",
+	"core.autocmds",
 
 	"config/lualine",
 	"config/telescope",
+	"config/indentlines",
 	"config/treesitter",
 	"config/which_key",
+
+	"plugins",
 }
 
 for _, source in ipairs(sources) do
