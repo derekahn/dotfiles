@@ -1,0 +1,36 @@
+[diff]
+  tool = difftastic
+
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+  difftool = true
+
+[alias]
+  dft = difftool
+  cane = commit --amend --no-edit
+
+[branch]
+  autosetuprebase = always
+
+[color]
+  diff = true
+  status = true
+  branch = true
+  interactive = true
+  ui = true
+
+[commit]
+  algorithm = minimal
+  renames = copies
+  tool = code
+
+[difftool "code"]
+  cmd = "code --wait --diff $LOCAL $REMOTE"
+
+[log]
+  date = relative
