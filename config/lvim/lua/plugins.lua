@@ -99,28 +99,6 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- A Neovim Telescope extension to open your browser bookmarks right from the editor
-		"dhruvmanila/telescope-bookmarks.nvim",
-		requires = {
-			"kkharji/sqlite.lua",
-		},
-		config = function()
-			local ok, telescope = pcall(require, "telescope")
-			if ok then
-				telescope.setup({
-					extensions = {
-						bookmarks = {
-							debug = false,
-							firefox_profile_name = "dev-edition-default",
-							selected_browser = "firefox",
-							url_open_command = "open",
-						},
-					},
-				})
-			end
-		end,
-	},
-
 	{ -- orgmode for neovim
 		"nvim-neorg/neorg",
 		config = function()
@@ -162,6 +140,35 @@ lvim.plugins = {
 						enable_in_insert = false,
 					},
 				})
+			end
+		end,
+	},
+
+	{ -- A Neovim Telescope extension to open your browser bookmarks right from the editor
+		"dhruvmanila/telescope-bookmarks.nvim",
+		requires = {
+			"kkharji/sqlite.lua",
+		},
+		config = function()
+			local ok, telescope = pcall(require, "telescope")
+			if ok then
+				telescope.setup({
+					extensions = {
+						fzf = {
+							fuzzy = true, -- false will only do exact matching
+							override_generic_sorter = true, -- override the generic sorter
+							override_file_sorter = true, -- override the file sorter
+							case_mode = "smart_case", -- "ignore_case" or "respect_case"
+						},
+						bookmarks = {
+							debug = false,
+							firefox_profile_name = "dev-edition-default",
+							selected_browser = "firefox",
+							url_open_command = "open",
+						},
+					},
+				})
+				telescope.load_extension("bookmarks")
 			end
 		end,
 	},
