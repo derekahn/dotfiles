@@ -92,7 +92,16 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- find and replace
+	{ -- helps managing crates.io dependencies
+		"saecki/crates.nvim",
+		event = { "BufRead Cargo.toml" },
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("crates").setup()
+		end,
+	},
+
+	{ -- find and replace in visual mode
 		"windwp/nvim-spectre",
 		event = "BufRead",
 		config = function()
