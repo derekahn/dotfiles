@@ -97,7 +97,10 @@ lvim.plugins = {
 		event = { "BufRead Cargo.toml" },
 		requires = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("crates").setup()
+			local ok, crates = pcall(require, "crates")
+			if ok then
+				crates.setup()
+			end
 		end,
 	},
 
