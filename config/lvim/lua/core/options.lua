@@ -7,7 +7,6 @@ opt.relativenumber = true -- show relative distance between rows
 opt.showtabline = 0 -- never display page tab labels (default 2)
 opt.syntax = "enable" -- enable syntax highlighting
 opt.colorcolumn = "99999" -- fixes indentline for now
-opt.list = true -- shows trailing indentions and spaces
 
 -----------------------------------------------------------
 -- Memory, CPU
