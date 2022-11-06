@@ -27,9 +27,10 @@ local sources = {
 	"core.keymaps",
 	"core.autocmds",
 
+	"config/indentlines",
+	"config/lspkind",
 	"config/lualine",
 	"config/telescope",
-	"config/indentlines",
 	"config/treesitter",
 	"config/which_key",
 

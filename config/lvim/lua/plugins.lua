@@ -1,9 +1,10 @@
 lvim.plugins = {
 	{ "christoomey/vim-tmux-navigator" }, -- seamless navigation between tmux panes and vim splits
-	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
-	{ "tpope/vim-abolish" }, -- case coercion (!lua)
-	{ "romgrk/nvim-treesitter-context" }, -- show code context
 	{ "kevinhwang91/nvim-bqf", ft = "qf" }, -- better quickfix window in Neovim, polish old quickfix windo
+	{ "onsails/lspkind-nvim" }, -- vscode-like pictograms for neovim lsp completion items
+	{ "romgrk/nvim-treesitter-context" }, -- show code context
+	{ "tpope/vim-abolish" }, -- case coercion (!lua)
+	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
 
 	{ --  neovim undotree
 		"jiaoshijie/undotree",
@@ -12,13 +13,6 @@ lvim.plugins = {
 			if ok then
 				undotree.setup()
 			end
-		end,
-	},
-
-	{ -- a tree like view for symbols in Neovim using the Language Server Protocol
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			require("symbols-outline").setup()
 		end,
 	},
 
@@ -31,6 +25,16 @@ lvim.plugins = {
 					style = "darker",
 				})
 				onedark.load()
+			end
+		end,
+	},
+
+	{ -- a tree like view for symbols in Neovim using the Language Server Protocol
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			local ok, symbols_outline = pcall(require, "symbols-outline")
+			if ok then
+				symbols_outline.setup()
 			end
 		end,
 	},
@@ -99,28 +103,6 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- orgmode for neovim
-		"nvim-neorg/neorg",
-		config = function()
-			local ok, neorg = pcall(require, "neorg")
-			if ok then
-				neorg.setup({
-					load = {
-						["core.defaults"] = {},
-						["core.norg.dirman"] = {
-							config = {
-								workspaces = {
-									work = "~/notes/work",
-									home = "~/notes/home",
-								},
-							},
-						},
-					},
-				})
-			end
-		end,
-	},
-
 	{ -- markdown preview plugin for (neo)vim
 		"iamcco/markdown-preview.nvim",
 		run = function()
@@ -172,4 +154,44 @@ lvim.plugins = {
 			end
 		end,
 	},
+
+	-- TODO: testing these plugins
+
+	-- { -- orgmode for neovim
+	-- 	"nvim-neorg/neorg",
+	-- 	after = "nvim-treesitter",
+	-- 	config = function()
+	-- 		local ok, neorg = pcall(require, "neorg")
+	-- 		if ok then
+	-- 			neorg.setup({
+	-- 				load = {
+	-- 					["core.defaults"] = {},
+	-- 					["core.norg.dirman"] = {
+	-- 						config = {
+	-- 							workspaces = {
+	-- 								work = "~/notes/work",
+	-- 								home = "~/notes/home",
+	-- 							},
+	-- 						},
+	-- 					},
+	-- 				},
+	-- 			})
+	-- 		end
+	-- 	end,
+	-- },
+
+	-- { -- run lines/blocs of code (independently of the rest of the file)
+	-- 	"michaelb/sniprun",
+	-- 	run = "bash ./install.sh",
+	-- 	config = function()
+	-- 		local ok, sniprun = pcall(require, "sniprun")
+	-- 		if ok then
+	-- 			sniprun.setup({
+	-- 				display = {
+	-- 					"Terminal",
+	-- 				},
+	-- 			})
+	-- 		end
+	-- 	end,
+	-- },
 }
