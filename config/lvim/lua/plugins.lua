@@ -1,9 +1,8 @@
 lvim.plugins = {
-	{ "christoomey/vim-tmux-navigator" }, -- seamless navigation between tmux panes and vim splits
+	{ "christoomey/vim-tmux-navigator" }, -- seamless navigation between tmux panes and vim splits (!lua)
 	{ "kevinhwang91/nvim-bqf", ft = "qf" }, -- better quickfix window in Neovim, polish old quickfix windo
 	{ "onsails/lspkind-nvim" }, -- vscode-like pictograms for neovim lsp completion items
 	{ "romgrk/nvim-treesitter-context" }, -- show code context
-	{ "tpope/vim-abolish" }, -- case coercion (!lua)
 	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
 
 	{ -- neovim undotree with git diff
@@ -95,7 +94,9 @@ lvim.plugins = {
 	{ -- helps managing crates.io dependencies
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
 			local ok, crates = pcall(require, "crates")
 			if ok then
