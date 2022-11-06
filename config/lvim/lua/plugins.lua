@@ -6,7 +6,7 @@ lvim.plugins = {
 	{ "tpope/vim-abolish" }, -- case coercion (!lua)
 	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
 
-	{ --  neovim undotree
+	{ -- neovim undotree with git diff
 		"jiaoshijie/undotree",
 		config = function()
 			local ok, undotree = pcall(require, "undotree")
@@ -16,7 +16,7 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- atom's one dark and light theme
+	{ -- atom's one dark theme
 		"navarasu/onedark.nvim",
 		config = function()
 			local ok, onedark = pcall(require, "onedark")
@@ -29,7 +29,7 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- a tree like view for symbols in Neovim using the Language Server Protocol
+	{ -- tree like view for symbols in Neovim using the Language Server Protocol
 		"simrat39/symbols-outline.nvim",
 		config = function()
 			local ok, symbols_outline = pcall(require, "symbols-outline")
@@ -73,7 +73,7 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- highlight, list and search todo comments in your projects
+	{ -- tools for better development in rust using neovim's builtin lsp
 		"simrat39/rust-tools.nvim",
 		config = function()
 			local ok, rt = pcall(require, "rust-tools")
@@ -112,14 +112,14 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- markdown preview plugin for (neo)vim
+	{ -- markdown preview
 		"iamcco/markdown-preview.nvim",
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
 
-	{ -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI
+	{ -- highly performant ui for lsp things
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		config = function()
@@ -135,7 +135,7 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- A Neovim Telescope extension to open your browser bookmarks right from the editor
+	{ -- telescope extension to open browser bookmarks
 		"dhruvmanila/telescope-bookmarks.nvim",
 		requires = {
 			"kkharji/sqlite.lua",
