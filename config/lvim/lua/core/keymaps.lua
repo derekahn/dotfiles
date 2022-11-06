@@ -34,8 +34,8 @@ normal_mode["gk"] = "<cmd>Lspsaga diagnostic_jump_next<cr>"
 local visual_mode = lvim.keys.visual_mode
 
 -- move a line of text using mac option-key+j/k (mac)
-visual_mode["∆"] = "<cmd>m'>+<cr>`<my`>mzgv`yo`z"
-visual_mode["˚"] = "<cmd>m'<-2<cr>`>my`<mzgv`yo`z"
+visual_mode["˚"] = ":m'<-2<cr>`>my`<mzgv`yo`z"
+visual_mode["∆"] = ":m'>+<cr>`<my`>mzgv`yo`z"
 
 -- Smarter yank
 visual_mode["Y"] = "y$"
