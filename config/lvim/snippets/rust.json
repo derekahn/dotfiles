@@ -37,5 +37,10 @@
     "prefix": "cfgt",
     "body": ["#[cfg(${1:test})]"],
     "description": "cfg attribute"
+  },
+  "ignore": {
+    "prefix": "ignore",
+    "body": ["#[ignore]"],
+    "description": "ignore attribute"
   }
 }
