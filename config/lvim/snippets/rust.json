@@ -18,6 +18,15 @@
     ],
     "description": "method"
   },
+  "public method": {
+    "prefix": "pmeth",
+    "body": [
+      "pub fn ${1:name}(${2:&self}) -> ${3:RetType} {",
+      "    ${4:unimplemented!();}",
+      "}"
+    ],
+    "description": "method"
+  },
   "String::from": {
     "prefix": "st",
     "body": ["String::from(\"${1}\")${2}"],
