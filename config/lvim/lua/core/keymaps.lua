@@ -17,16 +17,10 @@ normal_mode["Q"] = "@q"
 -- toggle vim.opt.colorcolumn = "80"
 normal_mode["<S-t>"] = "<cmd>execute 'set colorcolumn=' . (&colorcolumn == '' ? '80' : '')<cr>"
 
--- resize panes with option key + h/l
-normal_mode["¬"] = "<cmd>vertical resize -2<cr>"
-normal_mode["˙"] = "<cmd>vertical resize +2<cr>"
-normal_mode["<C-Left>"] = "<cmd>resize -2<cr>"
-normal_mode["<C-Right>"] = "<cmd>resize +2<cr>"
-
 -- LSP Saga
 normal_mode["ga"] = "<cmd>Lspsaga code_action<cr>"
 normal_mode["gp"] = "<cmd>Lspsaga peek_definition<cr>"
-normal_mode["gh"] = "<cmd>Lspsaga lsp_finder<cr>"
+normal_mode["gf"] = "<cmd>Lspsaga lsp_finder<cr>"
 normal_mode["gR"] = "<cmd>Lspsaga rename<cr>"
 normal_mode["gj"] = "<cmd>Lspsaga diagnostic_jump_prev<cr>"
 normal_mode["gk"] = "<cmd>Lspsaga diagnostic_jump_next<cr>"
