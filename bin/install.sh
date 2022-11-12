@@ -63,6 +63,7 @@ packages=(
   "python3"
   "ranger"
   "reattach-to-user-namespace"
+  "rga"
   "ripgrep"
   "starship"
   "staticcheck"
