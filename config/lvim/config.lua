@@ -23,25 +23,26 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 local sources = {
-	"core.options",
-	"core.keymaps",
-	"core.autocmds",
+  "core.options",
+  "core.keymaps",
+  "core.autocmds",
 
-	"config/indentlines",
-	"config/lspkind",
-	"config/lualine",
-	"config/telescope",
-	"config/treesitter",
-	"config/which_key",
-
-	"plugins",
   "config/hlargs",
+  "config/indentlines",
+  "config/lspkind",
+  "config/lualine",
   "config/null-ls",
+  "config/rust-tools",
+  "config/telescope",
+  "config/treesitter",
+  "config/which_key",
+
+  "plugins",
 }
 
 for _, source in ipairs(sources) do
-	local status_ok, fault = pcall(require, source)
-	if not status_ok then
-		error("Failed to load source " .. source .. "\n\n" .. fault)
-	end
+  local status_ok, fault = pcall(require, source)
+  if not status_ok then
+    error("Failed to load source " .. source .. "\n\n" .. fault)
+  end
 end
