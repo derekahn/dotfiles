@@ -25,8 +25,9 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # Nvim
 # ---------------
+alias vim='lvim'
 alias nvim='lvim'
-export EDITOR='nvim'
+export EDITOR='lvim'
 
 alias tmux="TERM=screen-256color-bce tmux"
 
