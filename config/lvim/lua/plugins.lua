@@ -4,6 +4,7 @@ lvim.plugins = {
 	{ "onsails/lspkind-nvim" }, -- vscode-like pictograms for neovim lsp completion items
 	{ "romgrk/nvim-treesitter-context" }, -- show code context
 	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
+  { "m-demare/hlargs.nvim" }, -- highlight arguments' definitions and usages, using treesitter
 
 	{ -- neovim undotree with git diff
 		"jiaoshijie/undotree",
@@ -38,29 +39,6 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- highlight arguments' definitions and usages, using treesitter
-		"m-demare/hlargs.nvim",
-		config = function()
-			local ok, hlargs = pcall(require, "hlargs")
-			if ok then
-				hlargs.setup({
-					color = "#dd636e",
-					highlight = {},
-					excluded_filetypes = {},
-					paint_arg_declarations = true,
-					paint_arg_usages = true,
-					paint_catch_blocks = {
-						declarations = false,
-						usages = false,
-					},
-					extras = {
-						named_parameters = false,
-					},
-					hl_priority = 10000,
-				})
-			end
-		end,
-	},
 
 	{ -- highlight, list and search todo comments in your projects
 		"folke/todo-comments.nvim",

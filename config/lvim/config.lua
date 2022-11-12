@@ -35,6 +35,7 @@ local sources = {
 	"config/which_key",
 
 	"plugins",
+  "config/hlargs",
   "config/null-ls",
 }
 
