@@ -35,6 +35,7 @@ local sources = {
 	"config/which_key",
 
 	"plugins",
+  "config/null-ls",
 }
 
 for _, source in ipairs(sources) do
