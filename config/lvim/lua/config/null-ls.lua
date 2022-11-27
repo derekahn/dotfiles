@@ -1,11 +1,31 @@
-local formatters = require("lvim.lsp.null-ls.formatters")
+local ok, formatters = pcall(require, "lvim.lsp.null-ls.formatters")
 
-formatters.setup({
-	{
-		command = "prettier",
-		filetypes = { "typescript", "typescriptreact", "json", "markdown" },
-	},
-	{ command = "goimports", filetypes = { "go" } },
-	{ command = "stylua", filetypes = { "lua" } },
-	{ command = "rustfmt", filetypes = { "rust" } },
-})
+if ok then
+	formatters.setup({
+		{ command = "black", filetypes = { "python" } },
+		{ command = "gofumpt", filetypes = { "go" } },
+		{ command = "goimports", filetypes = { "go" } },
+		{
+			command = "prettier",
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"json",
+				"markdown",
+				"typescript",
+				"typescriptreact",
+			},
+		},
+		{ command = "rustfmt", filetypes = { "rust" } },
+		{ command = "shfmt", filetypes = { "sh", "zsh", "bash" } },
+		{ command = "stylua", filetypes = { "lua" } },
+	})
+end
+
+-- local has, linters = pcall(require, "lvim.lsp.null-ls.linters")
+-- if has then
+-- 	linters.setup({
+-- 		{ command = "flake8", filetypes = { "python" } },
+-- 		{ command = "eslint", filetypes = { "javascript", "typescript" } },
+-- 	})
+-- end
