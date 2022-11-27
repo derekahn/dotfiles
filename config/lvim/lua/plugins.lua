@@ -1,11 +1,17 @@
 lvim.plugins = {
 	{ "christoomey/vim-tmux-navigator" }, -- seamless navigation between tmux panes and vim splits (!lua)
+	{ "jose-elias-alvarez/typescript.nvim" }, -- plugin to write TypeScript
 	{ "kevinhwang91/nvim-bqf", ft = "qf" }, -- better quickfix window in Neovim, polish old quickfix windo
+	{ "leoluz/nvim-dap-go" }, -- extension for nvim-dap providing configurations for launching go debugger (delve) and debugging individual tests
 	{ "m-demare/hlargs.nvim" }, -- highlight arguments' definitions and usages, using treesitter
+	{ "mxsdev/nvim-dap-vscode-js" }, -- nvim-dap adapter for vscode-js-debug
+	{ "olexsmir/gopher.nvim" }, -- plugin for easy golang development
 	{ "onsails/lspkind-nvim" }, -- vscode-like pictograms for neovim lsp completion items
 	{ "romgrk/nvim-treesitter-context" }, -- show code context
-	{ "simrat39/rust-tools.nvim", ft = { "rust", "rs" } }, -- tools for better development in rust using neovim's builtin lsp
+	{ "simrat39/rust-tools.nvim" }, -- tools for better development in rust using neovim's builtin lsp
 	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
+
+	-- { "mfussenegger/nvim-dap-python" }, -- nvim-dap extension to test and debug python
 
 	{ -- telescope extension to open browser bookmarks
 		"dhruvmanila/telescope-bookmarks.nvim",
