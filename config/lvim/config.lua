@@ -32,11 +32,11 @@ local sources = {
 	"config/lspkind",
 	"config/lualine",
 	"config/null-ls",
-	"config/rust-tools",
 	"config/telescope",
 	"config/treesitter",
 	"config/which_key",
 
+	"lsp/rust",
 	"plugins",
 }
 

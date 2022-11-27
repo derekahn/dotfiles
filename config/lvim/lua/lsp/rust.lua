@@ -1,3 +1,15 @@
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
+
+local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+local codelldb_adapter = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = mason_path .. "bin/codelldb",
+		args = { "--port", "${port}" },
+	},
+}
+
 local ok, rt = pcall(require, "rust-tools")
 if ok then
 	rt.setup({
@@ -32,11 +44,23 @@ if ok then
 			},
 		},
 		dap = {
-			adapter = {
-				type = "executable",
-				command = "lldb-vscode",
-				name = "rt_lldb",
-			},
+			adapter = codelldb_adapter,
 		},
 	})
+end
+
+lvim.builtin.dap.on_config_done = function(dap)
+	dap.adapters.codelldb = codelldb_adapter
+	dap.configurations.rust = {
+		{
+			name = "Launch file",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+			stopOnEntry = false,
+		},
+	}
 end
