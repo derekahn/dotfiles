@@ -33,10 +33,19 @@ if ok then
 				use_telescope = true,
 			},
 		},
+		on_initialized = function()
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+				pattern = { "*.rs" },
+				callback = function()
+					local _, _ = pcall(vim.lsp.codelens.refresh)
+				end,
+			})
+		end,
 		server = {
 			-- standalone = true,
 			on_init = require("lvim.lsp").common_on_init,
 			on_attach = require("lvim.lsp").common_on_attach,
+			capabilities = require("lvim.lsp").common_capabilities(),
 			["rust-analyzer"] = {
 				checkOnSave = {
 					command = "clippy",
