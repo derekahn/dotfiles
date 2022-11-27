@@ -88,7 +88,6 @@ lvim.plugins = {
 
 	{ -- markdown preview
 		"iamcco/markdown-preview.nvim",
-		ft = "md",
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,
