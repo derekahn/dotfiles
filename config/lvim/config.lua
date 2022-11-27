@@ -38,6 +38,7 @@ local sources = {
 
 	"lsp/go",
 	"lsp/javascript",
+	-- "lsp/python",
 	"lsp/rust",
 	"lsp/sh",
 
