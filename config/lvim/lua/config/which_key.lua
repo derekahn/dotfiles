@@ -13,29 +13,6 @@ which_key.mappings["lp"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 -- disable so we can use telescope
 which_key.setup.plugins.spelling.enabled = false
 
--- rust mappings
-which_key.mappings["r"] = {
-	name = "Rust",
-
-	b = { "<cmd>lua require('lvim.core.terminal')._exec_toggle('cargo build;read')<CR>", "Cargo build" },
-	r = { "<cmd>lua require('lvim.core.terminal')._exec_toggle('cargo run;read')<CR>", "Cargo run" },
-	t = { "<cmd>lua require('lvim.core.terminal')._exec_toggle('cargo test -- --nocapture;read')<CR>", "Cargo test" },
-	c = { "<cmd>lua require('lvim.core.terminal')._exec_toggle('cargo check;read')<CR>", "Cargo check" },
-
-	B = { "<cmd>RustRun<cr>", "Run Buffer" },
-	H = { "<cmd>RustToggleInlayHints<CR>", "Inlay Hints" },
-	h = { "<cmd>RustHoverActions<CR>", "Hover Actions" },
-	a = { "<cmd>RustEmitAsm<cr>", "Show Assembly" },
-	d = { "<cmd>RustDebuggables<CR>", "Debuggables" },
-
-	R = { "<cmd>lua require('rust-tools').runnables.runnables()<cr>", "Runnables" },
-	e = { "<cmd>lua require('rust-tools').expand_macro.expand_macro()<cr>", "Expand Macros" },
-	o = { "<cmd>lua require('rust-tools').open_cargo_toml.open_cargo_toml()<cr>", "Open cargo.toml" },
-	p = { "<cmd>lua require('rust-tools').parent_module.parent_module()<cr>", "Open Parent Module" },
-
-	S = { "<cmd>RustStartStandaloneServerForBuffer<cr>", "Standalone Server" },
-}
-
 -- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
 local function getVisualSelection()
 	vim.cmd('noau normal! "vy"')
