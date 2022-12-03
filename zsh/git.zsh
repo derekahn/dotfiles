@@ -5,9 +5,6 @@ alias gac="!git add -A && git commit -m"
 alias gbc="git branch | fzf | xargs git checkout"
 alias gbdd="git branch | fzf | xargs git branch -D"
 
-alias gtop="mergestat 'select count (*), author_name from commits group by author_name order by count (*) desc'"
-
-
 # Pushes the current branch to a designated remote; defaults to "origin"
 function gpb() {
   git push -u "${1:-origin}" $(git branch --show-current)
@@ -46,15 +43,6 @@ function lg() {
           rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
   fi
 }
-
-# The name of the current branch
-# Back-compatibility wrapper for when this function was defined here in
-# the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
-# to fix the core -> git plugin dependency.
-function current_branch() {
-  git_current_branch
-}
-
 
 # Interactively add selected parts of files
 alias gaap="git add -p"
@@ -102,10 +90,6 @@ alias gdw='git diff --word-diff'
 
 alias gf='git fetch'
 alias gfo='git fetch origin'
-
-alias ggpull='git pull origin "$(git_current_branch)"'
-alias ggpush='git push origin "$(git_current_branch)"'
-
 alias gl='git pull'
 
 alias glg='git log --stat'
