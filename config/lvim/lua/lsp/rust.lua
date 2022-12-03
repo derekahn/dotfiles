@@ -42,7 +42,6 @@ if ok then
 			})
 		end,
 		server = {
-			-- standalone = true,
 			on_init = require("lvim.lsp").common_on_init,
 			on_attach = require("lvim.lsp").common_on_attach,
 			capabilities = require("lvim.lsp").common_capabilities(),
