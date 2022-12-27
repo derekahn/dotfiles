@@ -11,7 +11,8 @@ gui:
 git:
   paging:
     colorArg: never
-    pager: delta --dark --paging=never
+    # pager: delta --dark --paging=never
+    pager: diff-so-fancy
 keybinding:
   universal:
     appendNewline: '<tab>'
