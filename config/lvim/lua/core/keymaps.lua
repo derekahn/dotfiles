@@ -8,6 +8,7 @@ normal_mode["<C-d>"] = "<C-d>zz"
 normal_mode["<C-u>"] = "<C-u>zz"
 normal_mode["n"] = "nzzzv"
 normal_mode["N"] = "Nzzzv"
+normal_mode["J"] = "mzJ`z"
 
 -- cycle through buffers
 normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
