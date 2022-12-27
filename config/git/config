@@ -34,3 +34,6 @@
 
 [log]
   date = relative
+
+[core]
+	editor = lvim
