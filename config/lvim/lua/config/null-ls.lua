@@ -16,7 +16,7 @@ if ok then
 				"typescriptreact",
 			},
 		},
-		{ command = "rustfmt", filetypes = { "rust" } },
+		{ command = "rustfmt", filetypes = { "rs", "rust" } },
 		{ command = "shfmt", filetypes = { "sh", "zsh", "bash" } },
 		{ command = "stylua", filetypes = { "lua" } },
 	})
