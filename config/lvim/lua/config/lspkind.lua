@@ -2,7 +2,8 @@ local ok, lspkind = pcall(require, "lspkind")
 if ok then
 	lvim.builtin.cmp.formatting = {
 		fields = { "abbr", "kind", "menu" },
-		max_width = 0,
+		-- max_width = 0,
+		max_width = 40,
 		source_names = {
 			nvim_lsp = "(LSP)",
 			emoji = "(Emoji)",
