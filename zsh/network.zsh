@@ -15,12 +15,12 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 # All the dig info
 digga() {
-  dig +nocmd "$1" any +multiline +noall +answer
+	dig +nocmd "$1" any +multiline +noall +answer
 }
 
 toggleInternet() {
-  sudo ifconfig en0 down
-  sudo route flush
-  sudo ifconfig en0 up
-  sudo killall -HUP mDNSResponder
+	sudo ifconfig en0 down
+	sudo route flush
+	sudo ifconfig en0 up
+	sudo killall -HUP mDNSResponder
 }

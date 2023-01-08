@@ -7,41 +7,41 @@ alias gbdd="git branch | fzf | xargs git branch -D"
 
 # Pushes the current branch to a designated remote; defaults to "origin"
 function gpb() {
-  git push -u "${1:-origin}" $(git branch --show-current)
+	git push -u "${1:-origin}" $(git branch --show-current)
 }
 
 # To delete local branches which have already been merged into $1:
 function gclean() {
-  git branch --merged "$1" | grep -v "\* $1" | xargs -n 1 git branch -d
+	git branch --merged "$1" | grep -v "\* $1" | xargs -n 1 git branch -d
 }
 
 # Lazily clone and cd into it
 function gclone() {
-  git clone "$1" && cd "$(basename "$1" .git)"
+	git clone "$1" && cd "$(basename "$1" .git)"
 }
 
 # hot paths for project
 function ghot() {
-  git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
+	git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10
 }
 
 # take this repo and copy it to somewhere else minus the .git stuff.
-function gitexport(){
-  mkdir -p "$1"
-  git archive development | tar -x -C "$1"
+function gitexport() {
+	mkdir -p "$1"
+	git archive development | tar -x -C "$1"
 }
 
 # If you change repos in lazygit and want your shell
 # to change directory into that repo on exiting lazygit
 function lg() {
-  export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+	export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
-  lazygit "$@"
+	lazygit "$@"
 
-  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-          cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-          rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
-  fi
+	if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+		cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+		rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
+	fi
 }
 
 # Interactively add selected parts of files
@@ -52,30 +52,30 @@ alias gbc="git branch | fzf | xargs git checkout"
 alias gbdd="git branch | fzf | xargs git branch -D"
 
 # Pretty log messages
-function _git_log_prettily(){
-  if ! [ -z $1 ]; then
-    git log --pretty=$1
-  fi
+function _git_log_prettily() {
+	if ! [ -z $1 ]; then
+		git log --pretty=$1
+	fi
 }
 
 # Warn if the current branch is a WIP
 function work_in_progress() {
-  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
-    echo "WIP!!"
-  fi
+	if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+		echo "WIP!!"
+	fi
 }
 
 # Check if main exists and use instead of master
 function git_main_branch() {
-  command git rev-parse --git-dir &>/dev/null || return
-  local branch
-  for branch in main trunk; do
-    if command git show-ref -q --verify refs/heads/$branch; then
-      echo $branch
-      return
-    fi
-  done
-  echo master
+	command git rev-parse --git-dir &>/dev/null || return
+	local branch
+	for branch in main trunk; do
+		if command git show-ref -q --verify refs/heads/$branch; then
+			echo $branch
+			return
+		fi
+	done
+	echo master
 }
 
 alias ga='git add'

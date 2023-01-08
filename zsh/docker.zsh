@@ -32,6 +32,6 @@ dri() { docker rmi -f $(docker images -q); }
 
 alias lzy=lazydocker
 
-function dmi () {
-  docker manifest inspect --verbose $1
+function dmi() {
+	docker manifest inspect --verbose $1
 }
