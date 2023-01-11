@@ -51,5 +51,20 @@
     "prefix": "ignore",
     "body": ["#[ignore]"],
     "description": "ignore attribute"
+  },
+  "tokio::test": {
+    "prefix": "tokio-test",
+    "body": [
+      "#[tokio::test]",
+      "async fn ${1:name}() {",
+      "    ${2:unimplemented!();}",
+      "}"
+    ],
+    "description": "#[tokio::test]"
+  },
+  "'static": {
+    "prefix": "'st",
+    "body": ["'static"],
+    "description": "'static"
   }
 }
