@@ -21,6 +21,9 @@ alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 # Fuzzy find a file and open it in lvim
 alias f='fd --type f --hidden --exclude .git --exclude target --exclude node_modules | fzf-tmux -p | xargs lvim'
 
+# ls Deluxe
+alias ls="lsd"
+
 # compression
 function 7zip() {
 	tar cf - "$@" | 7za a -si "$@".tar.7z
@@ -38,7 +41,7 @@ alias df='df -h'                                    # disk free, in Gigabytes, n
 alias du='du -h -c'                                 # calculate disk usage for a folder
 alias fzf="fzf --preview 'bat {-1} --color=always'" # Syntax pretty preview
 alias grep='grep --color=auto'                      # Color Highlighting
-alias lll="exa -lah"                                # Pretty permissions
+alias lll="ls -la"                                  # Pretty permissions
 alias rm="rm -i"                                    # always confirm before delete
 alias s="ncdu"                                      # file explorer that shows size
 
