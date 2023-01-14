@@ -52,12 +52,6 @@ for config in $INSTALLDIR/config/*; do
 done
 
 echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Symlinking Lazygit.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-rm -rf $INSTALLDIR/config/lazygit/config.yml
-ln -fs $HOME/Library/Application\ Support/lazygit/config.yml $INSTALLDIR/config/lazygit/config.yml
-
-echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Set global git config username$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
