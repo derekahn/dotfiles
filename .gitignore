@@ -4,13 +4,11 @@
 # Auto-generated tag files
 tags
 
+.DS_Store
 tmp/*
-
-vimrc.local
-config/nvim/plugged
-config/nvim/autoload/plug.vim
-backup/
-tmux.symlink
 *.log
 
-.DS_Store
+backup/
+packer_compiled.lua
+tmux.symlink
+vimrc.local
