@@ -12,3 +12,4 @@ backup/
 packer_compiled.lua
 tmux.symlink
 vimrc.local
+config/lvim/plugin/packer_compiled.lua
