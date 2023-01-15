@@ -87,3 +87,14 @@ function rga-fzf() {
 		echo "opening $file" &&
 		xdg-open "$file"
 }
+
+function weather() {
+	# Name the parameter for convenience
+	local is_fancy="$2"
+
+	if [ "$is_fancy" = "true" ]; then
+		curl "wttr.in/$1?format=v2"
+	else
+		curl "wttr.in/$1"
+	fi
+}
