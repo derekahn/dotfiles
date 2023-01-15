@@ -171,8 +171,9 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
-echo "Installing 🐹 go tools: godoc, vet"
+echo "Installing 🐹 go tools: godoc, impl"
 go get golang.org/x/tools/cmd/godoc
+go get -u github.com/josharian/impl
 echo "Tools installed. For more information visit https://golang.org/doc/code.html"
 
 echo "---------------------------------------------------------"
