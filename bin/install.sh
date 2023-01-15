@@ -32,52 +32,87 @@ echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Installing system packages.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-packages=(
-  "aquasecurity/trivy/trivy"
-  "bat"
-  "boop"
-  "clamav"
-  "coreutils"
+network_tools=(
   "croc"
-  "dasel"
-  "fd"
-  "fx"
-  "fzf"
-  "git-delta"
-  "gnu-sed"
-  "golang"
   "httpie"
-  "iina"
-  "jsonlint"
-  "kube-score/tap/kube-score"
-  "lazygit"
-  "lsd"
-  "michaeleisel/zld/zld"
-  "moreutils"
-  "n"
-  "ncdu"
-  "neovim"
-  "p7zip"
-  "pnpm"
-  "prettier"
-  "proselint"
-  "python3"
-  "ranger"
-  "reattach-to-user-namespace"
-  "rga"
-  "ripgrep"
-  "shfmt"
-  "starship"
-  "staticcheck"
-  "stylua"
   "syntaqx/tap/serve"
-  "tmux"
+  "ycd/tap/dstp"
+)
+
+packages=(
+  # applications
+  "boop"
+  "iina"
+
+  ################
+  # Tools
+  ################
+  # file
+  "bat"
+  "lsd"
+  "ncdu"
+  "p7zip"
   "tokei"
   "toshimaru/nyan/nyan"
+
+  # json
+  "dasel"
+  "fx"
+
+  # git
+  "git-delta"
+  "lazygit"
+
+  # security
+  "aquasecurity/trivy/trivy"
+  "clamav"
+
+  # search
+  "fd"
+  "fzf"
+  "ranger"
+  "rga"
+  "ripgrep"
+
+  ################
+  # LANGUAGES
+  ################
+  # go
+  "dlv"
+  "golang"
+  "gomodifytags"
+  "gotests"
+  "staticcheck"
+
+  # node.js
   "volta"
+  "prettier"
+
+  # python
+  "python3"
+
+  # rust
+  "michaeleisel/zld/zld"
+
+  # linters
+  "jsonlint"
+  "kube-score/tap/kube-score"
+  "proselint"
+  "shfmt"
+  "stylua"
   "write-good"
   "yamllint"
-  "ycd/tap/dstp"
+
+  ################
+  # Terminal
+  ################
+  # editor
+  "neovim"
+  "tmux"
+  "reattach-to-user-namespace"
+
+  # shell
+  "starship"
   "zoxide"
   "zsh-syntax-highlighting"
 )
@@ -99,7 +134,7 @@ applications=(
   "anki"
   "asciinema"
   "db-browser-for-sqlite"
-  "firefox"
+  "firefox-developer-edition"
   "fork"
   "google-chrome"
   "iterm2"
@@ -107,7 +142,6 @@ applications=(
   "qlmarkdown"
   "rectangle"
   "slack"
-  "vivaldi"
 )
 
 for i in "${applications[@]}"
