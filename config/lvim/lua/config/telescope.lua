@@ -28,26 +28,3 @@ local normal_mode = lvim.keys.normal_mode
 normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
 normal_mode["<C-b>"] = "<cmd>Telescope buffers<cr>"
 normal_mode["z="] = "<cmd>Telescope spell_suggest<cr>"
-
--- telescope-bookmarks.nvim
-local ok, telescope = pcall(require, "telescope")
-if ok then
-	telescope.setup({
-		extensions = {
-			fzf = {
-				fuzzy = true, -- false will only do exact matching
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true, -- override the file sorter
-				case_mode = "smart_case", -- "ignore_case" or "respect_case"
-			},
-			bookmarks = {
-				debug = false,
-				firefox_profile_name = "dev-edition-default",
-				selected_browser = "firefox",
-				url_open_command = "open",
-			},
-		},
-	})
-
-	telescope.load_extension("bookmarks")
-end
