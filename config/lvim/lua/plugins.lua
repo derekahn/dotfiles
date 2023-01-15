@@ -15,7 +15,30 @@ lvim.plugins = {
 
 	{ -- telescope extension to open browser bookmarks
 		"dhruvmanila/telescope-bookmarks.nvim",
-		requires = "kkharji/sqlite.lua",
+		dependencies = "kkharji/sqlite.lua",
+		config = function()
+			local has, telescope = pcall(require, "telescope")
+			local ok, _ = pcall(require, "telescope-bookmarks")
+			if has and ok then
+				telescope.setup({
+					extensions = {
+						fzf = {
+							fuzzy = true, -- false will only do exact matching
+							override_generic_sorter = true, -- override the generic sorter
+							override_file_sorter = true, -- override the file sorter
+							case_mode = "smart_case", -- "ignore_case" or "respect_case"
+						},
+						bookmarks = {
+							debug = false,
+							firefox_profile_name = "dev-edition-default",
+							selected_browser = "firefox",
+							url_open_command = "open",
+						},
+					},
+				})
+				telescope.load_extension("bookmarks")
+			end
+		end,
 	},
 
 	{ -- neovim undotree with git diff
@@ -64,7 +87,7 @@ lvim.plugins = {
 	{ -- helps managing crates.io dependencies
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
@@ -88,18 +111,18 @@ lvim.plugins = {
 
 	{ -- markdown preview
 		"iamcco/markdown-preview.nvim",
-		run = function()
+		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
 
 	{ -- highly performant ui for lsp things
 		"glepnir/lspsaga.nvim",
-		branch = "main",
+		event = "BufRead",
 		config = function()
 			local ok, saga = pcall(require, "lspsaga")
 			if ok then
-				saga.init_lsp_saga({
+				saga.setup({
 					code_action_lightbulb = {
 						enable = false,
 						enable_in_insert = false,
