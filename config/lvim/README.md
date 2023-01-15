@@ -1,27 +1,38 @@
 # [LunarVim](https://www.lunarvim.org)
 
+> I'm currently running `nightly`
+
 ## Shortcuts
+
+These are my favorite shortcuts that I use.
 
 ### EDC
 
-| Mappings       | Action                                  |
-| -------------- | --------------------------------------- |
-| <kbd>C-b</kbd> | Quick buffer explorer                   |
-| <kbd>C-p</kbd> | Ctrlp keybinding from sublime text days |
-| <kbd>S-l</kbd> | Switch tab/buffer right                 |
-| <kbd>S-h</kbd> | Switch tab/buffer left                  |
-| <kbd>S-t</kbd> | Show color column for 80 chars          |
+> Every Day Commands
 
-### Quick Fix
+These are just commands I've grown used to over the years from previous editors. So I customized it to work in LunarVim.
 
-| Mappings            | Action               |
-| ------------------- | -------------------- |
-| <kbd>leader-a</kbd> | Close quick fix pane |
-| <kbd>leader-;</kbd> | Open quick fix pane  |
+| Mappings           | Action                                  |
+| ------------------ | --------------------------------------- |
+| <kbd>Ctrl-b</kbd>  | Quick buffer explorer                   |
+| <kbd>Ctrl-p</kbd>  | Ctrlp keybinding from sublime text days |
+| <kbd>Shift-l</kbd> | Switch tab/buffer right                 |
+| <kbd>Shift-h</kbd> | Switch tab/buffer left                  |
+| <kbd>Shift-t</kbd> | Show color column for 80 chars          |
 
-### Comment.nvim
+### [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf#usage)
 
-#### Normal Mode
+| Mappings            | Action                                                |
+| ------------------- | ----------------------------------------------------- |
+| <kbd>leader-a</kbd> | Close quick fix pane                                  |
+| <kbd>leader-;</kbd> | Open quick fix pane                                   |
+| <kbd>Ctrl-t</kbd>   | In a quick fix window will open in a new tab          |
+| <kbd>Ctrl-x</kbd>   | In a quick fix window will open in a horizontal split |
+| <kbd>Ctrl-v</kbd>   | In a quick fix window will open in a vertical split   |
+
+### [Comment.nvim](https://github.com/numToStr/Comment.nvim#-usage)
+
+`Normal Mode`
 
 | Mappings                     | Action                                                             |
 | ---------------------------- | ------------------------------------------------------------------ |
@@ -35,14 +46,14 @@
 | <kbd>gcO</kbd>               | Insert comment to the previous line and enters INSERT mode         |
 | <kbd>gcA</kbd>               | Insert comment to end of the current line and enters INSERT mode   |
 
-#### Visual Mode
+`Visual Mode`
 
 | Mappings      | Action                                     |
 | ------------- | ------------------------------------------ |
 | <kbd>gc</kbd> | Toggles the region using linewise comment  |
 | <kbd>gb</kbd> | Toggles the region using blockwise comment |
 
-#### Linewise
+`Linewise`
 
 | Mappings        | Action                                                     |
 | --------------- | ---------------------------------------------------------- |
@@ -54,7 +65,7 @@
 | <kbd>gcip</kbd> | Toggle inside of paragraph                                 |
 | <kbd>gca}</kbd> | Toggle around curly brackets                               |
 
-#### Blockwise
+`Blockwise`
 
 | Mappings        | Action                                                       |
 | --------------- | ------------------------------------------------------------ |
@@ -62,22 +73,31 @@
 | <kbd>gbaf</kbd> | Toggle comment around a function (w/ LSP/treesitter support) |
 | <kbd>gbac</kbd> | Toggle comment around a class (w/ LSP/treesitter support)    |
 
-### G
+### [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim#keymaps)
 
-| Mappings       | Action                                       |
-| -------------- | -------------------------------------------- |
-| <kbd>g-d</kbd> | Goto the definition of the function/variable |
-| <kbd>g-r</kbd> | Quick buffer explorer                        |
+| Mappings                           | Action                   |
+| ---------------------------------- | ------------------------ |
+| <kbd>Space + g + j/k</kbd>         | Jump between changes     |
+| <kbd>Space + g + l</kbd>           | Git blame it             |
+| <kbd>Space + g + d</kbd>           | Git quick diff it        |
+| <kbd>Space + l + d</kbd>           | Jump to errors in a file |
+| <kbd>:LvimToggleFormatOnSave</kbd> | Toggle format on save    |
 
-| `g + r` | Get The references all the occurrences of a function or variable |
-| `Shift + k` | Show info about the function/variable you are "hovering"; (shift + k) to scroll dialog |
-| `Space + g + j/k` | Jump between changes |
-| `Space + g + l` | Git blame it |
-| `Space + g + d` | Git quick diff it |
-| `Space + l + d` | Jump to errors in a file |
-| `:LvimToggleFormatOnSave` | Toggle format on save |
+### [lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim#example-configuration)
 
-### Vim Surround
+| Mappings             | Action                                                                                 |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| <kbd>gd</kbd>        | Goto the definition of the function/variable                                           |
+| <kbd>gr</kbd>        | Quick buffer explorer of all the references of a function or variable                  |
+| <kbd>ga</kbd>        | LSP Saga Code action                                                                   |
+| <kbd>gf</kbd>        | LSP Saga Finder                                                                        |
+| <kbd>gj</kbd>        | LSP Saga Diagnostic previous jump                                                      |
+| <kbd>gk</kbd>        | LSP Saga Diagnostic next jump                                                          |
+| <kbd>gp</kbd>        | LSP Saga Peek definition                                                               |
+| <kbd>gR</kbd>        | LSP Saga Rename                                                                        |
+| <kbd>Shift + k</kbd> | Show info about the function/variable you are "hovering"; (shift + k) to scroll dialog |
+
+### [vim-surround](https://github.com/tpope/vim-surround)
 
 | Mappings         | Action                                                |
 | ---------------- | ----------------------------------------------------- |
@@ -87,17 +107,7 @@
 | <kbd>cs}]</kbd>  | Change surrounding char on word; ie. `[Hello] world!` |
 | <kbd>yssb</kbd>  | Wrap entire line in parentheses; ie. `[Hello] world!` |
 
-### Rust
-
-| Mappings         | Action                                                |
-| ---------------- | ----------------------------------------------------- |
-| <kbd>cs'</kbd>   | change surrounding char; ie. `"` to `'`               |
-| <kbd>ds</kbd>    | remove surrounding char                               |
-| <kbd>ysiw}</kbd> | input surrounding char on word; ie. `{Hello} world!`  |
-| <kbd>cs}]</kbd>  | change surrounding char on word; ie. `[Hello] world!` |
-| <kbd>yssb</kbd>  | Wrap entire line in parentheses; ie. `[Hello] world!` |
-
-### Symbols Outline
+### [symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
 
 | Key                  | Action                                             |
 | -------------------- | -------------------------------------------------- |
@@ -115,7 +125,7 @@
 | <kbd>R</kbd>         | Reset all folding                                  |
 | <kbd>?</kbd>         | Show help message                                  |
 
-### Commands
+`Commands`
 
 | Command                | Description            |
 | ---------------------- | ---------------------- |
@@ -123,7 +133,7 @@
 | `:SymbolsOutlineOpen`  | Open symbols outline   |
 | `:SymbolsOutlineClose` | Close symbols outline  |
 
-### Undo Tree
+### [undotree](https://github.com/mbbill/undotree)
 
 | Mappings         | Action                                        |
 | ---------------- | --------------------------------------------- |
@@ -134,16 +144,3 @@
 | <kbd>q</kbd>     | Quit undotree                                 |
 | <kbd>p</kbd>     | Jump into the undotree diff window            |
 | <kbd>Enter</kbd> | Undo to this state                            |
-
-### Rust
-
-| Mappings             | Action                                    |
-| -------------------- | ----------------------------------------- |
-| <kbd>leader-ri</kbd> | Inlay hints                               |
-| <kbd>leader-rr</kbd> | Run current buffer                        |
-| <kbd>leader-ra</kbd> | Show assembly                             |
-| <kbd>leader-rR</kbd> | Show current runnables menu               |
-| <kbd>leader-re</kbd> | Expand current macro                      |
-| <kbd>leader-ro</kbd> | Open cargo.toml                           |
-| <kbd>leader-rp</kbd> | Open parent module                        |
-| <kbd>leader-rS</kbd> | Start a standalone rust server for buffer |
