@@ -161,19 +161,4 @@ lvim.plugins = {
 	-- 		end
 	-- 	end,
 	-- },
-
-	-- { -- run lines/blocs of code (independently of the rest of the file)
-	-- 	"michaelb/sniprun",
-	-- 	run = "bash ./install.sh",
-	-- 	config = function()
-	-- 		local ok, sniprun = pcall(require, "sniprun")
-	-- 		if ok then
-	-- 			sniprun.setup({
-	-- 				display = {
-	-- 					"Classic",
-	-- 				},
-	-- 			})
-	-- 		end
-	-- 	end,
-	-- },
 }
