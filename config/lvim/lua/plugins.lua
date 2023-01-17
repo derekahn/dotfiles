@@ -17,9 +17,11 @@ lvim.plugins = {
 		"dhruvmanila/telescope-bookmarks.nvim",
 		dependencies = "kkharji/sqlite.lua",
 		config = function()
-			local has, telescope = pcall(require, "telescope")
-			local ok, _ = pcall(require, "telescope-bookmarks")
-			if has and ok then
+			-- FIX: This breaks on fresh install due to a race condition.
+			-- Just comment out on the block below on first fresh install.
+			-- https://github.com/dhruvmanila/telescope-bookmarks.nvim#configuration
+			local ok, telescope = pcall(require, "telescope")
+			if ok then
 				telescope.setup({
 					extensions = {
 						fzf = {
