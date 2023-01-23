@@ -69,7 +69,7 @@ echo "Please enter your global git email (ex: email@example.com):"
 read $email
 
 echo "Created your global git config email at: $HOME/.config/git/config"
-git config --global user.email "$email"
+git config --global user.email $email
 
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)🏠: Sourcing ~/.tmux.conf.$(tput sgr 0)"
