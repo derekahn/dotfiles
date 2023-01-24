@@ -14,12 +14,24 @@ if ok then
 			on_attach = require("lvim.lsp").common_on_attach,
 			on_init = require("lvim.lsp").common_on_init,
 			capabilities = capabilities,
+			settings = {
+				typescript = {
+					inlayHints = {
+						includeInlayEnumMemberValueHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayFunctionParameterTypeHints = false,
+						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayVariableTypeHints = true,
+					},
+				},
+			},
 		},
 	})
 end
 
 local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-
 local dap_ok, dapjs = pcall(require, "dap-vscode-js")
 if dap_ok then
 	dapjs.setup({
