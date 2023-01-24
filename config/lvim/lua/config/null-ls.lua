@@ -8,10 +8,11 @@ if ok then
 		{
 			command = "prettier",
 			filetypes = {
-				"javascript",
-				"javascriptreact",
 				"json",
 				"markdown",
+				"css",
+				"javascript",
+				"javascriptreact",
 				"typescript",
 				"typescriptreact",
 			},
