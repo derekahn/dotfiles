@@ -41,7 +41,7 @@ iTerm2 -> Preferences -> Profiles -> Text -> Font -> Change Font
 Download my preset colors
 
 ```bash
-curl -L https://gist.githubusercontent.com/derekahn/fce4b5367006d10ca91a171d992999e0/raw/711122aca2f603339d1acc734bef88b2f6f018a3/onedark.itermcolors -o ~/Documents/onedark.itermcolors
+curl -L https://gist.githubusercontent.com/derekahn/fce4b5367006d10ca91a171d992999e0/raw/1da64f3ca436c7c8d3e9c5c62d25ee22fe6a1e02/onedark.itermcolors.xml -o ~/Documents/onedark.itermcolors
 ```
 
 Import the preset colors into iTerm2
