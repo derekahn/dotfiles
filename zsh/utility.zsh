@@ -18,12 +18,6 @@ alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall 
 # Brew everything
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
-# Fuzzy find a file and open it in lvim
-alias f='fd --type f --hidden --exclude .git --exclude target --exclude node_modules | fzf-tmux -p | xargs lvim'
-
-# ls Deluxe
-alias ls="lsd"
-
 # compression
 function 7zip() {
 	tar cf - "$@" | 7za a -si "$@".tar.7z
@@ -32,36 +26,6 @@ function 7zip() {
 function 7unzip() {
 	7za x -so "$@" | tar xf -
 }
-
-# Remappings for productivity++
-# ---------------
-alias c="clear"                                     # lazy
-alias cat='nyan --theme "solarized-dark"'           # Syntax cat
-alias df='df -h'                                    # disk free, in Gigabytes, not bytes
-alias du='du -h -c'                                 # calculate disk usage for a folder
-alias fzf="fzf --preview 'bat {-1} --color=always'" # Syntax pretty preview
-alias grep='grep --color=auto'                      # Color Highlighting
-alias lll="ls -la"                                  # Pretty permissions
-alias rm="rm -i"                                    # always confirm before delete
-alias s="ncdu"                                      # file explorer that shows size
-
-# Man Command colorizer
-function man() {
-	env \
-		LESS_TERMCAP_md=$'\e[1;36m' \
-		LESS_TERMCAP_me=$'\e[0m' \
-		LESS_TERMCAP_se=$'\e[0m' \
-		LESS_TERMCAP_so=$'\e[1;40;92m' \
-		LESS_TERMCAP_ue=$'\e[0m' \
-		LESS_TERMCAP_us=$'\e[1;32m' \
-		man "$@"
-}
-
-# ls dir color
-export CLICOLOR=1
-export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-
-alias fhere='find . -name '
 
 function mcd() {
 	mkdir -pv $1
