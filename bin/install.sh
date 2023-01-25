@@ -42,9 +42,12 @@ packages=(
   ################
   # file
   "bat"
+  "duf"
   "lsd"
   "ncdu"
   "p7zip"
+  "rm-improved"
+  "sd"
   "tokei"
   "toshimaru/nyan/nyan"
 
