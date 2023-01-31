@@ -3,7 +3,6 @@ local telescope = lvim.builtin.telescope
 telescope.defaults.file_ignore_patterns = {
 	".git/",
 	"target/",
-	"docs/",
 	"vendor/*",
 	"%.lock",
 	"__pycache__/*",
@@ -24,9 +23,6 @@ telescope.defaults.file_ignore_patterns = {
 	".settings/",
 	".vscode/",
 	"__pycache__/",
-	"build/",
-	"env/",
-	"gradle/",
 	"node_modules/",
 	"%.pdb",
 	"%.dll",
