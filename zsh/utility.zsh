@@ -62,3 +62,14 @@ function weather() {
 		curl "wttr.in/$1"
 	fi
 }
+
+# Pomodoro (Requires https://github.com/caarlos0/timer)
+alias work="timer 60m && terminal-notifier -message 'Pomodoro'\
+  -title 'Work Timer is up! Take a Break :blush:'\
+  -appIcon '~/Pictures/pumpkin.png'\
+  -sound Crystal"
+
+alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
+  -title 'Break is over! Get back to work :grimacing:'\
+  -appIcon '~/Pictures/pumpkin.png'\
+  -sound Crystal"

@@ -65,6 +65,9 @@ packages=(
   "syntaqx/tap/serve"
   "ycd/tap/dstp"
 
+  # pomodoro
+  "caarlos0/tap/timer"
+
   # security
   "aquasecurity/trivy/trivy"
   "clamav"
