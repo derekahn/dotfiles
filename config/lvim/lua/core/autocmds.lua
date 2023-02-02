@@ -18,3 +18,13 @@ autocmd("BufEnter", {
 	-- enable wrap mode for json files only
 	command = "setlocal wrap",
 })
+
+-- pre-processing them before users ask for completions
+-- https://github.com/tzachar/cmp-tabnine#prefetch
+autocmd("BufRead", {
+	group = vim.api.nvim_create_augroup("prefetch", { clear = true }),
+	pattern = { "*.rs", "*.go", "*.js" },
+	callback = function()
+		require("cmp_tabnine"):prefetch(vim.fn.expand("%:p"))
+	end,
+})

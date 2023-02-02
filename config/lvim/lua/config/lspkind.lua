@@ -9,6 +9,7 @@ if ok then
 			emoji = "(Emoji)",
 			path = "(Path)",
 			calc = "(Calc)",
+			cmp_tabnine = "(Tabnine)",
 			vsnip = "(Snippet)",
 			luasnip = "(Snippet)",
 			buffer = "(Buffer)",
@@ -30,6 +31,18 @@ if ok then
 				local max_width = lvim.builtin.cmp.formatting.max_width
 				if max_width ~= 0 and #vim_item.abbr > max_width then
 					vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. lvim.icons.ui.Ellipsis
+				end
+
+				if lvim.use_icons then
+					if entry.source.name == "cmp_tabnine" then
+						vim_item.kind = lvim.icons.misc.Robot
+						vim_item.kind_hl_group = "CmpItemKindTabnine"
+					end
+
+					if entry.source.name == "crates" then
+						vim_item.kind = lvim.icons.misc.Package
+						vim_item.kind_hl_group = "CmpItemKindCrate"
+					end
 				end
 
 				vim_item.menu = lvim.builtin.cmp.formatting.source_names[entry.source.name]

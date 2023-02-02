@@ -10,6 +10,7 @@ lvim.plugins = {
 	{ "romgrk/nvim-treesitter-context" }, -- show code context
 	{ "simrat39/rust-tools.nvim" }, -- tools for better development in rust using neovim's builtin lsp
 	{ "tpope/vim-surround" }, -- quoting/parenthesizing made simple (!lua)
+	{ "tzachar/cmp-tabnine", build = "./install.sh" }, -- tabnine plugin for hrsh7th/nvim-cmp
 
 	-- { "mfussenegger/nvim-dap-python" }, -- nvim-dap extension to test and debug python
 
