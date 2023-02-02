@@ -1,4 +1,9 @@
 {
+  "channel": {
+    "prefix": "<",
+    "body": ["${1:to} <-  ${2:from}"],
+    "description": "Snippet for quickly sending from channles"
+  },
   "shorthand variable": {
     "prefix": ":",
     "body": ["${1:name} :=  ${2:value}"],
