@@ -97,15 +97,17 @@ These are just commands I've grown used to over the years from previous editors.
 | <kbd>gR</kbd>        | LSP Saga Rename                                                                        |
 | <kbd>Shift + k</kbd> | Show info about the function/variable you are "hovering"; (shift + k) to scroll dialog |
 
-### [vim-surround](https://github.com/tpope/vim-surround)
+### [nvim-surround](https://github.com/kylechui/nvim-surround)
 
-| Mappings         | Action                                                |
-| ---------------- | ----------------------------------------------------- |
-| <kbd>cs'</kbd>   | Change surrounding char; ie. `"` to `'`               |
-| <kbd>ds</kbd>    | Remove surrounding char                               |
-| <kbd>ysiw}</kbd> | Input surrounding char on word; ie. `{Hello} world!`  |
-| <kbd>cs}]</kbd>  | Change surrounding char on word; ie. `[Hello] world!` |
-| <kbd>yssb</kbd>  | Wrap entire line in parentheses; ie. `[Hello] world!` |
+| Mappings                | Action                                                                            |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| <kbd>cs'</kbd>          | Change surrounding char; ie. `"` to `'`                                           |
+| <kbd>ds</kbd>           | Remove surrounding char                                                           |
+| <kbd>ysiw}</kbd>        | Input surrounding char on word; ie. `{Hello} world!`                              |
+| <kbd>cs}]</kbd>         | Change surrounding char on word; ie. `[Hello] world!`                             |
+| <kbd>yssb</kbd>         | Wrap entire line in parentheses; ie. `[Hello] world!`                             |
+| <kbd>dsf</kbd>          | Deletes the function call; ie. `delete(functi*on calls)`                          |
+| <kbd>cst{TAG}<CR></kbd> | Change the tag; ie. `csth1<cr>`= `<b>or tag* types</b> -> <h1>or tag* types</h1>` |
 
 ### [symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
 
