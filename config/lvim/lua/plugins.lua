@@ -1,5 +1,4 @@
 lvim.plugins = {
-	{ "christoomey/vim-tmux-navigator" }, -- seamless navigation between tmux panes and vim splits (!lua)
 	{ "jose-elias-alvarez/typescript.nvim" }, -- plugin to write TypeScript
 	{ "kevinhwang91/nvim-bqf", ft = "qf" }, -- better quickfix window in Neovim, polish old quickfix windo
 	{ "leoluz/nvim-dap-go" }, -- extension for nvim-dap providing configurations for launching go debugger (delve) and debugging individual tests
@@ -14,6 +13,25 @@ lvim.plugins = {
 
 	-- { "mfussenegger/nvim-dap-python" }, -- nvim-dap extension to test and debug python
 
+	{ -- easy Neovim-Tmux navigation
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			local ok, nvim_tmux_nav = pcall(require, "nvim-tmux-navigation")
+			if ok then
+				nvim_tmux_nav.setup({
+					disable_when_zoomed = true,
+					keybindings = {
+						left = "<C-h>",
+						down = "<C-j>",
+						up = "<C-k>",
+						right = "<C-l>",
+						last_active = "<C-a>",
+						next = "<C-Space>",
+					},
+				})
+			end
+		end,
+	},
 	{ -- telescope extension to open browser bookmarks
 		"dhruvmanila/telescope-bookmarks.nvim",
 		dependencies = "kkharji/sqlite.lua",
