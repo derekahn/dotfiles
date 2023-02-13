@@ -17,7 +17,7 @@ lvim.plugins = {
 			local ok, nvim_tmux_nav = pcall(require, "nvim-tmux-navigation")
 			if ok then
 				nvim_tmux_nav.setup({
-					disable_when_zoomed = true,
+					disable_when_zoomed = false,
 					keybindings = {
 						left = "<C-h>",
 						down = "<C-j>",
