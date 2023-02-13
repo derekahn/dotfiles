@@ -23,8 +23,8 @@ lvim.plugins = {
 						down = "<C-j>",
 						up = "<C-k>",
 						right = "<C-l>",
-						last_active = "<C-a>",
-						next = "<C-Space>",
+						-- last_active = "<C-a>",
+						-- next = "<C-Space>",
 					},
 				})
 			end
