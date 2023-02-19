@@ -9,7 +9,6 @@ lvim.plugins = {
 	{ "onsails/lspkind-nvim" }, -- vscode-like pictograms for neovim lsp completion items
 	{ "romgrk/nvim-treesitter-context" }, -- show code context
 	{ "simrat39/rust-tools.nvim" }, -- tools for better development in rust using neovim's builtin lsp
-	{ "tzachar/cmp-tabnine", build = "./install.sh" }, -- tabnine plugin for hrsh7th/nvim-cmp
 
 	{ -- easy Neovim-Tmux navigation
 		"alexghergh/nvim-tmux-navigation",

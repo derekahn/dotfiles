@@ -9,7 +9,6 @@ if ok then
 			emoji = "(Emoji)",
 			path = "(Path)",
 			calc = "(Calc)",
-			cmp_tabnine = "(Tabnine)",
 			vsnip = "(Snippet)",
 			luasnip = "(Snippet)",
 			buffer = "(Buffer)",
@@ -34,11 +33,6 @@ if ok then
 				end
 
 				if lvim.use_icons then
-					if entry.source.name == "cmp_tabnine" then
-						vim_item.kind = lvim.icons.misc.Robot
-						vim_item.kind_hl_group = "CmpItemKindTabnine"
-					end
-
 					if entry.source.name == "crates" then
 						vim_item.kind = lvim.icons.misc.Package
 						vim_item.kind_hl_group = "CmpItemKindCrate"
