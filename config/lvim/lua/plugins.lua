@@ -60,7 +60,7 @@ lvim.plugins = {
 						},
 						bookmarks = {
 							debug = false,
-							firefox_profile_name = "dev-edition-default",
+							profile_name = "dev-edition-default",
 							selected_browser = "firefox",
 							url_open_command = "open",
 						},
