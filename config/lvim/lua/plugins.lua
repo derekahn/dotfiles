@@ -85,7 +85,7 @@ lvim.plugins = {
 	{ -- atom's one dark theme
 		"navarasu/onedark.nvim",
 		lazy = false,
-		priority = 1000,
+		commit = "76b2b1f",
 		config = function()
 			local ok, onedark = pcall(require, "onedark")
 			if ok then
