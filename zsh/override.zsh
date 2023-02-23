@@ -16,6 +16,7 @@ alias grep='grep --color=auto'                      # color Highlighting
 alias lll="ls -la"                                  # pretty permissions
 alias rm="rip -i"                                   # always confirm before delete
 alias s="ncdu"                                      # file explorer that shows size
+alias grep="rg"                                     # a better grep
 
 # Man Command colorizer
 function man() {
