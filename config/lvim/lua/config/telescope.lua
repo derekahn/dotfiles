@@ -102,7 +102,7 @@ telescope.on_config_done = function()
 				["<C-d>"] = actions.preview_scrolling_down,
 
 				-- ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-				-- ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 			},
 		}
 	end
