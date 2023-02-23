@@ -48,6 +48,7 @@ packages=(
   "p7zip"
   "rm-improved"
   "sd"
+  "tealdeer"
   "tokei"
   "toshimaru/nyan/nyan"
 
