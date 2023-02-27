@@ -18,3 +18,8 @@ autocmd("BufEnter", {
 	-- enable wrap mode for json files only
 	command = "setlocal wrap",
 })
+
+autocmd("BufEnter", {
+	pattern = { "*.md" },
+	command = "setlocal spell",
+})
