@@ -107,6 +107,7 @@ packages=(
   "jsonlint"
   "kube-score/tap/kube-score"
   "proselint"
+  "shellcheck"
   "shfmt"
   "stylua"
   "write-good"
