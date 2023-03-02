@@ -69,7 +69,13 @@ iTerm2 -> Preferences > Profiles > Session
 iTerm2 -> Preferences > Appearance > General
 ```
 
-- `Status bar location` is the third key
+### Setting up iterm for tmux copy/paste
+
+```shell
+iTerm2 -> Preferences > Profiles > Selection -> Applications in terminal may access clipboard
+```
+
+![iterm enable vi yank for tmux](https://user-images.githubusercontent.com/5381156/222502391-adb9f25a-a644-4fd7-a4d3-bbea376559dc.png)
 
 ### Setting up rectangle
 
