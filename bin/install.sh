@@ -34,6 +34,7 @@ echo "---------------------------------------------------------"
 
 packages=(
   # applications
+  "arc"
   "boop"
   "iina"
 
@@ -144,9 +145,7 @@ applications=(
   "anki"
   "asciinema"
   "db-browser-for-sqlite"
-  "firefox-developer-edition"
   "fork"
-  "google-chrome"
   "iterm2"
   "nordvpn"
   "qlmarkdown"

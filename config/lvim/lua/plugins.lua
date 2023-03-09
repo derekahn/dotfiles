@@ -43,7 +43,6 @@ lvim.plugins = {
 
 	{ -- telescope extension to open browser bookmarks
 		"dhruvmanila/telescope-bookmarks.nvim",
-		dependencies = "kkharji/sqlite.lua",
 		config = function()
 			-- FIX: This breaks on fresh install due to a race condition.
 			-- Just comment out on the block below on first fresh install.
@@ -60,8 +59,7 @@ lvim.plugins = {
 						},
 						bookmarks = {
 							debug = false,
-							profile_name = "dev-edition-default",
-							selected_browser = "firefox",
+							selected_browser = "chrome",
 							url_open_command = "open",
 						},
 					},
