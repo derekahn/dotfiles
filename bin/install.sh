@@ -59,6 +59,7 @@ packages=(
 
   # git
   "git-delta"
+  "gitui"
   "lazygit"
 
   # network
