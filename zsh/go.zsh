@@ -26,3 +26,21 @@ function sce() {
 function goenv() {
 	export $(cat .env | grep -o '^[^#]*' | xargs)
 }
+
+# Generates code coverage report and serves it on the default browser
+function gtcc() {
+	go test ./... -coverprofile=cp.out
+
+	# Start the server in the background
+	go tool cover -html=cp.out -o coverage.html && serve . &
+	SERVER_PID=$!
+
+	# Open the coverage report in the browser
+	open http://localhost:8080/coverage.html
+
+	# Register a signal handler for the INT signal (Ctrl+C)
+	trap 'kill $SERVER_PID; trap - INT; exit' INT
+
+	# Wait for the server to finish
+	wait $SERVER_PID
+}
