@@ -32,11 +32,11 @@ function gtcc() {
 	go test ./... -coverprofile=cp.out
 
 	# Start the server in the background
-	go tool cover -html=cp.out -o coverage.html && serve . &
+	go tool cover -html=cp.out -o coverage.html && serve -port 9999 . &
 	SERVER_PID=$!
 
 	# Open the coverage report in the browser
-	open http://localhost:8080/coverage.html
+	open http://localhost:9999/coverage.html
 
 	# Register a signal handler for the INT signal (Ctrl+C)
 	trap 'kill $SERVER_PID; trap - INT; exit' INT
