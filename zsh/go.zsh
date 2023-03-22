@@ -43,4 +43,7 @@ function gtcc() {
 
 	# Wait for the server to finish
 	wait $SERVER_PID
+
+	rm cp.out
+	rm coverage.html
 }
