@@ -124,6 +124,7 @@ packages=(
   "reattach-to-user-namespace"
 
   # shell
+  "atuin"
   "starship"
   "zoxide"
   "zsh-syntax-highlighting"
