@@ -18,6 +18,9 @@ alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall 
 # Brew everything
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
+# Crypto Greed Index
+alias gi="http 'https://api.alternative.me/fng/?limit=1' | jq '.data[0].value'"
+
 # compression
 function 7zip() {
 	tar cf - "$@" | 7za a -si "$@".tar.7z
