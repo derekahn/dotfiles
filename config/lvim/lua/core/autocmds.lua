@@ -23,3 +23,20 @@ autocmd("BufEnter", {
 	pattern = { "*.md" },
 	command = "setlocal spell",
 })
+
+-- Set the tabstop and shiftwidth options for Rust files
+autocmd("TextYankPost", {
+	group = augroup("HighlightYank", {}),
+	pattern = { "*.rs" },
+	callback = function() end,
+})
+
+-- -- Set the tabstop and shiftwidth options for Rust files
+-- autocmd("FileType", {
+-- 	pattern = "rust",
+-- 	callback = function()
+-- 		vim.opt.tabstop = 2
+-- 		vim.opt.shiftwidth = 2
+-- 		vim.opt.expandtab = true
+-- 	end,
+-- })
