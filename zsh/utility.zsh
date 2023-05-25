@@ -4,22 +4,24 @@ alias clearDownloadLog="sqlite3 ~/Library/Preferences/com.apple.LaunchServices.Q
 
 # measures zsh shell speed
 alias zshprof="/usr/bin/time zsh -i -c exit"
-alias catPubKey='cat ~/.ssh/id_rsa.pub'
-alias getPubKey='cat ~/.ssh/id_rsa.pub | pbcopy'
+alias catPubKey="cat ~/.ssh/id_rsa.pub"
+alias getPubKey="cat ~/.ssh/id_rsa.pub | pbcopy"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Show/Hide finder hidden files
-alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias showHidden="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
+alias hideHidden="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
 
 # Brew everything
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
 # Crypto Greed Index
-alias gi="http 'https://api.alternative.me/fng/?limit=1' | jq '.data[0].value'"
+alias cgi="http 'https://api.alternative.me/fng/?limit=3' | jq '.data[0].value'"
+
+alias killFinder="defaults write com.apple.Finder QuitMenuItem -bool TRUE; killall Finder"
 
 # compression
 function 7zip() {
@@ -35,9 +37,9 @@ function mcd() {
 	cd $1
 }
 
-alias mp3='youtube-dl -x --audio-format mp3'
+alias mp3="youtube-dl -x --audio-format mp3"
 
-alias trivyy='trivy fs --skip-dirs node_modules --skip-dirs src/node_modules --security-checks vuln,config .'
+alias trivyy='trivy fs --skip-dirs node_modules --skip-dirs src/node_modules --scanners vuln,config .'
 
 function rga-fzf() {
 	RG_PREFIX="rga --files-with-matches"
