@@ -121,18 +121,18 @@ lvim.plugins = {
 		},
 	},
 
-	{ -- ultrafast copilot alternative for vim and neovim
-		"Exafunction/codeium.vim",
-    -- stylua: ignore
-    config = function()
-      vim.g.codeium_disable_bindings = 1
+	-- { -- ultrafast copilot alternative for vim and neovim
+	-- 	"Exafunction/codeium.vim",
+	--    -- stylua: ignore
+	--    config = function()
+	--      vim.g.codeium_disable_bindings = 1
 
-      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-      vim.keymap.set('i', '<C-j>', function() return vim.fn['codeium#CycleCompletions'](2) end, { expr = true })
-      vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    end,
-	},
+	--      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+	--      vim.keymap.set('i', '<C-j>', function() return vim.fn['codeium#CycleCompletions'](2) end, { expr = true })
+	--      vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+	--      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+	--    end,
+	-- },
 
 	{ -- interacting with OpenAI GPT-3 chatbot
 		"jackMort/ChatGPT.nvim",
@@ -147,16 +147,20 @@ lvim.plugins = {
 		},
 	},
 
-	-- { -- fully featured, with complete with API for interacting with Github Copilot
-	--   "zbirenbaum/copilot.lua",
-	--   cmd = "Copilot",
-	--   event = "InsertEnter",
-	-- },
-	-- { -- Lua plugin to turn github copilot into a cmp source
-	--   "zbirenbaum/copilot-cmp",
-	--   after = { "copilot.lua" },
-	--   config = function()
-	--     require("copilot_cmp").setup()
-	--   end,
-	-- },
+	{ -- fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
+		end,
+	},
+
+	{ -- Lua plugin to turn github copilot into a cmp source
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
 }
