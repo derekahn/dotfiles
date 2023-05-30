@@ -30,13 +30,3 @@ autocmd("TextYankPost", {
 	pattern = { "*.rs" },
 	callback = function() end,
 })
-
--- -- Set the tabstop and shiftwidth options for Rust files
--- autocmd("FileType", {
--- 	pattern = "rust",
--- 	callback = function()
--- 		vim.opt.tabstop = 2
--- 		vim.opt.shiftwidth = 2
--- 		vim.opt.expandtab = true
--- 	end,
--- })

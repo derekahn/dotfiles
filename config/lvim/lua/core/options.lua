@@ -3,10 +3,13 @@ local opt = vim.opt
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
+opt.colorcolumn = "99999" -- fixes indentline for now
 opt.relativenumber = true -- show relative distance between rows
+opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 opt.showtabline = 0 -- never display page tab labels (default 2)
 opt.syntax = "enable" -- enable syntax highlighting
-opt.colorcolumn = "99999" -- fixes indentline for now
+opt.tabstop = 2 -- insert 2 spaces for a tab
+opt.wrap = true -- wrap lines
 
 -----------------------------------------------------------
 -- Memory, CPU
