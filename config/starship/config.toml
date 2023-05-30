@@ -34,16 +34,12 @@ symbol = ""
 format = "\\[[$symbol $version]($style)\\] "
 disabled = true
 
-[nodejs]
-symbol = ""
-format = "\\[[$symbol $version](yellow)\\] "
-
 [python]
 symbol = ""
 format = "\\[[${symbol} ${version}( \\($virtualenv\\))]($style)\\] "
 
-[cmd_duration]
-format = "\\[[祥$duration]($style)\\] "
+# [cmd_duration]
+# format = "\\[[祥$duration]($style)\\] "
 
 [custom.shell_counter]
 command = "source ~/dev/shell_recursive_counter.sh && shell_counter"
