@@ -109,21 +109,16 @@ lvim.plugins = {
 		end,
 	},
 
-	{
-		-- highly performant ui for lsp things
+	{ -- improve neovim lsp experience
 		"glepnir/lspsaga.nvim",
-		event = "BufRead",
+		event = "LspAttach",
 		config = function()
-			local ok, saga = pcall(require, "lspsaga")
-			if ok then
-				saga.setup({
-					code_action_lightbulb = {
-						enable = false,
-						enable_in_insert = false,
-					},
-				})
-			end
+			require("lspsaga").setup({})
 		end,
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 	},
 
 	{ -- ultrafast copilot alternative for vim and neovim
