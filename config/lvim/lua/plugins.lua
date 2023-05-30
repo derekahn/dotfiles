@@ -151,9 +151,6 @@ lvim.plugins = {
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({})
-		end,
 	},
 
 	{ -- Lua plugin to turn github copilot into a cmp source

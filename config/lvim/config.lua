@@ -30,7 +30,7 @@ local sources = {
 	"core.keymaps",
 	"core.autocmds",
 
-	-- "config/copilot",
+	"config/copilot",
 	"config/hlargs",
 	"config/indentlines",
 	"config/inlay-hints",
