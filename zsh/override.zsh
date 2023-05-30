@@ -14,7 +14,7 @@ alias du='du -h -c'                                 # calculate disk usage for a
 alias fzf="fzf --preview 'bat {-1} --color=always'" # syntax pretty preview
 alias grep='grep --color=auto'                      # color Highlighting
 alias lll="ls -la"                                  # pretty permissions
-alias rm="rip -i"                                   # always confirm before delete
+alias rmi="rip -i"                                  # always confirm before delete
 alias s="ncdu"                                      # file explorer that shows size
 alias grep="rg"                                     # a better grep
 

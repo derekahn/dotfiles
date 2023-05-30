@@ -9,11 +9,11 @@ export VOLTA_FEATURE_PNPM=1
 alias vr='volta run'
 
 # pnpm
-export PNPM_HOME="~/Library/pnpm"
+# export PNPM_HOME="~/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
-export PNPM_HOME="~/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# export PNPM_HOME="~/Library/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
