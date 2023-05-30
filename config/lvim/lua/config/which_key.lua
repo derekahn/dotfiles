@@ -1,14 +1,34 @@
 local which_key = lvim.builtin.which_key
 
-which_key.mappings["a"] = { "<cmd>ccl<cr>", "Close Quickfix" }
-which_key.mappings[";"] = { "<cmd>copen<cr>", "Open Quickfix" }
+-- which_key.mappings[";"] = { "<cmd>copen<cr>", "Open Quickfix" }
+-- which_key.mappings["a"] = { "<cmd>ccl<cr>", "Close Quickfix" }
+lvim.builtin.which_key.mappings["a"] = {
+	name = "A.I.",
+	c = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+	a = { "<cmd>ChatGPTActAs<cr>", "Act As GPT" },
+	e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit GPT" },
+	r = { "<cmd>ChatRunCustomCodeAction<cr>", "Code Action GPT" },
+	s = { "<cmd>Copilot suggestion<cr>", "Toggle Copilot Suggestion" },
+	p = { "<cmd>Copilot panel<cr>", "Toggle Copilot Panel" },
+	t = { "<cmd>Copilot toggle<cr>", "Toggle Copilot" },
+}
+which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
 which_key.mappings["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find text" }
 which_key.mappings["k"] = { "<cmd>hide<cr>", "Kill Pane" }
-which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
-which_key.mappings["su"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }
-which_key.mappings["sB"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+which_key.mappings["gd"] = {
+	name = "Git Diff",
+	o = { "<cmd>DiffviewOpen<cr>", "Open Diff View" },
+	c = { "<cmd>DiffviewClose<cr>", "Close Diff View" },
+	h = { "<cmd>DiffviewFileHistory<cr>", "Open File History" },
+	t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle File History" },
+	w = { "<cmd>DiffviewRefresh<cr>", "Refresh Diff View" },
+}
+which_key.mappings["lh"] = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" }
 which_key.mappings["lo"] = { "<cmd>SymbolsOutline<cr>", "Symbols" }
 which_key.mappings["lp"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
+which_key.mappings["sB"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
+which_key.mappings["su"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }
+which_key.mappings["w"] = { "<cmd>w!<cr>", "Save" }
 
 -- disable so we can use telescope
 which_key.setup.plugins.spelling.enabled = false

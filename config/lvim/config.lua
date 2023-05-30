@@ -10,29 +10,34 @@
 --]]
 
 -- general
-lvim.log.level = "warn"
+lvim.builtin.breadcrumbs.active = true
+lvim.builtin.dap.active = true
+lvim.colorscheme = "onedark"
 lvim.format_on_save.enabled = true
 lvim.lint_on_save = true
-lvim.colorscheme = "onedark"
+lvim.log.level = "warn"
+lvim.reload_config_on_save = false
 
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.update_cwd = false
 lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.terminal.active = true
 
 local sources = {
 	"core.options",
 	"core.keymaps",
 	"core.autocmds",
 
+	-- "config/copilot",
 	"config/hlargs",
 	"config/indentlines",
+	"config/inlay-hints",
 	"config/lspkind",
 	"config/lualine",
-	"config/null-ls",
+	"config/numb",
+	"config/spectre",
 	"config/telescope",
 	"config/treesitter",
 	"config/which_key",
