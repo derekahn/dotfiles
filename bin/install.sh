@@ -82,12 +82,15 @@ packages=(
   "rga"
   "ripgrep"
 
+  # replace
+  "ms-jpq/sad/sad"
+
   ################
   # LANGUAGES
   ################
-  # go
+  # "go"
   "dlv"
-  "golang"
+  "go"
   "gomodifytags"
   "gotests"
   "staticcheck"
