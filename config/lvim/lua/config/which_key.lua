@@ -24,7 +24,7 @@ which_key.mappings["gd"] = {
 	w = { "<cmd>DiffviewRefresh<cr>", "Refresh Diff View" },
 }
 which_key.mappings["lh"] = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" }
-which_key.mappings["lo"] = { "<cmd>SymbolsOutline<cr>", "Symbols" }
+which_key.mappings["lo"] = { "<cmd>Lspsaga outline<cr>", "Symbols" }
 which_key.mappings["lp"] = { "<cmd>setlocal spell!<cr>", "Spell Check" }
 which_key.mappings["sB"] = { "<cmd>Telescope bookmarks<cr>", "Browser bookmarks" }
 which_key.mappings["su"] = { "<cmd>lua require('undotree').toggle()<cr>", "Undo" }

@@ -110,14 +110,20 @@ lvim.plugins = {
 	},
 
 	{ -- improve neovim lsp experience
-		"glepnir/lspsaga.nvim",
-		event = "LspAttach",
+		"nvimdev/lspsaga.nvim",
 		config = function()
-			require("lspsaga").setup({})
+			local ok, lspsaga = pcall(require, "lspsaga")
+			if ok then
+				lspsaga.setup({
+					lightbulb = {
+						enable = false,
+					},
+				})
+			end
 		end,
 		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			{ "nvim-treesitter/nvim-treesitter" },
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
 		},
 	},
 
