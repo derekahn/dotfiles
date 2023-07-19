@@ -42,7 +42,6 @@ local sources = {
 	"config/treesitter",
 	"config/which_key",
 
-	"lsp/go",
 	"lsp/javascript",
 	-- "lsp/python",
 	"lsp/rust",

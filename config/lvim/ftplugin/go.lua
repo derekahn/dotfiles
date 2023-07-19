@@ -35,33 +35,28 @@ lsp_manager.setup("gopls", {
 
 local status_ok, gopher = pcall(require, "gopher")
 if not status_ok then
-	return
+	gopher.setup({
+		commands = {
+			go = "go",
+			gomodifytags = "gomodifytags",
+			gotests = "gotests",
+			impl = "impl",
+			iferr = "iferr",
+		},
+	})
 end
-
-gopher.setup({
-	commands = {
-		go = "go",
-		gomodifytags = "gomodifytags",
-		gotests = "gotests",
-		impl = "impl",
-		iferr = "iferr",
-	},
-})
-
-------------------------
--- Language Key Mappings
-------------------------
 
 ------------------------
 -- Dap
 ------------------------
 local dap_ok, dapgo = pcall(require, "dap-go")
-if not dap_ok then
-	return
+if dap_ok then
+	dapgo.setup()
 end
 
-dapgo.setup()
-
+------------------------
+-- Language Key Mappings
+------------------------
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
 	return
