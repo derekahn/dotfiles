@@ -53,6 +53,9 @@ packages=(
   "tokei"
   "toshimaru/nyan/nyan"
 
+  # ranger file finder
+  "joshuto"
+
   # json
   "dasel"
   "fx"
