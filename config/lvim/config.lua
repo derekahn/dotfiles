@@ -50,6 +50,17 @@ local sources = {
 	"plugins",
 }
 
+-- TODO:get this working in ftplugin/markdown.lua
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{
+		command = "prettier",
+		filetypes = {
+			"markdown",
+		},
+	},
+})
+
 for _, source in ipairs(sources) do
 	local status_ok, fault = pcall(require, source)
 	if not status_ok then
