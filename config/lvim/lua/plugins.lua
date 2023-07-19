@@ -68,16 +68,6 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- tree like view for symbols in Neovim using the Language Server Protocol
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			local ok, symbols_outline = pcall(require, "symbols-outline")
-			if ok then
-				symbols_outline.setup()
-			end
-		end,
-	},
-
 	{ -- highlight, list and search todo comments in your projects
 		"folke/todo-comments.nvim",
 		config = function()
@@ -127,24 +117,14 @@ lvim.plugins = {
 		},
 	},
 
-	-- { -- ultrafast copilot alternative for vim and neovim
-	-- 	"Exafunction/codeium.vim",
-	--    -- stylua: ignore
-	--    config = function()
-	--      vim.g.codeium_disable_bindings = 1
-
-	--      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-	--      vim.keymap.set('i', '<C-j>', function() return vim.fn['codeium#CycleCompletions'](2) end, { expr = true })
-	--      vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-	--      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-	--    end,
-	-- },
-
 	{ -- interacting with OpenAI GPT-3 chatbot
 		"jackMort/ChatGPT.nvim",
 		event = "VeryLazy",
 		config = function()
-			require("chatgpt").setup()
+			local ok, chatgpt = pcall(require, "chatgpt")
+			if ok then
+				chatgpt.setup()
+			end
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
@@ -163,7 +143,10 @@ lvim.plugins = {
 		"zbirenbaum/copilot-cmp",
 		after = { "copilot.lua" },
 		config = function()
-			require("copilot_cmp").setup()
+			local ok, copilot_cmp = pcall(require, "copilot_cmp")
+			if ok then
+				copilot_cmp.setup()
+			end
 		end,
 	},
 }
