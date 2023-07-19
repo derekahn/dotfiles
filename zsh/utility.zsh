@@ -76,3 +76,22 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
   -title 'Break is over! Get back to work :grimacing:'\
   -appIcon '~/Pictures/pumpkin.png'\
   -sound Crystal"
+
+function coin() {
+	if [ -z "$1" ]; then
+		echo "Usage: $FUNCNAME TOKEN"
+		return 1
+	fi
+
+	local TOKEN="$1"
+
+	local response=$(http "https://api.coingecko.com/api/v3/search?query=${TOKEN}")
+
+	local name=$(echo "$response" | jq -r '.coins[0].name')
+	local symbol=$(echo "$response" | jq -r '.coins[0].symbol')
+	local market_cap_rank=$(echo "$response" | jq -r '.coins[0].market_cap_rank')
+
+	echo "Name: $name"
+	echo "Symbol: $symbol"
+	echo "Market Cap Rank: $market_cap_rank"
+}
