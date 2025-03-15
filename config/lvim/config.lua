@@ -42,10 +42,10 @@ local sources = {
 	"config/treesitter",
 	"config/which_key",
 
-	"lsp/javascript",
+	-- "lsp/javascript",
 	-- "lsp/python",
-	"lsp/rust",
-	"lsp/sh",
+	-- "lsp/rust",
+	-- "lsp/sh",
 
 	"plugins",
 }

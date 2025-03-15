@@ -92,12 +92,12 @@ lvim.plugins = {
 		end,
 	},
 
-	{ -- markdown preview
-		"iamcco/markdown-preview.nvim",
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
+	-- { -- markdown preview
+	-- 	"iamcco/markdown-preview.nvim",
+	-- 	build = function()
+	-- 		vim.fn["mkdp#util#install"]()
+	-- 	end,
+	-- },
 
 	{ -- improve neovim lsp experience
 		"nvimdev/lspsaga.nvim",
@@ -117,21 +117,21 @@ lvim.plugins = {
 		},
 	},
 
-	{ -- interacting with OpenAI GPT-3 chatbot
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			local ok, chatgpt = pcall(require, "chatgpt")
-			if ok then
-				chatgpt.setup()
-			end
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
+	-- { -- interacting with OpenAI GPT-3 chatbot
+	-- 	"jackMort/ChatGPT.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		local ok, chatgpt = pcall(require, "chatgpt")
+	-- 		if ok then
+	-- 			chatgpt.setup()
+	-- 		end
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- },
 
 	{ -- fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot
 		"zbirenbaum/copilot.lua",
@@ -141,12 +141,32 @@ lvim.plugins = {
 
 	{ -- Lua plugin to turn github copilot into a cmp source
 		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua" },
 		config = function()
 			local ok, copilot_cmp = pcall(require, "copilot_cmp")
 			if ok then
 				copilot_cmp.setup()
 			end
+		end,
+	},
+
+	{ -- An all in one plugin for converting text case
+		"johmsalas/text-case.nvim",
+		config = function()
+			local ok, textcase = pcall(require, "textcase")
+			if ok then
+				textcase.setup()
+				require("telescope").load_extension("textcase")
+
+				vim.api.nvim_set_keymap("n", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+				vim.api.nvim_set_keymap("v", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+			end
+		end,
+	},
+
+	{ -- markdown preview
+		"iamcco/markdown-preview.nvim",
+		build = function()
+			vim.fn["mkdp#util#install"]()
 		end,
 	},
 }
