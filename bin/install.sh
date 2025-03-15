@@ -62,7 +62,6 @@ packages=(
 
   # git
   "git-delta"
-  "gitui"
   "lazygit"
 
   # network
@@ -70,9 +69,6 @@ packages=(
   "httpie"
   "syntaqx/tap/serve"
   "ycd/tap/dstp"
-
-  # pomodoro
-  "caarlos0/tap/timer"
 
   # security
   "aquasecurity/trivy/trivy"
@@ -148,17 +144,13 @@ echo "---------------------------------------------------------"
 
 applications=(
   "--no-quarantine syntax-highlight"
-  "1password"
   "alfred"
   "anki"
   "asciinema"
-  "db-browser-for-sqlite"
   "fork"
   "iterm2"
   "nordvpn"
   "qlmarkdown"
-  "rectangle"
-  "slack"
 )
 
 for i in "${applications[@]}"
