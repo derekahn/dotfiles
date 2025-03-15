@@ -37,3 +37,6 @@
 
 [core]
 	editor = lvim
+[user]
+	name = Derek Ahn
+	email = git.derek@gmail.com
