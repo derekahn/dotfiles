@@ -1,4 +1,5 @@
 return {
+  { "echasnovski/mini.surround", enabled = false },
   {
     "gbprod/yanky.nvim",
     keys = {

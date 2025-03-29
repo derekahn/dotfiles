@@ -6,6 +6,12 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local restore = vim.keymap.del
+
+-- Restore native vim behavior
+restore("n", "S")
+restore("v", "S")
+vim.keymap.set("v", "S", "<Plug>(nvim-surround-visual)", { desc = "Add surrounding to visual selection" })
 
 -- Resize window using <A+hjkl>
 map("n", "<A-h>", ":vertical resize -2<cr>", { desc = "Decrease window width", silent = true })
@@ -13,13 +19,12 @@ map("n", "<A-j>", ":resize -2<cr>", { desc = "Decrease window height", silent = 
 map("n", "<A-k>", ":resize +2<cr>", { desc = "Increase window height", silent = true })
 map("n", "<A-l>", ":vertical resize +2<cr>", { desc = "Increase window width", silent = true })
 
--- map("n", "<leader>k", "*Nzz", { desc = "Search Word", noremap = true })
-
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-map("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit" })
+map("n", "<leader>k", "<cmd>hide<cr>", { desc = "Kill Pane" })
 
 map("v", "p", '"_dP')
-map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+-- map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+map("v", "y", '"+y', { desc = "Yank to clipboard" })
 map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 -- Define logging templates for different languages
@@ -102,7 +107,7 @@ end, { desc = "Copy file path" })
 -- Search & replace word under the cursor
 map("n", "<leader>s", ":%s/<c-r><c-w>//g<left><left>", { desc = "replace word under cursor" })
 -- search & replace selected text
---map("v", "<leader>S", "y:%s/\\<<C-r>0\\>//g<Left><Left>", { desc = "Replace selected text" })
+map("v", "<leader>S", "y:%s/\\<<C-r>0\\>//g<Left><Left>", { desc = "Replace selected text" })
 
 -- Mimics lunarvim's ctrl-p search
 vim.keymap.set("n", "<C-p>", function()
