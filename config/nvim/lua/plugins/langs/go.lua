@@ -1,3 +1,3 @@
-reurn({
-	{ import = "lazyvim.plugins.extras.lang.go" },
-})
+return {
+  { import = "lazyvim.plugins.extras.lang.go" },
+}
