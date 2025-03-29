@@ -1,5 +1,4 @@
 return {
-  { "akinsho/bufferline.nvim", enabled = false },
   {
     "gbprod/yanky.nvim",
     keys = {
