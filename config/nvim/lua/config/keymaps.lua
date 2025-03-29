@@ -16,6 +16,7 @@ map("n", "<A-l>", ":vertical resize +2<cr>", { desc = "Increase window width", s
 -- map("n", "<leader>k", "*Nzz", { desc = "Search Word", noremap = true })
 
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+map("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit" })
 
 map("v", "p", '"_dP')
 map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })

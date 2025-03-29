@@ -70,6 +70,7 @@ return {
         ["o"] = "open",
         ["h"] = "close_node",
         ["<space>"] = "none",
+        ["v"] = "open_vsplit",
         ["Y"] = {
           function(state)
             local node = state.tree:get_node()
