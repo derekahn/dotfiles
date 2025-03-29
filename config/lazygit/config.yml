@@ -1,17 +1,34 @@
-# mac = ~/Library/Application\ Support/lazygit/config.yml
----
-os:
-  editCommand: 'floaterm'
 gui:
+  expandFocusedSidePanel: true
+  nerdFontsVersion: "3"
+  border: "rounded"
   theme:
+    activeBorderColor:
+      - "#fab387"
+      - bold
+    inactiveBorderColor:
+      - "#a6adc8"
+    optionsTextColor:
+      - "#89b4fa"
     selectedLineBgColor:
-      - underline
+      - "#313244"
     selectedRangeBgColor:
-      - underline
+      - "#313244"
+    cherryPickedCommitBgColor:
+      - "#45475a"
+    cherryPickedCommitFgColor:
+      - "#fab387"
+    unstagedChangesColor:
+      - "#f38ba8"
+    defaultFgColor:
+      - "#cdd6f4"
+    searchingActiveBorderColor:
+      - "#f9e2af"
+  authorColors:
+    "*": "#b4befe"
 git:
   paging:
-    colorArg: never
+    colorArg: always
     pager: delta --dark --paging=never
-keybinding:
-  universal:
-    appendNewline: '<tab>'
+os:
+  edit: "$EDITOR {{filename}}"
