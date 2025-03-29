@@ -63,6 +63,8 @@ map("n", "<leader>ck", function()
 end, { desc = "Insert debug log 🚀" })
 
 map("i", "jj", "<Esc>")
+map("v", "Y", "y$", { desc = "Yank to end of line" })
+map("i", "<C-l>", "<Right>", { desc = "Move cursor right" })
 -- Remap alt backspace to ctrl-w to delete word
 map("i", "<A-BS>", "<C-w>")
 
