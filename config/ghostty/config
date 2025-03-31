@@ -14,7 +14,7 @@ window-colorspace = display-p3
 font-family = DankMono Nerd Font Mono
 font-family-bold = DankMono Nerd Font Mono Bold
 font-family-italic = DankMono Nerd Font Mono Italic
-font-size = 13
+font-size = 12
 adjust-cell-height = 10%
 
 # Mouse
