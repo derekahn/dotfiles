@@ -1,66 +1,62 @@
+# ThinkorSwim Watchlist Converter
+# Converts 🐻_*.txt files from ~/Downloads to ThinkorSwim format
+tos() {
+    local download_dir="$HOME/Downloads"
+    local output_file="$download_dir/tos_watchlist.txt"
+    local files=($download_dir/🐻_*.txt(N))
+    
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No files matching 🐻_*.txt found in $download_dir"
+        return 1
+    fi
+    
+    local latest_file=${files[1]}
+    if [[ ${#files[@]} -gt 1 ]]; then
+        echo "Multiple files found. Using most recent:"
+        latest_file=$(ls -t "${files[@]}" | head -1)
+    fi
+    
+    echo "Processing: $(basename "$latest_file")"
+    echo ""
+    
+    sed 's/[A-Z]*://g' "$latest_file" | tr ',' '\n' > "$output_file"
+    
+    echo "✓ Conversion complete!"
+    echo "Output saved to: $output_file"
+    echo ""
+    echo "Tickers:"
+    cat "$output_file"
+    
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        cat "$output_file" | pbcopy
+        echo ""
+        echo "✓ Copied to clipboard!"
+    fi
+}
+
 function gaps() {
   # Set up paths
   DOWNLOAD_DIR="$HOME/Downloads"
-  PROGRAM_DIR="$HOME/code/gaps-list/"
-  INPUT_FILE="Gaps  & Earnings - Gaps List.csv"
-  FORMATTED_OUTPUT="🕳️ gaps.csv"
+  PROGRAM_DIR="$HOME/Code/pristine_trader_gaps"
+  # INPUT_FILE="Gaps  & Earnings - Gaps List.xlsx"
+  INPUT_FILE="Gaps  & Earnings.xlsx"
+  FORMATTED_OUTPUT="🕳️.txt"
 
   # Move downloaded file to watchlist directory
+  rm -rf "$PROGRAM_DIR/$FORMATTED_OUTPUT" "$PROGRAM_DIR/$INPUT_FILE"
   mv "$DOWNLOAD_DIR/$INPUT_FILE" "$PROGRAM_DIR/"
   cd "$PROGRAM_DIR/"
 
-  # Clean up previous files
-  rm -f complete_list.csv \
-    price_cache.json \
-    volume_cache.json \
-    filtered_list_report.txt \
-    filtered_list.csv \
-    2>/dev/null || true
-
   # Process data
-  echo "Formatting data..."
-  node format.js
-
-  echo "Filtering tickers..."
-  node filter.js
+  node converter.js
 
   # Move result back to downloads
-  cp filtered_list.csv "$FORMATTED_OUTPUT"
   mv "$FORMATTED_OUTPUT" "$DOWNLOAD_DIR/"
 
   # Return to downloads directory
   cd "$DOWNLOAD_DIR/"
 
   echo "✅ Process complete! Filtered gaps file available in Downloads."
-}
-
-function earn() {
-  # Set up paths
-  DOWNLOAD_DIR="$HOME/Downloads"
-  PROGRAM_DIR="$HOME/code/earnings-list/"
-  INPUT_FILE="Gaps  & Earnings - Earnings List.csv"
-  FORMATTED_OUTPUT="💰 earnings.csv"
-
-  # Move downloaded file to watchlist directory
-  mv "$DOWNLOAD_DIR/$INPUT_FILE" "$PROGRAM_DIR/"
-  cd "$PROGRAM_DIR/"
-
-  # Clean up previous files
-  rm -f earnings.csv \
-    2>/dev/null || true
-
-  # Process data
-  echo "Formatting data..."
-  node format.js
-
-  # Move result back to downloads
-  cp earnings.csv "$FORMATTED_OUTPUT"
-  mv "$FORMATTED_OUTPUT" "$DOWNLOAD_DIR/"
-
-  # Return to downloads directory
-  cd "$DOWNLOAD_DIR/"
-
-  echo "✅ Process complete! Formated earnings file available in Downloads."
 }
 
 alias tiny="tinypng -k=REDACTED_TINYPNG_KEY_1"
