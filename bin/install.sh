@@ -101,9 +101,6 @@ packages=(
   "volta"
   "prettier"
 
-  # python
-  "python3"
-
   # rust
   "michaeleisel/zld/zld"
 
@@ -114,6 +111,7 @@ packages=(
   "shellcheck"
   "shfmt"
   "stylua"
+  "tree-sitter"
   "write-good"
   "yamllint"
 
@@ -145,11 +143,6 @@ echo "---------------------------------------------------------"
 applications=(
   "--no-quarantine syntax-highlight"
   "alfred"
-  "anki"
-  "asciinema"
-  "fork"
-  "iterm2"
-  "nordvpn"
   "qlmarkdown"
 )
 

@@ -17,6 +17,7 @@ treesitter.ensure_installed = {
 treesitter.ignore_install = {
 	"haskell",
 	"java",
+	"swift",
 }
 
 treesitter.highlight.enabled = true

@@ -1,5 +1,5 @@
 # Theme
-theme = GitHub-Dark-Dimmed
+theme = catppuccin-mocha.conf
 
 # Window Settings
 macos-titlebar-style = hidden
