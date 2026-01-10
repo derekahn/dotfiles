@@ -1,211 +1,271 @@
-#!/bin/sh
-INSTALLDIR=$PWD
+#!/usr/bin/env bash
+set -e
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Greetings. Preparing to power up and begin diagnostics.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Checking for Homebrew installation.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-brew="/usr/local/bin/brew"
-if [ -f "$brew" ]
-then
-  echo "---------------------------------------------------------"
-  echo "$(tput setaf 2)🏠: Homebrew is installed.$(tput sgr 0)"
-  echo "---------------------------------------------------------"
+# Colors
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+RESET=$(tput sgr 0)
 
-  brew update
-  brew upgrade
-  brew doctor
-  brew install cask
+log() { echo "${GREEN}🏠: $1${RESET}"; }
+warn() { echo "${YELLOW}🏠: $1${RESET}"; }
+divider() { echo "---------------------------------------------------------"; }
 
+# Detect architecture
+if [[ $(uname -m) == "arm64" ]]; then
+    HOMEBREW_PREFIX="/opt/homebrew"
 else
-  echo "---------------------------------------------------------"
-  echo "$(tput setaf 3)🏠: Installing Homebrew. Homebrew requires osx command lines tools, please download xcode first$(tput sgr 0)"
-  echo "---------------------------------------------------------"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    HOMEBREW_PREFIX="/usr/local"
 fi
 
+divider
+log "Greetings. Preparing to power up and begin diagnostics."
+divider
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing system packages.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+# ==============================================================================
+# Homebrew
+# ==============================================================================
+divider
+log "Checking for Homebrew installation."
+divider
+
+if command -v brew &>/dev/null; then
+    log "Homebrew is installed."
+    brew update
+    brew upgrade
+else
+    warn "Installing Homebrew. This may prompt for your password."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Add brew to PATH for this session
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+fi
+
+# ==============================================================================
+# Packages
+# ==============================================================================
+divider
+log "Installing system packages."
+divider
 
 packages=(
-  # applications
-  "arc"
-  "boop"
-  "iina"
+    # Applications (formulae)
+    "boop"
+    "iina"
 
-  ################
-  # Tools
-  ################
-  # file
-  "bat"
-  "duf"
-  "lsd"
-  "ncdu"
-  "p7zip"
-  "rm-improved"
-  "sd"
-  "tealdeer"
-  "tokei"
-  "toshimaru/nyan/nyan"
+    # File tools
+    "bat"
+    "duf"
+    "lsd"
+    "ncdu"
+    "p7zip"
+    "rm-improved"
+    "sd"
+    "tealdeer"
+    "tokei"
 
-  # ranger file finder
-  "joshuto"
+    # File manager
+    "joshuto"
 
-  # json
-  "dasel"
-  "fx"
+    # JSON tools
+    "dasel"
+    "fx"
 
-  # git
-  "git-delta"
-  "lazygit"
+    # Git tools
+    "git-delta"
+    "lazygit"
 
-  # network
-  "croc"
-  "httpie"
-  "syntaqx/tap/serve"
-  "ycd/tap/dstp"
+    # Network tools
+    "croc"
+    "httpie"
 
-  # security
-  "aquasecurity/trivy/trivy"
-  "clamav"
+    # Security
+    "clamav"
 
-  # search
-  "fd"
-  "fzf"
-  "ranger"
-  "rga"
-  "ripgrep"
+    # Search tools
+    "fd"
+    "fzf"
+    "ripgrep"
 
-  # replace
-  "ms-jpq/sad/sad"
+    # Go
+    "go"
+    "dlv"
+    "gomodifytags"
+    "gotests"
+    "staticcheck"
 
-  ################
-  # LANGUAGES
-  ################
-  # "go"
-  "dlv"
-  "go"
-  "gomodifytags"
-  "gotests"
-  "staticcheck"
+    # Lua
+    "gnu-sed"
+    "stylua"
 
-  # lua (sumneko_lua)
-  "gnu-sed"
+    # Node.js
+    "volta"
+    "prettier"
 
-  # node.js
-  "volta"
-  "prettier"
+    # Linters & formatters
+    "jsonlint"
+    "proselint"
+    "shellcheck"
+    "shfmt"
+    "tree-sitter"
+    "yamllint"
 
-  # rust
-  "michaeleisel/zld/zld"
+    # Terminal
+    "neovim"
+    "tmux"
+    "reattach-to-user-namespace"
 
-  # linters
-  "jsonlint"
-  "kube-score/tap/kube-score"
-  "proselint"
-  "shellcheck"
-  "shfmt"
-  "stylua"
-  "tree-sitter"
-  "write-good"
-  "yamllint"
+    # Shell enhancements
+    "atuin"
+    "starship"
+    "zoxide"
+    "zsh-syntax-highlighting"
 
-  ################
-  # Terminal
-  ################
-  # editor
-  "neovim"
-  "tmux"
-  "reattach-to-user-namespace"
-
-  # shell
-  "atuin"
-  "starship"
-  "zoxide"
-  "zsh-syntax-highlighting"
+    # Image tools (for nvim)
+    "imagemagick"
+    "ghostscript"
 )
 
-for i in "${packages[@]}"
-do
-  brew install $i
-  echo "---------------------------------------------------------"
+for pkg in "${packages[@]}"; do
+    if brew list "$pkg" &>/dev/null; then
+        log "$pkg is already installed."
+    else
+        log "Installing $pkg..."
+        brew install "$pkg" || warn "Failed to install $pkg"
+    fi
 done
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing casks.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+# ==============================================================================
+# Casks
+# ==============================================================================
+divider
+log "Installing cask applications."
+divider
 
-applications=(
-  "--no-quarantine syntax-highlight"
-  "alfred"
-  "qlmarkdown"
+casks=(
+    "arc"
+    "ghostty"
+    "syntax-highlight"
+    "alfred"
+    "qlmarkdown"
 )
 
-for i in "${applications[@]}"
-do
-  brew install --cask $i
-  echo "---------------------------------------------------------"
+for cask in "${casks[@]}"; do
+    if brew list --cask "$cask" &>/dev/null; then
+        log "$cask is already installed."
+    else
+        log "Installing $cask..."
+        brew install --cask --no-quarantine "$cask" || warn "Failed to install $cask"
+    fi
 done
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing system fonts.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+# ==============================================================================
+# Fonts
+# ==============================================================================
+divider
+log "Installing system fonts."
+divider
 
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+fonts=(
+    "font-hack-nerd-font"
+    "font-jetbrains-mono-nerd-font"
+)
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing 🐹 Go things.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+for font in "${fonts[@]}"; do
+    if brew list --cask "$font" &>/dev/null; then
+        log "$font is already installed."
+    else
+        log "Installing $font..."
+        brew install --cask "$font" || warn "Failed to install $font"
+    fi
+done
 
-echo "Please enter your github username (ex: derekahn):"
-read user
+# ==============================================================================
+# Go setup
+# ==============================================================================
+divider
+log "Setting up Go workspace."
+divider
 
-echo "Created your go workspace at: $HOME/go/src/github.com/$user"
-mkdir -p $HOME/go/src/github.com/$user
+GITHUB_USER="${GITHUB_USER:-$(git config --global user.name 2>/dev/null || echo 'default')}"
+GO_WORKSPACE="$HOME/go/src/github.com/$GITHUB_USER"
 
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+if [[ ! -d "$GO_WORKSPACE" ]]; then
+    log "Creating Go workspace at: $GO_WORKSPACE"
+    mkdir -p "$GO_WORKSPACE"
+else
+    log "Go workspace already exists at: $GO_WORKSPACE"
+fi
 
-echo "Installing 🐹 go tools: godoc, impl"
-go get golang.org/x/tools/cmd/godoc
-go get -u github.com/josharian/impl
-echo "Tools installed. For more information visit https://golang.org/doc/code.html"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing 🦀 rust things.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+# Install Go tools
+log "Installing Go tools..."
+go install golang.org/x/tools/cmd/godoc@latest 2>/dev/null || true
+go install github.com/josharian/impl@latest 2>/dev/null || true
 
-curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
+# ==============================================================================
+# Rust setup
+# ==============================================================================
+divider
+log "Setting up Rust."
+divider
 
-rustup component add rust-src
-rustup component add rustfmt
-rustup component add rust-analyzer
+if command -v rustup &>/dev/null; then
+    log "Rust is already installed. Updating..."
+    rustup update
+else
+    log "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
+fi
 
-# this installs to a different path so may require, see https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
-ln /home/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer /home/.cargo/bin
-ln $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/bin/rust-analyzer $HOME/.cargo/bin
+log "Installing Rust components..."
+rustup component add rust-src rustfmt rust-analyzer 2>/dev/null || true
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Manually installing zsh-autosuggestions.$(tput sgr 0)"
-echo "---------------------------------------------------------"
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+# ==============================================================================
+# Zsh plugins
+# ==============================================================================
+divider
+log "Setting up zsh-autosuggestions."
+divider
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: Installing 🌙 LunarVim.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+ZSH_AUTOSUGGESTIONS_DIR="$HOME/.zsh/zsh-autosuggestions"
+if [[ -d "$ZSH_AUTOSUGGESTIONS_DIR" ]]; then
+    log "zsh-autosuggestions already installed. Updating..."
+    git -C "$ZSH_AUTOSUGGESTIONS_DIR" pull --quiet
+else
+    log "Installing zsh-autosuggestions..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_AUTOSUGGESTIONS_DIR"
+fi
 
-export LV_BRANCH='release-1.2/neovim-0.8'
-curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh | sh
+# ==============================================================================
+# Node.js setup via Volta
+# ==============================================================================
+divider
+log "Setting up Node.js via Volta."
+divider
 
-echo "---------------------------------------------------------"
-echo "$(tput setaf 2)🏠: system update complete. currently running at 100% power. enjoy.$(tput sgr 0)"
-echo "---------------------------------------------------------"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+if command -v volta &>/dev/null; then
+    log "Installing Node.js LTS..."
+    volta install node@lts || true
+    volta install npm@latest || true
+fi
+
+# ==============================================================================
+# Done
+# ==============================================================================
+divider
+log "System setup complete. Currently running at 100% power. Enjoy!"
+divider
+log "Next steps:"
+log "  1. Run 'make link' to create symlinks"
+log "  2. Restart your terminal or run 'source ~/.zshrc'"
+divider
 
 exit 0
