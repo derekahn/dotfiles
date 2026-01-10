@@ -128,7 +128,7 @@ watchlist() {
 #   echo "✅ Process complete! Filtered gaps file available in Downloads."
 # }
 
-alias tiny="tinypng -k=REDACTED_TINYPNG_KEY_1"
-alias tiny1="tinypng -k=REDACTED_TINYPNG_KEY_2"
+alias tiny="tinypng -k=\$TINYPNG_API_KEY"
+alias tiny1="tinypng -k=\$TINYPNG_API_KEY_2"
 
 alias t="tinypng *.(png|jpg|JPG)"
