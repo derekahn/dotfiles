@@ -52,7 +52,11 @@ function rga-fzf() {
 			--preview-window="70%:wrap"
 	)" &&
 		echo "opening $file" &&
-		xdg-open "$file"
+		if [[ "$OSTYPE" == "darwin"* ]]; then
+			open "$file"
+		else
+			xdg-open "$file"
+		fi
 }
 
 function weather() {

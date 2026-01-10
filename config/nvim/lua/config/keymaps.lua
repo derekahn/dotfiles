@@ -1,9 +1,5 @@
--- Keymaps are automaticallyd loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-
 -- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- Default keymaps: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
 local map = vim.keymap.set
 local restore = vim.keymap.del
@@ -83,10 +79,6 @@ if os.getenv("TMUX") then
 end
 
 map("n", "<leader>gl", "<cmd>Gitsigns blame_line<cr>", { desc = "Blame" })
-
-map("n", "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "New Note" })
-map("n", "<leader>od", "<cmd>ObsidianToday<cr>", { desc = "Daily Note" })
-map("n", "<leader>oy", "<cmd>ObsidianYesterday<cr>", { desc = "Yesterday's Note" })
 
 -- DEBUG: reload snippets
 map("n", "<leader>rs", function()

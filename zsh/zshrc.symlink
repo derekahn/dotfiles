@@ -4,9 +4,9 @@ for config in $HOME/.dotfiles/zsh/*.zsh; do
 	source "$config"
 done
 
-# zsh profiling (cmd: zprof)
+# zsh profiling - run PROFILE_ZSH=1 zsh to enable (cmd: zprof)
 # ---------------
-zmodload zsh/zprof
+[[ -n "$PROFILE_ZSH" ]] && zmodload zsh/zprof
 
 # Load zsh theme
 # ---------------
@@ -15,14 +15,18 @@ export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
 
 # Setup fzf (fuzzy finder: vim, command history)
 # ---------------
-if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-	export PATH="$PATH:/usr/local/opt/fzf/bin"
+if [[ $(uname -m) == "arm64" ]]; then
+	FZF_PATH="/opt/homebrew/opt/fzf"
+else
+	FZF_PATH="/usr/local/opt/fzf"
 fi
 
-# fzf key bindings
-# source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!.node_modules/*"'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -d "$FZF_PATH/bin" && ! "$PATH" == *"$FZF_PATH/bin"* ]]; then
+	export PATH="$PATH:$FZF_PATH/bin"
+fi
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git" --glob "!node_modules" --glob "!.venv"'
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 # Nvim
 # ---------------

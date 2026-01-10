@@ -27,11 +27,13 @@ autocmd("BufEnter", {
 	command = "setlocal spell",
 })
 
--- Set the tabstop and shiftwidth options for Rust files
-autocmd("TextYankPost", {
-	group = augroup("HighlightYank", {}),
+-- Rust files use 4-space indentation
+autocmd("BufEnter", {
 	pattern = { "*.rs" },
-	callback = function() end,
+	callback = function()
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 4
+	end,
 })
 
 autocmd("BufRead", {
@@ -48,8 +50,12 @@ autocmd("BufRead", {
 
 autocmd("BufWritePost", {
   desc = "Auto reload tmux config",
-  pattern = { "tmux/.config/tmux/*.conf" },
-  command = "!tmux source ~/.config/tmux/tmux.conf",
+  pattern = { "*tmux.conf", "*tmux.conf.symlink" },
+  callback = function()
+    if vim.fn.executable("tmux") == 1 then
+      vim.fn.system("tmux source ~/.tmux.conf 2>/dev/null")
+    end
+  end,
 })
 
 autocmd("BufWritePost", {

@@ -27,8 +27,20 @@ function ghot() {
 
 # take this repo and copy it to somewhere else minus the .git stuff.
 function gitexport() {
-	mkdir -p "$1"
-	git archive development | tar -x -C "$1"
+	local target_dir="$1"
+	local branch="${2:-$(git_main_branch)}"
+
+	if [ -z "$target_dir" ]; then
+		echo "Usage: gitexport <directory> [branch]"
+		return 1
+	fi
+
+	if ! git rev-parse --verify "$branch" &>/dev/null; then
+		echo "Branch '$branch' does not exist"
+		return 1
+	fi
+
+	mkdir -p "$target_dir" && git archive "$branch" | tar -x -C "$target_dir"
 }
 
 # If you change repos in lazygit and want your shell
@@ -38,18 +50,11 @@ function lg() {
 
 	lazygit "$@"
 
-	if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-		cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-		rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
+	if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+		cd "$(cat "$LAZYGIT_NEW_DIR_FILE")"
+		rm -f "$LAZYGIT_NEW_DIR_FILE" >/dev/null
 	fi
 }
-
-# Interactively add selected parts of files
-alias gaap="git add -p"
-alias gsp="git stash -p"
-alias gac="!git add -A && git commit -m"
-alias gbc="git branch | fzf | xargs git checkout"
-alias gbdd="git branch | fzf | xargs git branch -D"
 
 # Pretty log messages
 function _git_log_prettily() {
@@ -60,7 +65,7 @@ function _git_log_prettily() {
 
 # Warn if the current branch is a WIP
 function work_in_progress() {
-	if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+	if git log -n 1 2>/dev/null | grep -q "\-\-wip\-\-"; then
 		echo "WIP!!"
 	fi
 }
