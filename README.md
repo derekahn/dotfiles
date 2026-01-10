@@ -1,86 +1,115 @@
-# dotfiles 🏠
+# dotfiles
 
-A portable environment for any 🍎 💻
+A portable development environment for macOS.
 
-## Examples 📸
+## What's Included
 
-### Dashboard
+### Terminal & Shell
+- **Ghostty** - GPU-accelerated terminal emulator
+- **Zsh** with Zinit plugin manager
+- **Starship** - Cross-shell prompt
+- **Atuin** - Magical shell history with sync
+- **Zoxide** - Smarter cd command
+- **fzf** - Fuzzy finder
 
-![alpha](https://user-images.githubusercontent.com/5381156/196766122-8669cf89-a3c6-417c-a01a-b4ae62bddede.png)
+### Editor
+- **Neovim** with LazyVim configuration
+- **LunarVim** config also available
 
-### With Tmux
+### Development Tools
+- **Go** with workspace setup and tools (godoc, impl, staticcheck)
+- **Rust** via rustup with rust-analyzer
+- **Node.js** via Volta
+- **Lua** tooling (stylua)
 
-![tmux](https://user-images.githubusercontent.com/5381156/196766125-56ec796e-cd36-4238-b1f0-d0565091d2ab.png)
+### CLI Tools
+| Category | Tools |
+|----------|-------|
+| File | bat, lsd, fd, ripgrep, ncdu, duf, tokei |
+| Git | lazygit, git-delta |
+| JSON | fx, dasel |
+| Network | httpie, croc |
+| File Manager | joshuto |
 
-### Which-key
+### Applications (via Homebrew Cask)
+- Arc browser
+- Alfred
+- Syntax Highlight (Quick Look)
+- QLMarkdown
 
-![Which-key](https://user-images.githubusercontent.com/5381156/196766124-ecce1e11-17d5-42c1-881b-99667ac85f3e.png)
-
-### Spell Suggest
-
-![spelling](https://user-images.githubusercontent.com/5381156/196766128-c89b51c4-a5fb-4e57-9c4f-778fe7526164.png)
-
-### Buffer Explorer (ctrl-b)
-
-![ctrl-b](https://user-images.githubusercontent.com/5381156/196766120-15913074-2e1c-44e5-9e38-ac725d54d609.png)
-
-### Fuzzy Find (ctrl-f)
-
-![ctrl-f](https://user-images.githubusercontent.com/5381156/196766117-ca5c88e3-9e12-4970-b88f-3a948ee56fa9.png)
-
-## Setup Iterm2
-
-### Setting 🤓 Nerd Font ✒
-
-```shell
-iTerm2 -> Preferences -> Profiles -> Text -> Font -> Change Font
-```
-
-### Setting up iterm colors
-
-Download my preset colors
-
-```bash
-curl -L https://gist.githubusercontent.com/derekahn/fce4b5367006d10ca91a171d992999e0/raw/1da64f3ca436c7c8d3e9c5c62d25ee22fe6a1e02/onedark.itermcolors.xml -o ~/Documents/onedark.itermcolors
-```
-
-Import the preset colors into iTerm2
-
-```shell
-iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> Import...
-```
-
-Select the preset color `onedark`
-
-```shell
-iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets... -> onedark
-```
-
-### Setting up iterm status bar
-
-```shell
-iTerm2 -> Preferences > Profiles > Session
-```
-
-- Turn on `Status bar enabled` at the bottom right pane
-- Then click Configure Status Bar to begin setting up your status bar configuration
-
-```shell
-iTerm2 -> Preferences > Appearance > General
-```
-
-### Setting up iterm for tmux copy/paste
-
-```shell
-iTerm2 -> Preferences > Profiles > Selection -> Applications in terminal may access clipboard
-```
-
-![iterm enable vi yank for tmux](https://user-images.githubusercontent.com/5381156/222502391-adb9f25a-a644-4fd7-a4d3-bbea376559dc.png)
-
-### Setting up rectangle
+## Quick Start
 
 ```bash
-curl -L https://gist.githubusercontent.com/derekahn/57717fa5301d24bcfb888a58178f5ab1/raw/35b0e55a5315449cf64abee40ba3c3cd37291c75/RectangleConfig.json -o ~/Documents/RectangleConfig.json
+# Clone the repository
+git clone https://github.com/derekahn/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
+# One-click setup (installs everything and creates symlinks)
+make setup
 ```
 
-![Rectangle Config](https://user-images.githubusercontent.com/5381156/196766181-fe51ad11-7767-4cec-9847-13958f41cfc9.png)
+## Makefile Commands
+
+```
+make setup       # One-click setup - installs everything and creates symlinks
+make install     # Installs Homebrew, packages, languages (Go, Rust, Node)
+make link        # Creates symlinks for configs (tmux, nvim, zsh, etc)
+make link-force  # Creates symlinks, replacing existing files
+make update      # Updates Homebrew packages and plugins
+make clean       # Removes broken symlinks in ~ and ~/.config
+make lint        # Runs shellcheck on scripts
+```
+
+## Directory Structure
+
+```
+~/.dotfiles
+├── bin/
+│   ├── install.sh    # Package installation script
+│   └── link.sh       # Symlink creation script
+├── config/
+│   ├── ghostty/      # Ghostty terminal config
+│   ├── git/          # Git configuration
+│   ├── lazygit/      # Lazygit configuration
+│   ├── lsd/          # lsd (ls replacement) config
+│   ├── lvim/         # LunarVim configuration
+│   ├── nvim/         # Neovim/LazyVim configuration
+│   └── starship/     # Starship prompt config
+├── tmux/
+│   └── tmux.conf.symlink
+├── zsh/
+│   ├── zshrc.symlink # Main zsh configuration
+│   ├── docker.zsh    # Docker aliases
+│   ├── git.zsh       # Git aliases
+│   ├── go.zsh        # Go configuration
+│   ├── k8s.zsh       # Kubernetes aliases
+│   ├── node.zsh      # Node.js configuration
+│   ├── python.zsh    # Python configuration
+│   ├── rust.zsh      # Rust configuration
+│   └── ...           # More shell modules
+└── Makefile
+```
+
+## Environment Variables
+
+Set these before running `make setup` for non-interactive installation:
+
+```bash
+export GIT_USER_NAME="your-username"
+export GIT_USER_EMAIL="your-email@example.com"
+```
+
+## Post-Installation
+
+1. Restart your terminal or run `source ~/.zshrc`
+2. In tmux, press `prefix + I` to install plugins
+3. Open `nvim` to let LazyVim install plugins automatically
+
+## Updating
+
+```bash
+cd ~/.dotfiles
+make update
+```
+
+This updates Homebrew packages, zsh-autosuggestions, and tmux plugins.
