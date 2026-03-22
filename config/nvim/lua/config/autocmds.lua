@@ -16,20 +16,18 @@ autocmd("TextYankPost", {
 	end,
 })
 
-autocmd("BufEnter", {
-	pattern = { "*.json", "*.jsonc" },
-	-- enable wrap mode for json files only
+autocmd("FileType", {
+	pattern = { "json", "jsonc" },
 	command = "setlocal wrap",
 })
 
-autocmd("BufEnter", {
-	pattern = { "*.md" },
+autocmd("FileType", {
+	pattern = { "markdown" },
 	command = "setlocal spell",
 })
 
--- Rust files use 4-space indentation
-autocmd("BufEnter", {
-	pattern = { "*.rs" },
+autocmd("FileType", {
+	pattern = { "rust" },
 	callback = function()
 		vim.opt_local.shiftwidth = 4
 		vim.opt_local.tabstop = 4
@@ -39,13 +37,17 @@ autocmd("BufEnter", {
 autocmd("BufRead", {
   desc = "Disable diagnostics in node_modules",
   pattern = "*/node_modules/*",
-  command = "lua vim.diagnostic.disable(0)",
+  callback = function()
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
 })
 
 autocmd("BufRead", {
   desc = "Disable diagnostic for .env files",
   pattern = "*.env",
-  command = "lua vim.diagnostic.disable(0)",
+  callback = function()
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
 })
 
 autocmd("BufWritePost", {

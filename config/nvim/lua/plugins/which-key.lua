@@ -15,7 +15,7 @@ return {
       { "<leader>s", group = "Search" },
       { "<leader>t", group = "Test" },
       { "<leader>u", group = "UI" },
-      { "<leader>/", desc = "Comment", icon = "󰆉" },
+      { "<leader>/", desc = "Grep (Root Dir)", icon = "" },
       { "<leader>x", group = "Diagnostics/Quickfix" },
       { "[", group = "Prev" },
       { "]", group = "Next" },

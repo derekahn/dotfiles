@@ -103,9 +103,5 @@ map("v", "<leader>S", "y:%s/\\<<C-r>0\\>//g<Left><Left>", { desc = "Replace sele
 
 -- Mimics lunarvim's ctrl-p search
 vim.keymap.set("n", "<C-p>", function()
-  require("telescope.builtin").find_files({
-    hidden = true,
-    no_ignore = false,
-    file_ignore_patterns = { ".git/" },
-  })
+  require("fzf-lua").files({ hidden = true, no_ignore = false })
 end, { desc = "Find files (including hidden)" })

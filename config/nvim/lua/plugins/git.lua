@@ -9,20 +9,30 @@ return {
 		},
 	},
 	{
-		"ThePrimeagen/git-worktree.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function(_, opts)
-			-- print(opts)
-			-- require("git-worktree").setup(opts)
-			require("telescope").load_extension("git_worktree")
+		"polarmutex/git-worktree.nvim",
+		version = "^2",
+		dependencies = { "ibhagwan/fzf-lua" },
+		config = function()
+			require("git-worktree").setup()
 		end,
 		keys = {
 			{ "<leader>gw", "", desc = "+git-worktree", mode = { "n", "v" } },
 			{
 				"<leader>gws",
 				function()
-					require("telescope").extensions.git_worktree.git_worktrees({
-						path_display = {},
+					require("fzf-lua").fzf_exec(function(fzf_cb)
+						local worktrees = require("git-worktree").get_worktrees()
+						for _, wt in ipairs(worktrees) do
+							fzf_cb(wt.path)
+						end
+						fzf_cb()
+					end, {
+						prompt = "Worktrees> ",
+						actions = {
+							["default"] = function(selected)
+								require("git-worktree").switch_worktree(selected[1])
+							end,
+						},
 					})
 				end,
 				desc = "Manage Worktrees",
@@ -30,7 +40,10 @@ return {
 			{
 				"<leader>gwc",
 				function()
-					require("telescope").extensions.git_worktree.create_git_worktree()
+					local branch = vim.fn.input("Branch: ")
+					if branch ~= "" then
+						require("git-worktree").create_worktree(branch, branch)
+					end
 				end,
 				desc = "Create Worktree",
 			},

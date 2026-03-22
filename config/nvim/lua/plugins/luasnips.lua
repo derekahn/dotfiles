@@ -9,7 +9,7 @@ return {
         keep_roots = true,
         link_roots = true,
         link_children = true,
-        update_events = "TextChanged,TextChangedI",
+        update_events = "TextChangedI",
       })
       require("luasnip").filetype_extend("typescriptreact", { "typescript" })
       require("luasnip.loaders.from_vscode").lazy_load()

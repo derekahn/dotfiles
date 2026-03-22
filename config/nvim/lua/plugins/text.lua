@@ -2,15 +2,11 @@ return {
   {
     -- An all in one plugin for converting text case
     "johmsalas/text-case.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    cmd = "TextCaseOpenTelescope",
+    dependencies = { "ibhagwan/fzf-lua" },
     keys = {
-      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Text Case" },
+      { "ga.", "<cmd>TextCaseOpenWhichKey<CR>", mode = { "n", "v" }, desc = "Text Case" },
     },
-    config = function()
-      require("textcase").setup()
-      require("telescope").load_extension("textcase")
-    end,
+    opts = {},
   },
   {
     -- add/change/delete surrounding delimiter pairs with ease
@@ -18,19 +14,5 @@ return {
     version = "*",
     event = "VeryLazy",
     opts = {},
-  },
-  {
-    "numToStr/Comment.nvim",
-    opts = {},
-    keys = {
-      { "gcc", false },
-      {
-        "<leader>/",
-        function()
-          require("Comment.api").toggle.linewise.current()
-        end,
-        desc = "Toggle comment",
-      },
-    },
   },
 }
