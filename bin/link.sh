@@ -3,23 +3,60 @@ set -e
 
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 FORCE="${FORCE:-false}"
+DRY_RUN="${DRY_RUN:-false}"
 
 # Colors
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
-RED=$(tput setaf 1)
+CYAN=$(tput setaf 6)
 RESET=$(tput sgr 0)
 
 log() { echo "${GREEN}🏠: $1${RESET}"; }
 warn() { echo "${YELLOW}🏠: $1${RESET}"; }
-error() { echo "${RED}🏠: $1${RESET}"; }
+dry() { echo "${CYAN}[dry-run] $1${RESET}"; }
 divider() { echo "---------------------------------------------------------"; }
+
+# ==============================================================================
+# Help
+# ==============================================================================
+usage() {
+    cat <<EOF
+Usage: link.sh [OPTIONS]
+
+Creates symlinks for dotfiles and config directories.
+
+Options:
+  -h, --help      Show this help message
+  -f, --force     Replace existing symlinks and files (backs up originals)
+  -n, --dry-run   Preview what would be linked without making changes
+
+Symlink Patterns:
+  **/*.symlink    ->  ~/.<filename>       (e.g., zshrc.symlink -> ~/.zshrc)
+  config/*/       ->  ~/.config/<name>    (e.g., config/nvim/ -> ~/.config/nvim/)
+
+Environment Variables:
+  DOTFILES_DIR      Override dotfiles location (default: ~/.dotfiles)
+  GIT_USER_NAME     Set git user.name non-interactively
+  GIT_USER_EMAIL    Set git user.email non-interactively
+
+Examples:
+  ./link.sh                # Create symlinks (skip existing)
+  ./link.sh --dry-run      # Preview what would be linked
+  ./link.sh --force        # Replace existing symlinks
+EOF
+    exit 0
+}
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
+        -h|--help) usage ;;
         -f|--force)
             FORCE=true
+            shift
+            ;;
+        -n|--dry-run)
+            DRY_RUN=true
             shift
             ;;
         *)
@@ -32,6 +69,17 @@ done
 create_symlink() {
     local source="$1"
     local target="$2"
+
+    if [[ "$DRY_RUN" == "true" ]]; then
+        if [[ -L "$target" ]]; then
+            dry "exists (symlink): $target"
+        elif [[ -e "$target" ]]; then
+            dry "exists (file):    $target"
+        else
+            dry "would link:       $target -> $source"
+        fi
+        return
+    fi
 
     if [[ -L "$target" ]]; then
         if [[ "$FORCE" == "true" ]]; then
@@ -55,9 +103,15 @@ create_symlink() {
     fi
 }
 
-divider
-log "Linking dotfiles from $DOTFILES_DIR"
-divider
+if [[ "$DRY_RUN" == "true" ]]; then
+    divider
+    dry "Preview mode — no changes will be made"
+    divider
+else
+    divider
+    log "Linking dotfiles from $DOTFILES_DIR"
+    divider
+fi
 
 # ==============================================================================
 # Symlink files (*.symlink -> ~/.<name>)
@@ -80,7 +134,9 @@ log "Linking config directories to ~/.config"
 divider
 
 # Ensure ~/.config exists
-mkdir -p "$HOME/.config"
+if [[ "$DRY_RUN" != "true" ]]; then
+    mkdir -p "$HOME/.config"
+fi
 
 # Link each config directory
 for config in "$DOTFILES_DIR/config/"*; do
@@ -90,6 +146,16 @@ for config in "$DOTFILES_DIR/config/"*; do
         create_symlink "$config" "$target"
     fi
 done
+
+# ==============================================================================
+# Stop here if dry-run
+# ==============================================================================
+if [[ "$DRY_RUN" == "true" ]]; then
+    divider
+    dry "Re-run without --dry-run to apply changes"
+    divider
+    exit 0
+fi
 
 # ==============================================================================
 # Git config (interactive or from environment)
