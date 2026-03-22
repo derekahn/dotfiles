@@ -1,5 +1,9 @@
 return {
-  { "echasnovski/mini.surround", enabled = false },
+  -- Override LazyVim's mini plugins to use new org name
+  { "nvim-mini/mini.icons" },
+  { "nvim-mini/mini.ai" },
+  { "nvim-mini/mini.pairs" },
+  { "nvim-mini/mini.surround", enabled = false },
   {
     "gbprod/yanky.nvim",
     keys = {

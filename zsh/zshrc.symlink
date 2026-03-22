@@ -10,8 +10,8 @@ done
 
 # Load zsh theme
 # ---------------
-eval "$(starship init zsh)"
 export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
+eval "$(starship init zsh)"
 
 # Setup fzf (fuzzy finder: vim, command history)
 # ---------------
@@ -35,8 +35,8 @@ export EDITOR='nvim'
 
 alias tmux="TERM=screen-256color-bce tmux"
 
-# https://github.com/nvim-neorg/tree-sitter-norg/issues/7#issuecomment-1291508121
-export CC=gcc-12
+# Use clang for tree-sitter parser compilation
+export CC=clang
 
 # Magical shell history
 # ---------------
@@ -67,3 +67,4 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
 export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"

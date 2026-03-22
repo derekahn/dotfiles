@@ -1,10 +1,10 @@
 return {
   {
     "iamcco/markdown-preview.nvim",
-    lazy = true,
-    event = "VeryLazy",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && npx --yes yarn install",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
@@ -20,7 +20,7 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" },
     opts = {
       latex = { enabled = false },
       render_modes = { "n", "c", "i", "v" },

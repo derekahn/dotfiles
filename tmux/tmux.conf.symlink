@@ -33,9 +33,6 @@ set -g visual-activity off
 # client connected to *that window*. Much more reasonable.
 setw -g aggressive-resize on
 
-# make delay shorter
-set -sg escape-time 0
-
 # tile all windows
 unbind =
 bind = select-layout tiled

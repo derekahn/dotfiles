@@ -1,5 +1,6 @@
 return {
 	"norcalli/nvim-colorizer.lua",
+	ft = { "css", "scss", "html", "javascript" },
 	config = function()
 		require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
 			RGB = true, -- #RGB hex codes

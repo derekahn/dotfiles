@@ -53,7 +53,7 @@ autocmd("BufWritePost", {
   pattern = { "*tmux.conf", "*tmux.conf.symlink" },
   callback = function()
     if vim.fn.executable("tmux") == 1 then
-      vim.fn.system("tmux source ~/.tmux.conf 2>/dev/null")
+      vim.system({ "tmux", "source-file", vim.fn.expand("~/.tmux.conf") })
     end
   end,
 })
@@ -61,5 +61,9 @@ autocmd("BufWritePost", {
 autocmd("BufWritePost", {
   desc = "Auto reload aerospace config",
   pattern = { "aerospace.toml" },
-  command = "!aerospace reload-config",
+  callback = function()
+    if vim.fn.executable("aerospace") == 1 then
+      vim.system({ "aerospace", "reload-config" })
+    end
+  end,
 })

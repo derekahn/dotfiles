@@ -1,10 +1,4 @@
 return {
-  -- Import LazyVim's debugger setup
-  { import = "lazyvim.plugins.extras.dap.core" },
-
-  -- Add language-specific debuggers
-  { import = "lazyvim.plugins.extras.dap.nlua" },
-
   -- For Python specifically
   {
     "mfussenegger/nvim-dap-python",

@@ -1,41 +1,45 @@
+local lsp_cache = ""
+
+local function update_lsp_cache()
+	local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #buf_clients == 0 then
+		lsp_cache = "LSP Inactive"
+		return
+	end
+
+	local buf_client_names = {}
+
+	for _, client in pairs(buf_clients) do
+		if client.name ~= "null-ls" and client.name ~= "copilot" then
+			table.insert(buf_client_names, client.name)
+		end
+	end
+
+	local ok, conform = pcall(require, "conform")
+	if ok then
+		for _, formatter in pairs(conform.list_formatters(0)) do
+			table.insert(buf_client_names, formatter.name)
+		end
+	end
+
+	local ok2, lint = pcall(require, "lint")
+	if ok2 then
+		for _, linter in pairs(lint.linters_by_ft[vim.bo.filetype] or {}) do
+			table.insert(buf_client_names, linter)
+		end
+	end
+
+	lsp_cache = string.format("[%s]", table.concat(buf_client_names, ", "))
+end
+
+vim.api.nvim_create_autocmd({ "LspAttach", "LspDetach", "BufEnter" }, {
+	group = vim.api.nvim_create_augroup("LualineLspCache", {}),
+	callback = update_lsp_cache,
+})
+
 local lsp = {
 	function()
-		local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
-		if #buf_clients == 0 then
-			return "LSP Inactive"
-		end
-
-		local formatters = require("conform").list_formatters(0)
-		local linters = require("lint").linters_by_ft[vim.bo.filetype] or {}
-
-		local buf_client_names = {}
-		local buf_formatters = {}
-		local buf_linters = {}
-
-		-- add client
-		for _, client in pairs(buf_clients) do
-			if client.name ~= "null-ls" and client.name ~= "copilot" then
-				table.insert(buf_client_names, client.name)
-			end
-		end
-
-		-- add formatter
-		for _, formatter in pairs(formatters) do
-			table.insert(buf_formatters, formatter.name)
-		end
-
-		-- add linter
-		for _, linter in pairs(linters) do
-			table.insert(buf_linters, linter)
-		end
-
-		vim.list_extend(buf_client_names, buf_formatters)
-		vim.list_extend(buf_client_names, buf_linters)
-
-		local unique_client_names = table.concat(buf_client_names, ", ")
-		local language_servers = string.format("[%s]", unique_client_names)
-
-		return language_servers
+		return lsp_cache
 	end,
 	color = { gui = "bold" },
 }
@@ -104,7 +108,7 @@ return {
           },
           -- stylua: ignore
           {
-            function() return "  " .. require("dap").status() end,
+            function() return "  " .. require("dap").status() end,
             cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
             color = { fg = Snacks.util.color("Debug") },
           },
@@ -136,11 +140,6 @@ return {
 					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
 					{ "location", padding = { left = 0, right = 1 } },
 				},
-				-- lualine_z = {
-				--   function()
-				--     return " " .. os.date("%R")
-				--   end,
-				-- },
 			},
 			extensions = { "neo-tree", "lazy" },
 		}

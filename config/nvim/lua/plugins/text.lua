@@ -2,27 +2,22 @@ return {
   {
     -- An all in one plugin for converting text case
     "johmsalas/text-case.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    cmd = "TextCaseOpenTelescope",
+    keys = {
+      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Text Case" },
+    },
     config = function()
-      local ok, textcase = pcall(require, "textcase")
-      if ok then
-        textcase.setup()
-        require("telescope").load_extension("textcase")
-
-        vim.api.nvim_set_keymap("n", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-        vim.api.nvim_set_keymap("v", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-      end
+      require("textcase").setup()
+      require("telescope").load_extension("textcase")
     end,
   },
   {
     -- add/change/delete surrounding delimiter pairs with ease
     "kylechui/nvim-surround",
     version = "*",
-    config = function()
-      local ok, surround = pcall(require, "nvim-surround")
-      if ok then
-        surround.setup()
-      end
-    end,
+    event = "VeryLazy",
+    opts = {},
   },
   {
     "numToStr/Comment.nvim",

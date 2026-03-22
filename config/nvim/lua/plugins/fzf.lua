@@ -2,6 +2,7 @@ return {
 	"ibhagwan/fzf-lua",
 	keys = {
 		{ "<C-f>", '<cmd>FzfLua files formatter={"path.filename_first",2}<cr>' },
+		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Grep (Root Dir)" },
 	},
 	opts = {
 		fzf_opts = {

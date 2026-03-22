@@ -1,7 +1,7 @@
 # Interactively add selected parts of files
 alias gaap="git add -p"
 alias gsp="git stash -p"
-alias gac="!git add -A && git commit -m"
+function gac() { git add -A && git commit -m "$1"; }
 alias gbc="git branch | fzf | xargs git checkout"
 alias gbdd="git branch | fzf | xargs git branch -D"
 
