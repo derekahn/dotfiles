@@ -123,3 +123,6 @@ set -g status-left "#[fg=#5c6370,bg=#31353f] #S #[fg=#31353f,bg=#31353f,nobold,n
 set -g status-right "#[fg=#31353f,bg=#31353f,nobold,nounderscore,noitalics]#[fg=#5c6370,bg=#31353f] %Y-%m-%d  %H:%M #[fg=#31353f,bg=#31353f,nobold,nounderscore,noitalics]#[fg=#5c6370,bg=#31353f] #h "
 setw -g window-status-format "#[fg=#5c6370,bg=#31353f] #I #[fg=#5c6370,bg=#31353f] #W "
 setw -g window-status-current-format "#[fg=#31353f,bg=#393f4a,nobold,nounderscore,noitalics]#[fg=#abb2bf,bg=#393f4a] #I #[fg=#abb2bf,bg=#393f4a] #W #[fg=#393f4a,bg=#31353f,nobold,nounderscore,noitalics]"
+
+# Or skip the prefix entirely (Alt+p from any pane)
+bind-key -n M-p display-popup -E -w 80% -h 75% -d "#{pane_current_path}" "ccmux"

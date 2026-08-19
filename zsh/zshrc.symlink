@@ -1,3 +1,16 @@
+# Homebrew PATH + FPATH — first: everything below depends on brew-installed tools
+typeset -U path fpath
+if [[ -x /opt/homebrew/bin/brew ]]; then
+	HOMEBREW_PREFIX=/opt/homebrew
+elif [[ -x /usr/local/bin/brew ]]; then
+	HOMEBREW_PREFIX=/usr/local
+fi
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+	eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
+	# shellenv no-ops when brew is already on PATH (/etc/paths.d) — set fpath explicitly
+	fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+fi
+
 # Load zsh configs
 # ---------------
 for config in $HOME/.dotfiles/zsh/*.zsh; do
@@ -38,10 +51,6 @@ alias tmux="TERM=screen-256color-bce tmux"
 # Use clang for tree-sitter parser compilation
 export CC=clang
 
-# Magical shell history
-# ---------------
-eval "$(atuin init zsh)"
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -53,7 +62,6 @@ fi
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -66,5 +74,23 @@ zinit light-mode for \
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
+
+# Initialize zsh completion system (fpath set by brew shellenv at top)
+# Rebuild dump when >24h old; otherwise -C reuses the cache and skips compaudit
+autoload -Uz compinit
+_stale_zcompdump=($HOME/.zcompdump(N.mh+24))
+if (( ${#_stale_zcompdump} )); then
+	compinit
+else
+	compinit -C
+fi
+unset _stale_zcompdump
+(( ${+_comps} )) && _comps[zinit]=_zinit
+zinit cdreplay -q
+
+# Television (fuzzy finder with shell integration; needs compinit above)
+eval "$(tv init zsh)"
+
+# Magical shell history — after tv so atuin owns ^R (tv keeps ^T)
+# ---------------
+eval "$(atuin init zsh)"

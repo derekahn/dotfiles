@@ -14,3 +14,9 @@ tmux.symlink
 vimrc.local
 config/lvim/plugin/packer_compiled.lua
 config/lazygit/state.yml
+
+# Machine-local secrets — sourced by zshrc but never committed
+zsh/secrets.zsh
+
+# Un-ignore this repo's CLAUDE.md (the global git ignore hides CLAUDE.md everywhere)
+!CLAUDE.md

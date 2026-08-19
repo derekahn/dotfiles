@@ -56,3 +56,4 @@ tags
 [._]*.un~
 
 **/.claude/settings.local.json
+CLAUDE.md

@@ -52,9 +52,12 @@ while [[ $# -gt 0 ]]; do
   case $1 in
   -h | --help) usage ;;
   -s | --skip)
+    if [[ $# -lt 2 ]]; then
+      error "--skip requires a value (e.g. --skip rust,node)"
+      exit 1
+    fi
     SKIP="$2"
-    shift
-    shift
+    shift 2
     ;;
   *) shift ;;
   esac
@@ -197,6 +200,10 @@ if ! should_skip "packages"; then
     # Terminal
     "neovim"
     "tmux"
+    "epilande/tap/ccmux"
+
+    # Media tools
+    "yt-dlp"
 
     # Shell enhancements
     "atuin"
@@ -212,7 +219,7 @@ if ! should_skip "packages"; then
   local_installed=0
   local_total=${#packages[@]}
   for pkg in "${packages[@]}"; do
-    ((local_installed++))
+    local_installed=$((local_installed + 1))
     if brew list "$pkg" &>/dev/null; then
       log "($local_installed/$local_total) $pkg already installed"
     else
@@ -301,6 +308,7 @@ if ! should_skip "rust"; then
   else
     log "Installing Rust..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    # shellcheck disable=SC1091  # created by rustup at runtime
     source "$HOME/.cargo/env"
   fi
 
