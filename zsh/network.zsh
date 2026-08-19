@@ -13,6 +13,13 @@ alias cloudDNS="networksetup -setdnsservers Wi-Fi 1.1.1.1 1.0.0.1"
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
+# croc file transfer via personal relay (CROC_PASS in secrets.zsh)
+# send: croc send <file>   receive: crocr <code>
+export CROC_RELAY="libertygrapple.club:9009"
+crocr() {
+	CROC_SECRET="$1" croc
+}
+
 # All the dig info
 digga() {
 	dig +nocmd "$1" any +multiline +noall +answer
