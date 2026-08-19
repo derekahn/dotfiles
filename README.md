@@ -11,7 +11,7 @@
 
 A portable development environment for macOS — one command to set up a fully configured terminal, editor, and dev toolchain.
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 git clone https://github.com/derekahn/dotfiles.git ~/.dotfiles
@@ -27,7 +27,31 @@ export GIT_USER_EMAIL="your-email@example.com"
 make setup
 ```
 
-## Architecture
+### What `make setup` does
+
+```mermaid
+flowchart LR
+    setup(["🚀 make setup"]) --> install["bin/install.sh"]
+    setup --> link["bin/link.sh"]
+
+    install --> brew["🍺 Homebrew<br/><small>packages · casks · fonts</small>"]
+    install --> langs["🧑‍💻 Toolchains<br/><small>Go · Rust · Node</small>"]
+
+    link --> home["🏠 ~/.zshrc, ~/.tmux.conf"]
+    link --> xdg["📂 ~/.config/*"]
+    link --> tpm["🔌 Tmux TPM"]
+
+    style setup fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
+    style install fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
+    style link fill:#1e1e2e,stroke:#a6e3a1,color:#cdd6f4
+    style brew fill:#1e1e2e,stroke:#fab387,color:#cdd6f4
+    style langs fill:#1e1e2e,stroke:#fab387,color:#cdd6f4
+    style home fill:#1e1e2e,stroke:#f9e2af,color:#cdd6f4
+    style xdg fill:#1e1e2e,stroke:#f9e2af,color:#cdd6f4
+    style tpm fill:#1e1e2e,stroke:#f9e2af,color:#cdd6f4
+```
+
+## 🏗️ Architecture
 
 ```mermaid
 graph LR
@@ -50,6 +74,7 @@ graph LR
         starship["starship/"]
         lazygit["lazygit/"]
         lsd["lsd/"]
+        television["television/"]
     end
 
     bin -->|install.sh| Homebrew
@@ -65,7 +90,7 @@ graph LR
     style dotconfig fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
 ```
 
-### Symlink Strategy
+### 🔗 Symlink Strategy
 
 Two patterns handled by `bin/link.sh`:
 
@@ -74,11 +99,33 @@ Two patterns handled by `bin/link.sh`:
 | `**/*.symlink` | `zsh/zshrc.symlink` | `~/.zshrc` |
 | `config/*` | `config/nvim/` | `~/.config/nvim/` |
 
-## What's Included
+## 📦 What's Included
 
-### Shell
+### 🐚 Shell
 
-[Zsh](https://www.zsh.org/) with [Zinit](https://github.com/zdharma-continuum/zinit) plugin manager, modular configuration via `zsh/*.zsh` files:
+[Zsh](https://www.zsh.org/) with [Zinit](https://github.com/zdharma-continuum/zinit) plugin manager, modular configuration via `zsh/*.zsh` files.
+
+**Startup order:**
+
+```mermaid
+flowchart LR
+    zshrc["~/.zshrc"] --> shellenv["🍺 brew shellenv"]
+    shellenv --> mods["📚 zsh/*.zsh<br/><small>all modules</small>"]
+    mods --> prompt["🚀 starship"]
+    prompt --> zinit["🔌 zinit<br/><small>syntax-highlighting<br/>autosuggestions</small>"]
+    zinit --> tv["📺 tv (^T)"]
+    tv --> atuin["🕰️ atuin (^R)"]
+
+    style zshrc fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
+    style shellenv fill:#1e1e2e,stroke:#fab387,color:#cdd6f4
+    style mods fill:#1e1e2e,stroke:#a6e3a1,color:#cdd6f4
+    style prompt fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
+    style zinit fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
+    style tv fill:#1e1e2e,stroke:#f9e2af,color:#cdd6f4
+    style atuin fill:#1e1e2e,stroke:#f9e2af,color:#cdd6f4
+```
+
+**Modules:**
 
 | Module | Purpose |
 |--------|---------|
@@ -88,12 +135,21 @@ Two patterns handled by `bin/link.sh`:
 | `node.zsh` | Volta-managed Node.js |
 | `docker.zsh` | Docker aliases |
 | `k8s.zsh` | Kubernetes aliases |
-| `python.zsh` | Pyenv setup |
+| `python.zsh` | User site-packages on PATH |
+| `mac.zsh` | macOS key bindings & fixes |
+| `network.zsh` | IP/DNS helpers, croc file transfer via personal relay |
+| `override.zsh` | lsd as `ls`, fuzzy-open helpers |
+| `zoxide.zsh` | Smart cd wrapper |
+| `music.zsh` | yt-dlp audio extraction |
+| `youtube.zsh` | Trade video upload workflow |
+| `trading.zsh` | ThinkorSwim watchlist converters |
+| `jiujitsu.zsh` | AOJ+ video download alias |
 | `utility.zsh` | Misc helpers (compression, zsh profiling) |
+| `secrets.zsh` | Machine-local API keys & passwords — gitignored, never committed |
 
-**Shell enhancements:** [Starship](https://starship.rs/) prompt, [Atuin](https://atuin.sh/) history sync, [Zoxide](https://github.com/ajeetdsouza/zoxide) smart cd, [fzf](https://github.com/junegunn/fzf) fuzzy finder
+**Shell enhancements:** [Starship](https://starship.rs/) prompt, [Atuin](https://atuin.sh/) history sync (`^R`), [Television](https://github.com/alexpasmantier/television) fuzzy channels (`^T`), [Zoxide](https://github.com/ajeetdsouza/zoxide) smart cd, [fzf](https://github.com/junegunn/fzf) fuzzy finder
 
-### Neovim
+### 💤 Neovim
 
 [LazyVim](https://www.lazyvim.org/) distribution with custom plugin layer:
 
@@ -114,6 +170,7 @@ graph TD
     langs --> md["markdown"]
     langs --> bash["bash"]
     langs --> gql["graphql"]
+    langs --> toml["toml"]
 
     style init fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
     style lazy fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
@@ -138,7 +195,7 @@ graph TD
 | `gp` | Preview definition |
 | `ga.` | Text case conversion |
 
-### Tmux
+### 🖥️ Tmux
 
 Prefix: `Ctrl+a` — vi-mode copy, smart vim-tmux navigation
 
@@ -151,11 +208,11 @@ Prefix: `Ctrl+a` — vi-mode copy, smart vim-tmux navigation
 | `prefix + C-m` | Fuzzy session switcher |
 | `prefix + r` | Reload config |
 
-### Terminal
+### 👻 Terminal
 
 [Ghostty](https://ghostty.org/) with Catppuccin Mocha theme, DankMono Nerd Font
 
-### Languages
+### 🧑‍💻 Languages
 
 | Language | Manager | LSP | Extras |
 |----------|---------|-----|--------|
@@ -165,17 +222,19 @@ Prefix: `Ctrl+a` — vi-mode copy, smart vim-tmux navigation
 | Python | System | pyright | DAP, black |
 | Lua | — | lua_ls | stylua |
 
-### CLI Tools
+### 🧰 CLI Tools
 
 | Category | Tools |
 |----------|-------|
-| Files | [bat](https://github.com/sharkdp/bat), [lsd](https://github.com/lsd-rs/lsd), [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep), [ncdu](https://dev.yorhel.nl/ncdu), [duf](https://github.com/muesli/duf), [tokei](https://github.com/XAMPPRocky/tokei) |
-| Git | [lazygit](https://github.com/jesseduffield/lazygit), [git-delta](https://github.com/dandavison/delta), [difftastic](https://github.com/Wilfred/difftastic) |
-| JSON | [fx](https://github.com/antonmedv/fx), [dasel](https://github.com/TomWright/dasel) |
-| Network | [httpie](https://httpie.io/), [croc](https://github.com/schollz/croc) |
-| Linting | [shellcheck](https://www.shellcheck.net/), [shfmt](https://github.com/mvdan/sh), [yamllint](https://github.com/adrienverge/yamllint), [jsonlint](https://github.com/zaach/jsonlint) |
+| 📁 Files | [bat](https://github.com/sharkdp/bat), [lsd](https://github.com/lsd-rs/lsd), [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep), [television](https://github.com/alexpasmantier/television), [joshuto](https://github.com/kamiyaa/joshuto), [sd](https://github.com/chmln/sd), [rm-improved](https://github.com/nivekuil/rip), [ncdu](https://dev.yorhel.nl/ncdu), [duf](https://github.com/muesli/duf), [tokei](https://github.com/XAMPPRocky/tokei) |
+| 🌿 Git | [lazygit](https://github.com/jesseduffield/lazygit), [git-delta](https://github.com/dandavison/delta), [difftastic](https://github.com/Wilfred/difftastic) |
+| 🧾 JSON | [fx](https://github.com/antonmedv/fx), [dasel](https://github.com/TomWright/dasel) |
+| 🌐 Network | [httpie](https://httpie.io/), [croc](https://github.com/schollz/croc) |
+| 🎬 Media | [yt-dlp](https://github.com/yt-dlp/yt-dlp), [imagemagick](https://imagemagick.org/) |
+| 🧩 Misc | [ccmux](https://github.com/epilande/ccmux), [tealdeer](https://github.com/tealdeer-rs/tealdeer) |
+| 🧹 Linting | [shellcheck](https://www.shellcheck.net/), [shfmt](https://github.com/mvdan/sh), [yamllint](https://github.com/adrienverge/yamllint), [jsonlint](https://github.com/zaach/jsonlint), [proselint](https://github.com/amperser/proselint) |
 
-## Makefile
+## ⚡ Makefile
 
 ```
 make setup       # One-click setup (install + link)
@@ -187,8 +246,8 @@ make clean       # Remove broken symlinks
 make lint        # Run shellcheck on scripts
 ```
 
-## Post-Install
+## ✅ Post-Install
 
-1. Restart your terminal or `source ~/.zshrc`
-2. In tmux: `prefix + I` to install plugins
-3. Open `nvim` — LazyVim installs plugins automatically
+1. 🔄 Restart your terminal or `source ~/.zshrc`
+2. 🔌 In tmux: `prefix + I` to install plugins
+3. 💤 Open `nvim` — LazyVim installs plugins automatically
