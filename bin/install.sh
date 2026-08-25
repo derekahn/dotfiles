@@ -159,6 +159,7 @@ if ! should_skip "packages"; then
     "fx"
 
     # Git tools
+    "difftastic"
     "git-delta"
     "lazygit"
 
@@ -227,6 +228,13 @@ if ! should_skip "packages"; then
       brew install "$pkg" || warn "Failed to install $pkg"
     fi
   done
+
+  # fzf keybindings — brew installs the binary but not ~/.fzf.zsh
+  if [[ ! -f "$HOME/.fzf.zsh" ]]; then
+    log "Generating ~/.fzf.zsh (fzf keybindings + completion)..."
+    "$HOMEBREW_PREFIX/opt/fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish >/dev/null ||
+      warn "fzf install script failed"
+  fi
 else
   log "Skipping packages"
 fi
@@ -364,8 +372,9 @@ echo "---------------------------------------------------------"
 log "Setup complete! [$TOTAL_STEPS/$TOTAL_STEPS steps]"
 echo "---------------------------------------------------------"
 log "Next steps:"
-log "  1. Run 'make link' to create symlinks"
+log "  1. Run 'make link' to create symlinks (already done if you ran 'make setup')"
 log "  2. Restart your terminal or run 'source ~/.zshrc'"
+log "  3. Run 'make doctor' to verify everything works"
 echo "---------------------------------------------------------"
 
 exit 0

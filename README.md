@@ -16,8 +16,11 @@ A portable development environment for macOS — one command to set up a fully c
 ```bash
 git clone https://github.com/derekahn/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-make setup
+make setup     # install everything + create symlinks
+make doctor    # verify configs load, symlinks resolve, tools exist
 ```
+
+> First `git` invocation on a fresh Mac prompts to install Xcode Command Line Tools — accept, then clone.
 
 For CI / non-interactive installs:
 
@@ -242,12 +245,17 @@ make install     # Homebrew, packages, languages (Go, Rust, Node)
 make link        # Create symlinks for all configs
 make link-force  # Force-replace existing symlinks
 make update      # Update Homebrew, zsh plugins, tmux plugins
+make doctor      # Verify configs load, symlinks resolve, tools exist
 make clean       # Remove broken symlinks
 make lint        # Run shellcheck on scripts
 ```
 
 ## ✅ Post-Install
 
-1. 🔄 Restart your terminal or `source ~/.zshrc`
-2. 🔌 In tmux: `prefix + I` to install plugins
-3. 💤 Open `nvim` — LazyVim installs plugins automatically
+1. 🔄 Restart your terminal or `source ~/.zshrc` — first start auto-installs Zinit
+2. 🔑 Fill in `zsh/secrets.zsh` (seeded from `secrets.zsh.example`, gitignored)
+3. 🔌 In tmux: `prefix + I` to install plugins
+4. 💤 Open `nvim` — LazyVim installs plugins automatically
+5. ✅ Run `make doctor` to confirm everything is healthy
+
+> **Font note:** Ghostty is configured for DankMono Nerd Font (commercial, install separately). Without it Ghostty falls back — JetBrains Mono Nerd Font is installed and makes a good substitute.

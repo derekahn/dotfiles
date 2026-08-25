@@ -3,7 +3,7 @@ PROJECTNAME=$(shell basename "$(PWD)")
 M = $(shell printf "\033[34;1m▶\033[0m")
 DONE="\n  $(M)  done ✨"
 
-.PHONY: help all setup install link update clean
+.PHONY: help all setup install link update clean doctor
 
 all: help
 
@@ -17,7 +17,13 @@ help: Makefile
 ## setup: One-click setup - installs everything and creates symlinks
 setup: install link
 	@echo $(DONE)
-	@echo "\n  $(M)  Setup complete! Please restart your terminal."
+	@echo "\n  $(M)  Setup complete! Restart your terminal, then run 'make doctor' to verify."
+
+## doctor: Verifies configs load, symlinks resolve, and tools exist
+doctor:
+	@echo "\n  $(M)  Running doctor.sh\n"
+	@./bin/doctor.sh
+	@echo $(DONE)
 
 ## install: Installs Homebrew, packages, languages (Go, Rust, Node)
 install:

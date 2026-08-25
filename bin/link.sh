@@ -158,6 +158,15 @@ if [[ "$DRY_RUN" == "true" ]]; then
 fi
 
 # ==============================================================================
+# Machine-local secrets (gitignored) — seed from template on first run
+# ==============================================================================
+SECRETS="$DOTFILES_DIR/zsh/secrets.zsh"
+if [[ ! -f "$SECRETS" ]]; then
+    cp "$DOTFILES_DIR/zsh/secrets.zsh.example" "$SECRETS"
+    log "Created zsh/secrets.zsh from template — fill in your keys"
+fi
+
+# ==============================================================================
 # Git config (interactive or from environment)
 # ==============================================================================
 divider
